@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>954</width>
+    <height>567</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);
+/*background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(238, 154, 229, 255), stop:1 rgba(89, 97, 249, 255));*/</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QWidget" name="widget" native="true">
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="2,0,10">
+         <item>
+          <widget class="QLabel" name="iconLabel">
+           <property name="minimumSize">
+            <size>
+             <width>250</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>250</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>MiSans Normal</family>
+            </font>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt; color:#41cd52;&quot;&gt;Qt&lt;/span&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;ADB&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QComboBox" name="comboBox">
+             <property name="minimumSize">
+              <size>
+               <width>210</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>210</width>
+               <height>30</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="refreshButton">
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;刷新设备列表&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="ico.qrc">
+               <normaloff>:/ico/image/ico/refresh-line.svg</normaloff>:/ico/image/ico/refresh-line.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>18</width>
+               <height>18</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QListWidget" name="indexList">
+           <property name="minimumSize">
+            <size>
+             <width>250</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>250</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="autoFillBackground">
+            <bool>true</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="fakeSpacer">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <property name="leftMargin">
+            <number>11</number>
+           </property>
+           <property name="topMargin">
+            <number>16</number>
+           </property>
+           <property name="rightMargin">
+            <number>16</number>
+           </property>
+           <property name="bottomMargin">
+            <number>16</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="WIFIBtn">
+             <property name="minimumSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>无线调试</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="ico.qrc">
+               <normaloff>:/ico/image/ico/signal-wifi-3-fill.svg</normaloff>:/ico/image/ico/signal-wifi-3-fill.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>25</width>
+               <height>25</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="adbKillerBtn">
+             <property name="minimumSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
+             </property>
+             <property name="font">
+              <font/>
+             </property>
+             <property name="toolTip">
+              <string>杀死ADB进程</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="ico.qrc">
+               <normaloff>:/ico/image/ico/close-circle-line.svg</normaloff>:/ico/image/ico/close-circle-line.svg</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>25</width>
+               <height>25</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="WSABtn">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>64</horstretch>
+               <verstretch>64</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>MiSans Normal</family>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+             </property>
+             <property name="text">
+              <string>连接
+WSA</string>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>25</width>
+               <height>25</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="loadingLabel">
+             <property name="minimumSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>64</width>
+               <height>64</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>0</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QWidget" name="page" native="true">
+           <property name="maximumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color:rgb(85, 255, 127)</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="ico.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,1259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>btnEmulator</class>
+ <widget class="QWidget" name="btnEmulator">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>615</width>
+    <height>450</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_7">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <property name="font">
+      <font>
+       <family>MiSans Normal</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 4px;
+background-color: rgba(255, 255, 255, 0);
+border:0px solid #BDBDBD;</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="leftMargin">
+       <number>11</number>
+      </property>
+      <property name="rightMargin">
+       <number>11</number>
+      </property>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="spacing">
+         <number>14</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MiSans Normal</family>
+             </font>
+            </property>
+            <property name="text">
+             <string>系统
+导航</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_back">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>返回</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/arrow-left-s-line.svg</normaloff>:/ico/image/ico/btnEmulator/arrow-left-s-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_home">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>主页</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/home-2-line.svg</normaloff>:/ico/image/ico/btnEmulator/home-2-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_menu">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>菜单</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/menu-line.svg</normaloff>:/ico/image/ico/btnEmulator/menu-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_changeWindow">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>切换应用</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/arrow-left-right-line.svg</normaloff>:/ico/image/ico/btnEmulator/arrow-left-right-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MiSans Normal</family>
+             </font>
+            </property>
+            <property name="text">
+             <string>实体
+按键</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_power">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>电源键</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/shut-down-line.svg</normaloff>:/ico/image/ico/shut-down-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_volUp">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>音量+</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/volume-up-line.svg</normaloff>:/ico/image/ico/btnEmulator/volume-up-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_volDown">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>音量-</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/volume-down-line.svg</normaloff>:/ico/image/ico/btnEmulator/volume-down-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_mute">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>静音</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/volume-mute-line.svg</normaloff>:/ico/image/ico/btnEmulator/volume-mute-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_shoot">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>拍摄（在相机内）</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/camera-3-line.svg</normaloff>:/ico/image/ico/btnEmulator/camera-3-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_call_AI">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>唤醒助理应用</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/psychotherapy-line.svg</normaloff>:/ico/image/ico/btnEmulator/psychotherapy-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MiSans Normal</family>
+             </font>
+            </property>
+            <property name="text">
+             <string>媒体
+控制</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_play_stop">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>播放/暂停</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/disc-line.svg</normaloff>:/ico/image/ico/btnEmulator/disc-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_stop">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>停止播放</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/stop-fill.svg</normaloff>:/ico/image/ico/btnEmulator/stop-fill.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="last">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>上一曲</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/skip-back-line.svg</normaloff>:/ico/image/ico/btnEmulator/skip-back-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_play">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>继续</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/play-line.svg</normaloff>:/ico/image/ico/play-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_pause">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>暂停</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/pause-line.svg</normaloff>:/ico/image/ico/btnEmulator/pause-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_next">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>下一曲</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/skip-forward-line.svg</normaloff>:/ico/image/ico/btnEmulator/skip-forward-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MiSans Normal</family>
+             </font>
+            </property>
+            <property name="text">
+             <string>其它
+指令</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_light_down">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>减小亮度</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/haze-line.svg</normaloff>:/ico/image/ico/btnEmulator/haze-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_light_up">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>增加亮度</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/sun-line.svg</normaloff>:/ico/image/ico/btnEmulator/sun-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_sleep">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>休眠系统</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/zzz-line.svg</normaloff>:/ico/image/ico/btnEmulator/zzz-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_sleep2">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>当没有wakelock时休眠系统</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/rest-time-line.svg</normaloff>:/ico/image/ico/btnEmulator/rest-time-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_delight">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>点亮屏幕</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/lightbulb-line.svg</normaloff>:/ico/image/ico/btnEmulator/lightbulb-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_hang_up">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>挂断</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/phone-off.svg</normaloff>:/ico/image/ico/btnEmulator/phone-off.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MiSans Normal</family>
+             </font>
+            </property>
+            <property name="text">
+             <string>系统
+应用</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_settings">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>打开设置</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/settings-line.svg</normaloff>:/ico/image/ico/btnEmulator/settings-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_contacts">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>打开联系人</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/contacts-book-line.svg</normaloff>:/ico/image/ico/btnEmulator/contacts-book-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_phone">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>打开拨号</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/phone-line.svg</normaloff>:/ico/image/ico/btnEmulator/phone-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_browser">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>打开浏览器</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/firefox-line.svg</normaloff>:/ico/image/ico/btnEmulator/firefox-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_music">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>打开音乐</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/disc-line.svg</normaloff>:/ico/image/ico/btnEmulator/disc-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_calender">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>打开日历</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/calendar-event-line.svg</normaloff>:/ico/image/ico/btnEmulator/calendar-event-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_calc">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>打开计算器</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/calculator-line.svg</normaloff>:/ico/image/ico/btnEmulator/calculator-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QPushButton" name="back_to_basePage">
+            <property name="minimumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/arrow-left-line.svg</normaloff>:/ico/image/ico/arrow-left-line.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>18</width>
+              <height>18</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../ico.qrc"/>
+ </resources>
+ <connections/>
+</ui>

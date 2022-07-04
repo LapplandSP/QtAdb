@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>about</class>
+ <widget class="QWidget" name="about">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>644</width>
+    <height>496</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_6">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <property name="styleSheet">
+      <string notr="true">border-radius: 4px;
+background-color: rgba(255, 255, 255, 0);
+border:0px solid #BDBDBD;</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="leftMargin">
+       <number>11</number>
+      </property>
+      <property name="rightMargin">
+       <number>11</number>
+      </property>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="spacing">
+         <number>14</number>
+        </property>
+        <property name="topMargin">
+         <number>11</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QPushButton" name="btn_version">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font/>
+            </property>
+            <property name="toolTip">
+             <string>版本号</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="ico.qrc">
+              <normaloff>:/ico/image/ico/about/information-line.svg</normaloff>:/ico/image/ico/about/information-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MiSans Normal</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>测试版本：beta-v0.2</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QPushButton" name="btn_website">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font/>
+            </property>
+            <property name="toolTip">
+             <string>网址</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="ico.qrc">
+              <normaloff>:/ico/image/ico/btnEmulator/firefox-line.svg</normaloff>:/ico/image/ico/btnEmulator/firefox-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MiSans Normal</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>网站：https://lapplandsp.github.io/QtAdb-pages/</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QPushButton" name="btn_coolapk">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font/>
+            </property>
+            <property name="toolTip">
+             <string>酷安</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="ico.qrc">
+              <normaloff>:/ico/image/ico/about/coolapklogo-b.png</normaloff>:/ico/image/ico/about/coolapklogo-b.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MiSans Normal</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>酷安：@霍星</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QPushButton" name="btn_github">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font/>
+            </property>
+            <property name="toolTip">
+             <string>Github</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="ico.qrc">
+              <normaloff>:/ico/image/ico/about/github-fill.svg</normaloff>:/ico/image/ico/about/github-fill.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MiSans Normal</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Github ：LapplandSP</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <item>
+           <widget class="QPushButton" name="btn_money">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font/>
+            </property>
+            <property name="toolTip">
+             <string>请我吃东西</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="ico.qrc">
+              <normaloff>:/ico/image/ico/about/heart-line.svg</normaloff>:/ico/image/ico/about/heart-line.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_money_2">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font/>
+            </property>
+            <property name="toolTip">
+             <string>请我吃可乐（3元）</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="ico.qrc">
+              <normaloff>:/ico/image/ico/about/cola.svg</normaloff>:/ico/image/ico/about/cola.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_money_3">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font/>
+            </property>
+            <property name="toolTip">
+             <string>请我吃鸡腿（5元）</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="ico.qrc">
+              <normaloff>:/ico/image/ico/about/chiken.svg</normaloff>:/ico/image/ico/about/chiken.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_money_4">
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>50</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font/>
+            </property>
+            <property name="toolTip">
+             <string>请我吃面条（10元）</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="ico.qrc">
+              <normaloff>:/ico/image/ico/about/noodles.svg</normaloff>:/ico/image/ico/about/noodles.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MiSans Normal</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>捐赠：请我喝快乐水</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout"/>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="ico.qrc"/>
+ </resources>
+ <connections/>
+</ui>
