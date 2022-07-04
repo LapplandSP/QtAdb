@@ -2,6 +2,8 @@
 
 QtAdb 是一个基于 [Qt](https://www.qt.io/) 的 Android 工具集合。
 
+> QtAdb 仍处于开发中，暂未正式发布，但您仍可以下载体验版本。
+
 ## 🧑‍💻开发目的
 
 [Android 调试桥 (adb)](https://developer.android.google.cn/studio/command-line/adb?hl=zh-cn) 是一种功能多样的命令行工具，可让开发者与设备之间进行通信。adb 命令可用于执行各种设备操作（例如安装和调试应用），并提供对 Unix shell（可用来在设备上运行各种命令）的访问权限。
