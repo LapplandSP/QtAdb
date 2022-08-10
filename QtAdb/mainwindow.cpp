@@ -53,9 +53,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     /*用户未选择设备前，锁定界面*/
     lock();
-    qDebug() << "1";
+    //qDebug() << "1";
     displayWelcomePage();
-    qDebug() << "2";
+    //qDebug() << "2";
 }
 
 MainWindow::~MainWindow()
@@ -101,10 +101,12 @@ void MainWindow::on_refreshButton_clicked()         //槽：按下刷新按钮
     lock();
     if(currentPage != NULL)
     {
-        currentPage->~QWidget();
+        currentPage->~basePage();
         currentPage = NULL;
     }
     displayWelcomePage();
+    ui->indexList->setCurrentRow(-1);
+    qDebug() <<"8";
 }
 
 void MainWindow::setCurrentDevice(int index)        //槽：改变所选设备
@@ -115,26 +117,41 @@ void MainWindow::setCurrentDevice(int index)        //槽：改变所选设备
 
 void MainWindow::initBasePage(int key)              //槽：生成basePages
 {
-    if(WCMPage != NULL)         //销毁欢迎页面
+    while(key != -1)
     {
-        //currentPage->setDisabled(true);
-        //delete currentPage;
-        WCMPage->~welcomePage();
-        WCMPage = NULL;
-    }
+        this->setEnabled(false);
+        if(WCMPage != NULL)         //销毁欢迎页面
+        {
+            //currentPage->playExitAnimation();
+            //currentPage->setDisabled(true);
+            //delete currentPage;
+            WCMPage->~welcomePage();
+            WCMPage = NULL;
+        }
 
-    if(currentPage != NULL)         //销毁上一个basePage
-    {
-        //currentPage->setDisabled(true);
-        //delete currentPage;
-        currentPage->~QWidget();
-        currentPage = NULL;
-    }
+        if(currentPage != NULL)         //销毁上一个basePage
+        {
+            //currentPage->playExitAnimation();
+            //currentPage->setDisabled(true);
+            //delete currentPage;
+            currentPage->setDisabled(true);
+            currentPage->~basePage();
+            currentPage = NULL;
+        }
 
-    currentPage = new QWidget(this);
-    currentPage = maker->createPageWithKey(key,ui->page,devList[current_device]);   //究极开销
-    qDebug() << "currentPage = maker->createPageWithKey(key,ui->page,devList[current_device]); ended";
-    ui->verticalLayout_2->addWidget(currentPage);
+        currentPage = new basePage(this);
+        currentPage = maker->createPageWithKey(key,ui->page,devList[current_device]);   //*去nmd*究极开销
+        //qDebug() << "currentPage = maker->createPageWithKey(key,ui->page,devList[current_device]); ended";
+
+        ui->verticalLayout_2->addWidget(currentPage);
+
+        currentPage->playLoadAnimation();
+        //connect(currentPage,SIGNAL(animationEnd()), currentPage,SLOT(refresh_listItem_effect()));
+
+        //currentPage->repaint();
+        this->setEnabled(true);
+        break;
+    }
 }
 
 void MainWindow::addItemToIndex(indexListItem *itemWidget)  //方法：向indexist中添加单个item
@@ -179,6 +196,12 @@ void MainWindow::addIndexItems()                    //方法：初始化向index
     recovery->setPic("image:url(:/ico/image/ico/registered-line.svg);background-color:rgba(255,255,255,0);");
     addItemToIndex(recovery);
 
+    //:/ico/image/ico/code-s-slash-line.svg //05
+    indexListItem *advanced = new indexListItem(this->ui->indexList);
+    advanced->setText("高级");
+    advanced->setPic("image:url(:/ico/image/ico/code-s-slash-line.svg);background-color:rgba(255,255,255,0);");
+    addItemToIndex(advanced);
+
     indexListItem *about = new indexListItem(this->ui->indexList);
     about->setText("关于");
     about->setPic("image:url(:/ico/image/ico/about/information-line.svg);background-color:rgba(255,255,255,0);");
@@ -189,6 +212,7 @@ void MainWindow::addIndexItems()                    //方法：初始化向index
 
 void MainWindow::lock()                             //方法：锁定mainwindow中控件
 {
+    //this->setEnabled(false);
     ui->indexList->setEnabled(false);
     //currentPage->setEnabled(false);
     ui->page->setEnabled(false);
@@ -196,6 +220,7 @@ void MainWindow::lock()                             //方法：锁定mainwindow�
 
 void MainWindow::unlock()                           //方法：解锁mainwindow中的控件
 {
+    //this->setEnabled(false);
     ui->indexList->setEnabled(true);
     //currentPage->setEnabled(true);
     ui->page->setEnabled(true);
@@ -298,7 +323,7 @@ void MainWindow::stopLoadingGif()                   //槽：隐藏加载动画 +
     ui->loadingLabel->setVisible(false);
 }
 
-void MainWindow::on_WIFIBtn_clicked()               //槽：获取无线调试参数
+void MainWindow::on_WIFIBtn_clicked()               //槽：弹出无线调试连接窗口，获取无线调试参数
 {
     getInfo = new QWidget();
     getInfo->setWindowTitle("无线调试");

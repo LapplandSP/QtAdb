@@ -67,9 +67,9 @@ sp_dpiChanger::~sp_dpiChanger()
 
 void sp_dpiChanger::setDpiInfo()
 {
-    qDebug() << "dve of sonPage = " << dev.addr;
+    //qDebug() << "dve of sonPage = " << dev.addr;
     QString profile = process->run("adb shell wm density", dev).replace("Physical density", "默认").replace("Override density","当前").simplified();
-    qDebug() << profile;
+    //qDebug() << profile;
     ui->dpiInfo->setText(profile);
 }
 
@@ -81,7 +81,7 @@ void sp_dpiChanger::on_runBtn_clicked()
         output = process->run("adb shell wm density " + ui->lineEdit->text().simplified() , dev);
 
         this->setDisabled(false);
-        qDebug() << output;
+        //qDebug() << output;
 
         refresh();
         ui->lineEdit->setPlaceholderText("已修改");

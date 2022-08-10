@@ -10,7 +10,7 @@ QWidget* sonPageManager::selector(QWidget *parent , QString parentName, int key,
 {
     if(parentName == "devInfo")
     {
-        qDebug() << "dev.addr=" << dev.addr;
+        //qDebug() << "dev.addr=" << dev.addr;
         return createSonPageFor_devInfo(parent, key , dev);
         //return createSonPageFor_activator(parent);
     }
@@ -29,6 +29,10 @@ QWidget* sonPageManager::selector(QWidget *parent , QString parentName, int key,
     else if(parentName == "recovery")
     {
         return createSonPageFor_recovery(parent, key , dev);
+    }
+    else if(parentName == "advanced")
+    {
+        return createSonPageFor_advanced(parent, key , dev);
     }
 
     throw "failed to create sonPage!";
@@ -236,6 +240,32 @@ QWidget* sonPageManager::createSonPageFor_recovery(QWidget *parent, int key, dev
         sp_recovery *page = new sp_recovery(parent);
         page->setDev(dev);
         return page;
+    }
+        break;
+    }
+    return NULL;
+}
+
+QWidget* sonPageManager::createSonPageFor_advanced(QWidget *parent, int key, device dev)
+{
+    switch(key +1)
+    {
+    case 1:
+    {
+        sp_customize_cmd *page = new sp_customize_cmd(parent);
+        //page->setDev(dev);
+        return page;
+    }
+    case 2:
+    {
+        //QString envPath = qgetenv("PATH");      //获取当前环境变量
+        QString appDirPath = QApplication::applicationDirPath();    //获取程序所在位置
+        QString batPath = appDirPath + "/platform-tools/open-cmd-here.bat";
+        //qDebug()<<"batPath = " << batPath;
+        QProcess batProcess;
+        batProcess.start(batPath);
+        batProcess.waitForFinished();
+        return NULL;
     }
         break;
     }

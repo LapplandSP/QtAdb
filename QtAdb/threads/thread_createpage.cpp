@@ -9,11 +9,11 @@ thread_createPage::thread_createPage(QObject *parent)
 QWidget* thread_createPage::createBasePage(int key, QWidget *parent, device dev, QWidget *page)
 {
     //bPage = new basePage();
-    qDebug() << "thread_createPage : creating BasePage";
+    //qDebug() << "thread_createPage : creating BasePage";
     page = maker->createPageWithKey(key,parent,dev);
-    qDebug() << "thread_createPage : BasePage created";
+    //qDebug() << "thread_createPage : BasePage created";
     emit basePageCreated();
-    qDebug() << "thread_createPage : emit SIGNAL 'basePageCreated'";
+    //qDebug() << "thread_createPage : emit SIGNAL 'basePageCreated'";
     return NULL;
 }
 

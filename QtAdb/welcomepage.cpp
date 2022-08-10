@@ -2,7 +2,7 @@
 #include "ui_welcomepage.h"
 
 welcomePage::welcomePage(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::welcomePage)
 {
     ui->setupUi(this);

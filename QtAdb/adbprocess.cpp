@@ -4,6 +4,7 @@ adbProcess::adbProcess()
 {
     explainer = new textExplainer;
     connect(this , SIGNAL(readyReadStandardError()) , this , SLOT(on_readerror()));
+
 }
 
 QString adbProcess::run(QString command)                   //Adb 命令解析 - 单条命令
@@ -39,6 +40,7 @@ QString adbProcess::run(QString command)                   //Adb 命令解析 - 
             tag = 1;
             shell_command.clear();
         }
+
         if(args_0[i] == "'" && tag == 0)
         {
             //qDebug() << "No." << i << ":" << "args_0[" << i << "] is:" << args_0[i] << "\n" << "tag = " << tag << "\n";
@@ -56,7 +58,7 @@ QString adbProcess::run(QString command)                   //Adb 命令解析 - 
 
     }
     args_1.removeAt(0);
-    qDebug()  << "'run' running with arguments" << args_1 ;
+    //qDebug()  << "'run' running with arguments" << args_1 ;
     this->start("adb", args_1);
 
     //qDebug() << readAllStandardOutput();
@@ -68,11 +70,13 @@ QString adbProcess::run(QString command)                   //Adb 命令解析 - 
     output = readAllStandardOutput();
     standardOutput.append(output);
     explainer->explainOutput(output);
+    emit outputGet(output);
     return output;
 }
 
 QString adbProcess::run(QString command, device dev)                   //Adb 命令解析 - 对指定设备发送单条命令
 {
+    //Sleep(500);
     QStringList args_0;
     QStringList args_1;
 
@@ -92,6 +96,7 @@ QString adbProcess::run(QString command, device dev)                   //Adb 命
             args_1.append(args_0[i]);
             //qDebug() << "append0" << shell_command;
         }
+
         /*
         if(tag == 0)
         {
@@ -100,6 +105,7 @@ QString adbProcess::run(QString command, device dev)                   //Adb 命
             //q.enqueue(args_0[i]);
             //qDebug() << shell_command;
         }*/
+
         if(args_0[i] == "'" && tag == 0)
         {
             //qDebug() << "No." << i << ":" << "args_0[" << i << "] is:" << args_0[i] << "\n" << "tag = " << tag << "\n";
@@ -108,6 +114,7 @@ QString adbProcess::run(QString command, device dev)                   //Adb 命
             tag = 1;
             shell_command.clear();
         }
+
         if(args_0[i] == "'" && tag == 0)
         {
             //qDebug() << "No." << i << ":" << "args_0[" << i << "] is:" << args_0[i] << "\n" << "tag = " << tag << "\n";
@@ -126,7 +133,7 @@ QString adbProcess::run(QString command, device dev)                   //Adb 命
 
     args_1.removeAt(2);
 
-    qDebug()  << "'run' running with arguments" << args_1 ;
+    //qDebug()  << "'run' running with arguments" << args_1 ;
     //qDebug()  << "calling this->start('adb', args_1);";
     this->start("adb", args_1);
     //qDebug()  << "this->start('adb', args_1); ended";
@@ -138,11 +145,14 @@ QString adbProcess::run(QString command, device dev)                   //Adb 命
     output = readAllStandardOutput();
     //qDebug() << "run output:" << output << "\n";
     explainer->explainOutput(output);
+
+    emit outputGet(output);
     return output;
 }
 
 QString adbProcess::run_contains_empty(QString command, device dev)                   //Adb 命令解析 - 对指定设备发送单条命令（可能包含空格）
 {
+
     QStringList args_0;
     QStringList args_1;
 
@@ -192,7 +202,7 @@ QString adbProcess::run_contains_empty(QString command, device dev)             
 
     args_1.removeAt(2);
 
-    qDebug()  << "'run' running with arguments" << args_1 ;
+    //qDebug()  << "'run' running with arguments" << args_1 ;
     this->start("adb", args_1);
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     waitForReadyRead();
@@ -202,11 +212,14 @@ QString adbProcess::run_contains_empty(QString command, device dev)             
     output = readAllStandardOutput();
     //qDebug() << "run output:" << output << "\n";
     explainer->explainOutput(output);
+
+    emit outputGet(output);
     return output;
 }
 
 QString adbProcess::run(QString command, QString write_command)                   //Adb 命令解析 - 发送单条命令并向控制台输入内容
 {
+
     QStringList args_0;
     QStringList args_1;
 
@@ -221,6 +234,7 @@ QString adbProcess::run(QString command, QString write_command)                 
             args_1.append(args_0[i]);
             //qDebug() << "append0" << shell_command;
         }
+
         /*
         if(tag == 0)
         {
@@ -229,6 +243,7 @@ QString adbProcess::run(QString command, QString write_command)                 
             //q.enqueue(args_0[i]);
             //qDebug() << shell_command;
         }*/
+
         if(args_0[i] == "'" && tag == 0)
         {
             //qDebug() << "No." << i << ":" << "args_0[" << i << "] is:" << args_0[i] << "\n" << "tag = " << tag << "\n";
@@ -255,30 +270,26 @@ QString adbProcess::run(QString command, QString write_command)                 
 
     }
     args_1.removeAt(0);
-    qDebug()  << "'run' running with arguments" << args_1 ;
+    //qDebug()  << "'run' running with arguments" << args_1 ;
     this->start("adb", args_1);
 
-    //qDebug() << "write 0";
-    //qDebug() << "write 1";
     this->write(write_command.toLocal8Bit());
-    //qDebug() << "write 2";
     waitForReadyRead();
-    //qDebug() << "write 3";
     waitForFinished();
-    //qDebug() << "write 4";
 
     QString output;
     output = readAllStandardOutput();
     standardOutput.append(output);
 
-    //qDebug() << "output:" << output;
-
     explainer->explainOutput(output);
+
+    emit outputGet(output);
     return output;
 }
 
 QString adbProcess::run(QString command, device dev, QString write_command)                   //Adb 命令解析 - 对指定设备发送单条命令并向控制台输入内容
 {
+
     QStringList args_0;
     QStringList args_1;
 
@@ -334,7 +345,7 @@ QString adbProcess::run(QString command, device dev, QString write_command)     
 
     args_1.removeAt(2);
 
-    qDebug()  << "'run' running with arguments" << args_1 ;
+    //qDebug()  << "'run' running with arguments" << args_1 ;
     this->start("adb", args_1);
     this->write(write_command.toLocal8Bit());
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -346,6 +357,8 @@ QString adbProcess::run(QString command, device dev, QString write_command)     
     //qDebug() << "run output:" << output << "\n";
 
     explainer->explainOutput(output);
+
+    emit outputGet(output);
     return output;
 }
 

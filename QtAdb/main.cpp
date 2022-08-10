@@ -9,6 +9,7 @@
 #include <QFont>
 #include <QSplashScreen>
 #include <QThread>
+#include <Windows.h>
 
 int main(int argc, char *argv[])
 {
@@ -43,13 +44,14 @@ int main(int argc, char *argv[])
     splash.setBaseSize(100,100);
     splash.setMaximumSize(100,100);
     splash.show();
+    //Sleep(5000);
     a.processEvents();
+
 
     MainWindow w;
     w.show();
 
     splash.finish(&w);
-
 
     return a.exec();
 }

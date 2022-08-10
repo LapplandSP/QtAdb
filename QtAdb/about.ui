@@ -22,10 +22,26 @@
    </property>
    <item>
     <widget class="QWidget" name="widget" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>600</width>
+       <height>350</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>MiSans Medium</family>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">border-radius: 4px;
-background-color: rgba(255, 255, 255, 0);
-border:0px solid #BDBDBD;</string>
+background-color: rgba(255, 255, 255, 0);</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="leftMargin">
@@ -94,7 +110,6 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
             </property>
             <property name="font">
              <font>
-              <family>MiSans Normal</family>
               <pointsize>12</pointsize>
              </font>
             </property>
@@ -157,7 +172,6 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
             </property>
             <property name="font">
              <font>
-              <family>MiSans Normal</family>
               <pointsize>12</pointsize>
              </font>
             </property>
@@ -220,7 +234,6 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
             </property>
             <property name="font">
              <font>
-              <family>MiSans Normal</family>
               <pointsize>12</pointsize>
              </font>
             </property>
@@ -283,7 +296,6 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
             </property>
             <property name="font">
              <font>
-              <family>MiSans Normal</family>
               <pointsize>12</pointsize>
              </font>
             </property>
@@ -451,7 +463,6 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
             </property>
             <property name="font">
              <font>
-              <family>MiSans Normal</family>
               <pointsize>12</pointsize>
              </font>
             </property>

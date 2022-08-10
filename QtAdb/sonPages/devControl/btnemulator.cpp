@@ -9,6 +9,7 @@ btnEmulator::btnEmulator(QWidget *parent) :
     connect(this->ui->back_to_basePage,SIGNAL(clicked()),parent,SLOT(slot_destroySonPage()));
     process = new adbProcess();
     explainer = new textExplainer();
+    this->setStyleSheet("QToolTip{border:1px solid #BDBDBD; background-color: #ffffff; color:rgba(117, 117, 117, 0.9);font-family: MiSans Medium; font-size:12px;border-radius:4px;}");
 
     setStyles();
 }

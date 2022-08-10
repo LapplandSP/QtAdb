@@ -1,6 +1,7 @@
 #ifndef SONPAGEMANAGER_H
 #define SONPAGEMANAGER_H
 
+#include <QApplication>
 #include "adbprocess.h"
 #include "textexplainer.h"
 #include "devInfo/sp_dpichanger.h"
@@ -9,6 +10,7 @@
 #include "devControl/sp_devcontrol_power.h"
 #include "devControl/btnemulator.h"
 #include "recovery/sp_recovery.h"
+#include "advanced/sp_customize_cmd.h"
 
 
 class sonPageManager
@@ -29,6 +31,7 @@ private:
     sp_installer* createSonPageFor_apps(QWidget *parent, int key, device dev);
     QWidget* createSonPageFor_devControl(QWidget *parent, int key, device dev);
     QWidget* createSonPageFor_recovery(QWidget *parent, int key, device dev);
+    QWidget* createSonPageFor_advanced(QWidget *parent, int key, device dev);
 };
 
 #endif // SONPAGEMANAGER_H

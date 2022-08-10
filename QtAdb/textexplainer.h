@@ -35,6 +35,13 @@ public:
 
 private:
     QString setState(QString state);
+
+signals:
+    void textExplained(QString);
+
+public slots:
+    void slot_get_words_after(QString s, QString k);
+    void slot_explain_cpu_output(QString s);
 };
 
 #endif // TEXTEXPLAINER_H

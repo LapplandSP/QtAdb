@@ -22,6 +22,8 @@
 #include <QFont>
 #include <QMovie>
 
+#include <windows.h>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -87,8 +89,8 @@ private:
     void setStyles();
     void displayWelcomePage();
 
-    QWidget * currentPage;
-    QWidget * tmpPage;
+    basePage * currentPage;
+    animationWidget * tmpPage;
     welcomePage * WCMPage;
 };
 #endif // MAINWINDOW_H

@@ -11,7 +11,7 @@ pageMaker::pageMaker()
     explainer = new textExplainer();
 }
 
-QWidget* pageMaker::createPageWithKey(int key, QWidget *parent, device dev)
+basePage* pageMaker::createPageWithKey(int key, QWidget *parent, device dev)
 {
     int k = key;
     switch(k)
@@ -40,6 +40,9 @@ QWidget* pageMaker::createPageWithKey(int key, QWidget *parent, device dev)
         return createPage_recovery(parent, dev);
         break;
     case 5:
+        return createPage_advanced(parent,dev);
+        break;
+    case 6:
         return createPage_about(parent);
         break;
     }
@@ -56,18 +59,76 @@ basePage* pageMaker::createPage_devInfo(QWidget *parent, device dev)
     ui->listWidget->setItemWidget(pItem, pItemWidget);*/
 
     basePage *devInfo = new basePage(parent);
+    devInfo->isBasePage = true;
     devInfo->whoYouAre("devInfo");
     int val[20] = {3};
     //qDebug() << "!!!!!!!!!!!!!!!!!!!" << *val;
     devInfo->setEnableValue(val);
     devInfo->setDev(dev);
-    /**/
+    /***********************************/
 
+    pageListItemStruct *productModel = initStruct(devInfo);
+    productModel->item->setText_title("设备型号 | DeviceModel");
+    productModel->item->setPic(":/ico/image/ico/profile-line.svg");
+    productModel->thread->initThread("adb shell getprop ro.product.model", dev);
+    QEventLoop::connect(productModel->thread,SIGNAL(signal_output(QString)),productModel->item,SLOT(slot_setText_profile(QString)));
+    //QEventLoop::connect(devInfo,SIGNAL(animationEnd()),productModel->item,SLOT(slot_setStyles()));
+    productModel->thread->start();
+    devInfo->addItemsToList(productModel->item);
+    //qDebug() << "item is in thread" << productModel->item->thread();
+
+    pageListItemStruct *screen_resolution = initStruct(devInfo);
+    screen_resolution->item->setText_title("屏幕分辨率");
+    screen_resolution->item->setPic(":/ico/image/ico/fullscreen-line.svg");
+    screen_resolution->thread->initThread("adb shell wm size", dev, ": ");
+    QEventLoop::connect(screen_resolution->thread,SIGNAL(signal_output(QString)),screen_resolution->item,SLOT(slot_setText_profile(QString)));
+    screen_resolution->thread->start();
+    devInfo->addItemsToList(screen_resolution->item);
+
+    //adb shell wm density
+    pageListItemStruct *dpi = initStruct(devInfo);
+    dpi->item->setText_title("屏幕密度 | DPI");
+    dpi->item->setPic(":/ico/image/ico/grid-line.svg");
+    dpi->thread->initThread("adb shell wm density", dev);
+    QEventLoop::connect(dpi->thread,SIGNAL(signal_output(QString)),dpi->item,SLOT(slot_setText_profile(QString)));
+    dpi->thread->start();
+    dpi->item->setSelectable();
+    devInfo->addItemsToList(dpi->item);
+
+    //adb shell settings get secure android_id
+    pageListItemStruct *android_id = initStruct(devInfo);
+    android_id->item->setText_title("Android Id");
+    android_id->item->setPic(":/ico/image/ico/barcode-line.svg");
+    android_id->thread->initThread("adb shell settings get secure android_id", dev);
+    QEventLoop::connect(android_id->thread,SIGNAL(signal_output(QString)),android_id->item,SLOT(slot_setText_profile(QString)));
+    android_id->thread->start();
+    devInfo->addItemsToList(android_id->item);
+
+    //adb shell getprop ro.build.version.release
+    pageListItemStruct *android_version = initStruct(devInfo);
+    android_version->item->setText_title("安卓版本");
+    android_version->item->setPic(":/ico/image/ico/android-line.svg");
+    android_version->thread->initThread("adb shell getprop ro.build.version.release", dev);
+    QEventLoop::connect(android_version->thread,SIGNAL(signal_output(QString)),android_version->item,SLOT(slot_setText_profile(QString)));
+    android_version->thread->start();
+    devInfo->addItemsToList(android_version->item);
+
+    pageListItemStruct *cpu = initStruct(devInfo);
+    cpu->item->setText_title("处理器 | CPU");
+    cpu->item->setPic(":/ico/image/ico/cpu-line.svg");
+    cpu->thread->initThread("adb shell cat /proc/cpuinfo", dev, "#CPU#");
+    QEventLoop::connect(cpu->thread,SIGNAL(signal_output(QString)),cpu->item,SLOT(slot_setText_profile(QString)));
+    cpu->thread->start();
+    devInfo->addItemsToList(cpu->item);
+
+    /**************别删**********************/
+    /*
     pageListItem *productModel = new pageListItem(devInfo);
     //qDebug() << "dev of pageMaker" << dev.addr;
     productModel->setText("设备型号 | DeviceModel",process->run("adb shell getprop ro.product.model", dev).simplified());
     productModel->setPic(":/ico/image/ico/profile-line.svg");
     devInfo->addItemsToList(productModel);
+
 
     pageListItem *screen_resolution = new pageListItem(devInfo);
     screen_resolution->setText("屏幕分辨率",explainer->get_words_after(process->run("adb shell wm size", dev), ": "));
@@ -96,8 +157,8 @@ basePage* pageMaker::createPage_devInfo(QWidget *parent, device dev)
     pageListItem *cpu = new pageListItem(devInfo);
     cpu->setText("处理器 | CPU",explainer->explain_cpu_output(process->run("adb shell cat /proc/cpuinfo", dev)));
     cpu->setPic(":/ico/image/ico/cpu-line.svg");
-    devInfo->addItemsToList(cpu);
-    /**/
+    devInfo->addItemsToList(cpu);*/
+    /****************别删***************/
     return devInfo;
 }
 
@@ -111,6 +172,7 @@ basePage* pageMaker::createPage_devInfo_powerdown(QWidget *parent, device dev)
     ui->listWidget->setItemWidget(pItem, pItemWidget);*/
 
     basePage *devInfo = new basePage(parent);
+    devInfo->isBasePage = true;
     devInfo->whoYouAre("devInfo");
     int val[20] = {};
     //qDebug() << "!!!!!!!!!!!!!!!!!!!" << *val;
@@ -162,6 +224,7 @@ basePage* pageMaker::createPage_devInfo_powerdown(QWidget *parent, device dev)
 basePage* pageMaker::createPage_acvitator(QWidget *parent, device dev)
 {
     basePage *activator = new basePage(parent);
+    activator->isBasePage = true;
     //activatorPage *activator = new activatorPage(parent);
     activator->whoYouAre("activator");
     int val[20] = {1,2,3,4,5,6,7,8,9};
@@ -228,6 +291,7 @@ basePage* pageMaker::createPage_acvitator(QWidget *parent, device dev)
 basePage* pageMaker::createPage_apps(QWidget *parent, device dev)
 {
     basePage *apps = new basePage(parent);
+    apps->isBasePage = true;
     //activatorPage *activator = new activatorPage(parent);
     apps->whoYouAre("apps");
     int val[20] = {1};
@@ -246,6 +310,7 @@ basePage* pageMaker::createPage_apps(QWidget *parent, device dev)
 basePage* pageMaker::createPage_devControl(QWidget *parent, device dev)
 {
     basePage *devControl = new basePage(parent);
+    devControl->isBasePage = true;
     //activatorPage *activator = new activatorPage(parent);
     devControl->whoYouAre("devControl");
     int val[20] = {1,2};
@@ -270,6 +335,7 @@ basePage* pageMaker::createPage_devControl(QWidget *parent, device dev)
 basePage* pageMaker::createPage_recovery(QWidget *parent, device dev)
 {
     basePage *recovery = new basePage(parent);
+    recovery->isBasePage = true;
     //activatorPage *activator = new activatorPage(parent);
     recovery->whoYouAre("recovery");
     int val[20] = {1};
@@ -292,8 +358,51 @@ basePage* pageMaker::createPage_recovery(QWidget *parent, device dev)
     return recovery;
 }
 
-QWidget* pageMaker::createPage_about(QWidget *parent)
+basePage* pageMaker::createPage_advanced(QWidget *parent, device dev)
+{
+    basePage *advanced = new basePage(parent);
+    advanced->isBasePage = true;
+    //activatorPage *activator = new activatorPage(parent);
+    advanced->whoYouAre("advanced");
+    int val[20] = {1,2};
+    advanced->setEnableValue(val);
+    advanced->setDev(dev);
+
+    pageListItem *customize_command = new pageListItem(advanced);
+    customize_command->setText("运行自定义命令","<customize command>");
+    customize_command->setPic(":/ico/image/ico/code-s-slash-line.svg");
+    customize_command->setSelectable();
+    advanced->addItemsToList(customize_command);
+
+    pageListItem *open_cmd = new pageListItem(advanced);
+    open_cmd->setText("命令行","cmd");
+    open_cmd->setPic(":/ico/image/ico/terminal-box-line.svg");
+    open_cmd->setSelectable();
+    advanced->addItemsToList(open_cmd);
+
+    /*
+    pageListItem *btnEmulate = new pageListItem(recovery);
+    btnEmulate->setText("按键模拟","adb shell input keyevent <key>");
+    btnEmulate->setPic(":/ico/image/ico/refund-line.svg");
+    btnEmulate->setSelectable();
+    recovery->addItemsToList(btnEmulate);*/
+
+    return advanced;
+}
+
+basePage* pageMaker::createPage_about(QWidget *parent)
 {
     about* abt = new about(parent);
     return abt;
+}
+
+pageMaker::pageListItemStruct* pageMaker::initStruct(QWidget* parent)
+{
+    pageListItemStruct *itemStruct = new pageListItemStruct();
+    itemStruct->explainer = new textExplainer();
+    itemStruct->item = new pageListItem();
+    itemStruct->item->setParent(parent);
+    itemStruct->process = new adbProcess();
+    itemStruct->thread = new adbThread();
+    return itemStruct;
 }

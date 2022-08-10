@@ -12,6 +12,7 @@
 
 #include <QTextEdit>
 
+//#include <windows.h>
 
 class adbProcess : public QProcess
 {
@@ -29,10 +30,15 @@ public:
     QString standardOutput;
 
     textExplainer *explainer;
+    /*test*/
+    QWidget *test;
 
 private slots:
     //void onReadData();
     void on_readerror();
+
+signals:
+    void outputGet(QString);
 };
 
 #endif // ADBPROCESS_H

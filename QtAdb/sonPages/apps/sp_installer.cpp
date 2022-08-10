@@ -62,7 +62,7 @@ void sp_installer::setDev(device device)
 }
 void sp_installer::on_runBtn_clicked()
 {
-    qDebug() << "enter runBtn slot";
+    //qDebug() << "enter runBtn slot";
     QString command;
     if(apkPath != "")
     {
@@ -72,11 +72,11 @@ void sp_installer::on_runBtn_clicked()
     {
         command = "adb install";
     }
-    qDebug() << "enter runBtn slot 1";
-    qDebug() << "enter runBtn slot 2";
-    qDebug() << "enter runBtn slot 4";
-    qDebug() << "command: " << command;
-    qDebug() << "running";
+    //qDebug() << "enter runBtn slot 1";
+    //qDebug() << "enter runBtn slot 2";
+    //qDebug() << "enter runBtn slot 4";
+    //qDebug() << "command: " << command;
+    //qDebug() << "running";
     process->run_contains_empty(command, dev);
     apkPath.clear();
     labelDisplay.clear();
@@ -85,11 +85,11 @@ void sp_installer::on_runBtn_clicked()
 
 void sp_installer::on_selectBtn_clicked()
 {
-    qDebug() << "enter pushbutton slot";
+    //qDebug() << "enter pushbutton slot";
     apkPath.clear();
     apkPath = QFileDialog::getOpenFileName(this, QStringLiteral("选择安装包"), "F:",QStringLiteral("安装包(*.apk)"));
 
     ui->filePaths->setText(apkPath);
 
-    qDebug() << "apkPathis:" << apkPath;
+    //qDebug() << "apkPathis:" << apkPath;
 }

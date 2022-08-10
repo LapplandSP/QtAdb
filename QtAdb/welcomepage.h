@@ -2,12 +2,13 @@
 #define WELCOMEPAGE_H
 
 #include <QWidget>
+#include "animationwidget.h"
 
 namespace Ui {
 class welcomePage;
 }
 
-class welcomePage : public QWidget
+class welcomePage : public animationWidget
 {
     Q_OBJECT
 

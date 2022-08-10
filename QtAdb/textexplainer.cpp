@@ -113,7 +113,6 @@ QString textExplainer::explain_cpu_output(QString str)
     tmpInfo = tmpInfo.simplified();
     //qDebug() << "tmpInfo =" << tmpInfo << "\n";
 
-
     return get_words_after(tmpInfo, ":");
 }
 
@@ -203,7 +202,7 @@ bool textExplainer::explainError(QString err)
 
 bool textExplainer::explainOutput(QString op)
 {
-    qDebug() << "output = " << op;
+    //qDebug() << "output = " << op;
     op = op.simplified();
 
     /*普通*/
@@ -211,7 +210,7 @@ bool textExplainer::explainOutput(QString op)
     {
         showMsgBox("失败"," · 应用未安装 \n · 应用安装后未首次运行");
     }
-    qDebug() << "+++++++++++++++++Output+++++++++++++++++" << "\n" << op;
+    //qDebug() << "+++++++++++++++++Output+++++++++++++++++" << "\n" << op;
     return true;
 }
 
@@ -244,6 +243,18 @@ QString textExplainer::setState(QString state)
     {
         return "[侧载]";
     }
-    return "出错";
+    return "[未知]";
+}
+/*
+void textExplainer::slot_get_words_after(QString s, QString k)
+{
+    QString str = get_words_after(s, k);
+    emit textExplained(str);
 }
 
+void textExplainer::slot_explain_cpu_output(QString s)
+{
+    QString str = explain_cpu_output(s);
+    emit textExplained(str);
+}
+*/

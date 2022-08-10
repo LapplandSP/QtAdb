@@ -10,6 +10,7 @@ CONFIG += c++11
 SOURCES += \
     about.cpp \
     adbprocess.cpp \
+    animationwidget.cpp \
     basepage.cpp \
     indexlistitem.cpp \
     main.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
     pagelistitem.cpp \
     pagemaker.cpp \
     sonPages/activator/sp_activator.cpp \
+    sonPages/advanced/sp_customize_cmd.cpp \
     sonPages/apps/sp_installer.cpp \
     sonPages/devControl/btnemulator.cpp \
     sonPages/devControl/sp_devcontrol_power.cpp \
@@ -27,18 +29,21 @@ SOURCES += \
     sonPages/sonpagemanager.cpp \
     sonPages/standardoutputpage.cpp \
     textexplainer.cpp \
+    threads/adbthread.cpp \
     threads/thread_createpage.cpp \
     welcomepage.cpp
 
 HEADERS += \
     about.h \
     adbprocess.h \
+    animationwidget.h \
     basepage.h \
     indexlistitem.h \
     mainwindow.h \
     pagelistitem.h \
     pagemaker.h \
     sonPages/activator/sp_activator.h \
+    sonPages/advanced/sp_customize_cmd.h \
     sonPages/apps/sp_installer.h \
     sonPages/devControl/btnemulator.h \
     sonPages/devControl/sp_devcontrol_power.h \
@@ -49,6 +54,7 @@ HEADERS += \
     sonPages/sonpagemanager.h \
     sonPages/standardoutputpage.h \
     textexplainer.h \
+    threads/adbthread.h \
     threads/thread_createpage.h \
     welcomepage.h
 
@@ -59,6 +65,7 @@ FORMS += \
     mainwindow.ui \
     pagelistitem.ui \
     sonPages/activator/sp_activator.ui \
+    sonPages/advanced/sp_customize_cmd.ui \
     sonPages/apps/sp_installer.ui \
     sonPages/devControl/btnemulator.ui \
     sonPages/devControl/sp_devcontrol_power.ui \

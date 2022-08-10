@@ -2,7 +2,7 @@
 #include "ui_basepage.h"
 
 basePage::basePage(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::basePage)
 {
     ui->setupUi(this);
@@ -11,11 +11,11 @@ basePage::basePage(QWidget *parent) :
 
     lastPage = NULL;
     sonPage = NULL;
-
+    /*
     QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
     shadowEffect->setOffset(0,0);
     shadowEffect->setColor(Qt::gray);
-    shadowEffect->setBlurRadius(10);
+    shadowEffect->setBlurRadius(10);*/
 
     //ui->listWidget->setGraphicsEffect(shadowEffect);
 /*******原来的
@@ -65,6 +65,8 @@ basePage::basePage(QWidget *parent) :
 
 basePage::~basePage()
 {
+
+    //sleep(1000);
     //qDebug() << "~basePage" << "\n";
 /*
     if(sonPage != NULL)
@@ -73,22 +75,16 @@ basePage::~basePage()
     //qDebug() << "~basePage deleted" << "\n";
     delete ui;
 }
-
+/*
 void basePage::playExitAnimation()
-{/*
-    QPropertyAnimation* pWidgetProcessOpacity = new QPropertyAnimation(exitOpacity, "opacity", this);
-
-    pWidgetProcessOpacity->setDuration(300);
-
-    pWidgetProcessOpacity->setStartValue(1);
-
-    pWidgetProcessOpacity->setEndValue(0);
-
-    pWidgetProcessOpacity->setEasingCurve(QEasingCurve::Linear);
-
-    pWidgetProcessOpacity->start(QAbstractAnimation::DeleteWhenStopped);//执行动画，结束后删除对象。*/
+{
+    QPropertyAnimation *animation = new QPropertyAnimation(this,"windowOpacity");
+    animation->setDuration(1000);
+    animation->setStartValue(0);
+    animation->setEndValue(1);
+    animation->start();
 }
-
+*/
 void basePage::addItemsToList(pageListItem *itemWidget)
 {
     QListWidgetItem *tmpItem = new QListWidgetItem();
@@ -104,10 +100,10 @@ void basePage::setFather(QWidget *parent)
 void basePage::slot_createSonPage(int key)
 {
     emit creatingSonPage();
-    if(isEnable(key))
+    if(isEnable(key) && key >= 0)
     {
         ui->listWidget->setCurrentRow(-1);
-        qDebug() << "dev of basePage = " << dev.addr;
+        //qDebug() << "dev of basePage = " << dev.addr;
         sonPage = SPManager->selector(this,whoAmI(),key,dev);
         if(sonPage != NULL)
         {
@@ -115,7 +111,7 @@ void basePage::slot_createSonPage(int key)
             ui->mainLayout->addWidget(sonPage);
         }
     }
-    //qDebug() << "is not";
+    //ui->listWidget->setCurrentRow(-1);
 }
 
 void basePage::slot_destroySonPage()
@@ -160,4 +156,9 @@ bool basePage::isEnable(int k)
 void basePage::setDev(device device)
 {
     dev = device;
+}
+
+void basePage::self_castrate()
+{
+    ui->listWidget->hide();
 }

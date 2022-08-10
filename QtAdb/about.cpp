@@ -2,10 +2,12 @@
 #include "ui_about.h"
 
 about::about(QWidget *parent) :
-    QWidget(parent),
+    basePage(parent),
     ui(new Ui::about)
 {
     ui->setupUi(this);
+    //this->setLayout(ui->verticalLayout);
+    self_castrate();
 
     QGraphicsDropShadowEffect *shadowEffect_btn_website = new QGraphicsDropShadowEffect();
     shadowEffect_btn_website->setOffset(0,0);
@@ -50,6 +52,7 @@ about::about(QWidget *parent) :
     shadowEffect_btn_version->setOffset(0,0);
     shadowEffect_btn_version->setColor(Qt::gray);
     shadowEffect_btn_version->setBlurRadius(5);
+
     ui->btn_version->setGraphicsEffect(shadowEffect_btn_version);
 
     ui->btn_money->hide();
@@ -66,7 +69,6 @@ void about::on_btn_website_clicked()
 {
     QDesktopServices::openUrl(QUrl("https://lapplandsp.github.io/QtAdb-pages/", QUrl::TolerantMode));
 }
-
 
 void about::on_btn_coolapk_clicked()
 {

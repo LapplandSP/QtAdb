@@ -4,13 +4,15 @@
 #include <QWidget>
 #include <QDesktopServices>
 #include <QGraphicsDropShadowEffect>
+#include "basepage.h"
 #include "sonPages/pay.h"
+#include "animationwidget.h"
 
 namespace Ui {
 class about;
 }
 
-class about : public QWidget
+class about : public basePage
 {
     Q_OBJECT
 

@@ -7,12 +7,13 @@
 #include <QPropertyAnimation>
 #include "pagelistitem.h"
 #include "sonPages/sonpagemanager.h"
+#include "animationwidget.h"
 
 namespace Ui {
 class basePage;
 }
 
-class basePage : public QWidget
+class basePage : public animationWidget
 {
     Q_OBJECT
 signals:
@@ -41,6 +42,10 @@ public:
     void setEnableValue(int val[20]);
     void setDev(device dev);
 
+
+
+    void self_castrate();
+
 private:
     Ui::basePage *ui;
 
@@ -49,7 +54,9 @@ private:
     //QGraphicsOpacityEffect* exitOpacity;
 
 public slots:
-    void playExitAnimation();
+    //void playExitAnimation();
+
+    //void refresh_listItem_effect();
 
 private slots:
     void slot_createSonPage(int key);

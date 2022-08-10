@@ -8,20 +8,27 @@ pageListItem::pageListItem(QWidget *parent) :
     ui->setupUi(this);
     ui->enableLight->setVisible(false);
 
-    ui->widget->setStyleSheet("background-color:transparent; border-radius:4px; border-color:gray;border:0px;");
+    ui->widget->setStyleSheet("QWidget{background-color:transparent; border-radius:4px; border-color:gray;border:0px;}");
+    ui->pic->setStyleSheet("QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}");
 
+    /*
     QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
     shadowEffect->setOffset(0,0);
     shadowEffect->setColor(Qt::gray);
     shadowEffect->setBlurRadius(5);
     ui->enableLight->setGraphicsEffect(shadowEffect);
 
+    QGraphicsOpacityEffect *graphicsOpacityEffect = new QGraphicsOpacityEffect(this);
+    graphicsOpacityEffect->setOpacity(1.0);
+    ui->pic->setGraphicsEffect(graphicsOpacityEffect);
+
     QGraphicsDropShadowEffect *shadowEffect_icon = new QGraphicsDropShadowEffect();
     shadowEffect_icon->setOffset(0,0);
     shadowEffect_icon->setColor(Qt::gray);
     shadowEffect_icon->setBlurRadius(5);
-    ui->pic->setGraphicsEffect(shadowEffect_icon);
+    ui->pic->setGraphicsEffect(shadowEffect_icon);*/
     //this->setGraphicsEffect(shadowEffect);
+    setStyles();
 }
 
 pageListItem::~pageListItem()
@@ -32,6 +39,16 @@ pageListItem::~pageListItem()
 void pageListItem::setText(QString title, QString profile)
 {
     ui->title->setText(title);
+    ui->profile->setText(profile);
+}
+
+void pageListItem::setText_title(QString title)
+{
+    ui->title->setText(title);
+}
+
+void pageListItem::setText_profile(QString profile)
+{
     ui->profile->setText(profile);
 }
 
@@ -57,4 +74,43 @@ void pageListItem::on_copyButton_clicked()
 void pageListItem::setSelectable()
 {
     ui->enableLight->setVisible(true);
+}
+
+void pageListItem::slot_setText(QString t, QString p)
+{
+    setText(t,p);
+}
+
+void pageListItem::slot_setText_title(QString t)
+{
+    setText_title(t);
+}
+
+void pageListItem::slot_setText_profile(QString p)
+{
+    setText_profile(p);
+}
+
+void pageListItem::setStyles()
+{
+    QGraphicsDropShadowEffect *shadowEffect = new QGraphicsDropShadowEffect();
+    shadowEffect->setOffset(0,0);
+    shadowEffect->setColor(Qt::gray);
+    shadowEffect->setBlurRadius(5);
+    ui->enableLight->setGraphicsEffect(shadowEffect);
+
+    QGraphicsOpacityEffect *graphicsOpacityEffect = new QGraphicsOpacityEffect(this);
+    graphicsOpacityEffect->setOpacity(1.0);
+    ui->pic->setGraphicsEffect(graphicsOpacityEffect);
+
+    QGraphicsDropShadowEffect *shadowEffect_icon = new QGraphicsDropShadowEffect();
+    shadowEffect_icon->setOffset(0,0);
+    shadowEffect_icon->setColor(Qt::gray);
+    shadowEffect_icon->setBlurRadius(5);
+    ui->pic->setGraphicsEffect(shadowEffect_icon);
+}
+
+void pageListItem::slot_setStyles()
+{
+    setStyles();
 }

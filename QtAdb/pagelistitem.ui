@@ -81,9 +81,9 @@ border-width:1px;</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+         <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}/*
 QPushButton:hover{background-color:rgba(255,255,255,0.7);}
-QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}*/</string>
         </property>
         <property name="text">
          <string/>
@@ -116,9 +116,7 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
            </size>
           </property>
           <property name="font">
-           <font>
-            <family>MiSans Normal</family>
-           </font>
+           <font/>
           </property>
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
@@ -186,9 +184,7 @@ QToolTip{border:1px solid #BDBDBD; background-color: #ffffff; color:rgba(117, 11
              </size>
             </property>
             <property name="font">
-             <font>
-              <family>MiSans Normal</family>
-             </font>
+             <font/>
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgba(255, 255, 255, 0);

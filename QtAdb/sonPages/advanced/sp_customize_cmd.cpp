@@ -1,20 +1,19 @@
-#include "sp_recovery.h"
-#include "ui_sp_recovery.h"
+#include "sp_customize_cmd.h"
+#include "ui_sp_customize_cmd.h"
 
-sp_recovery::sp_recovery(QWidget *parent) :
+sp_customize_cmd::sp_customize_cmd(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::sp_recovery)
+    ui(new Ui::sp_customize_cmd)
 {
     ui->setupUi(this);
-
     process = new adbProcess();
+
     connect(this->ui->back_to_basePage,SIGNAL(clicked()),parent,SLOT(slot_destroySonPage()));
 
     QGraphicsDropShadowEffect *shadowEffect_runBtn = new QGraphicsDropShadowEffect();
     QGraphicsDropShadowEffect *shadowEffect_showOutputBtn = new QGraphicsDropShadowEffect();
     QGraphicsDropShadowEffect *shadowEffect_back_to_basePage = new QGraphicsDropShadowEffect();
     QGraphicsDropShadowEffect *shadowEffect_refreshBtn = new QGraphicsDropShadowEffect();
-    QGraphicsDropShadowEffect *shadowEffect_selectBtn = new QGraphicsDropShadowEffect();
 
     shadowEffect_runBtn->setOffset(0,0);
     shadowEffect_runBtn->setColor(Qt::gray);
@@ -32,55 +31,30 @@ sp_recovery::sp_recovery(QWidget *parent) :
     shadowEffect_refreshBtn->setColor(Qt::gray);
     shadowEffect_refreshBtn->setBlurRadius(5);
 
-    shadowEffect_selectBtn->setOffset(0,0);
-    shadowEffect_selectBtn->setColor(Qt::gray);
-    shadowEffect_selectBtn->setBlurRadius(5);
-
     ui->back_to_basePage->setGraphicsEffect(shadowEffect_back_to_basePage);
     ui->runBtn->setGraphicsEffect(shadowEffect_runBtn);
     ui->showOutputBtn->setGraphicsEffect(shadowEffect_showOutputBtn);
     ui->refreshBtn->setGraphicsEffect(shadowEffect_refreshBtn);
-    ui->selectBtn->setGraphicsEffect(shadowEffect_selectBtn);
+
+    QGraphicsDropShadowEffect *shadowEffect_textBrowser = new QGraphicsDropShadowEffect();
+    shadowEffect_textBrowser->setOffset(0,0);
+    shadowEffect_textBrowser->setColor(Qt::gray);
+    shadowEffect_textBrowser->setBlurRadius(5);
+    ui->textBrowser->setGraphicsEffect(shadowEffect_textBrowser);
+
+    QGraphicsDropShadowEffect *shadowEffect_label = new QGraphicsDropShadowEffect();
+    shadowEffect_label->setOffset(0,0);
+    shadowEffect_label->setColor(Qt::gray);
+    shadowEffect_label->setBlurRadius(5);
+    ui->label->setGraphicsEffect(shadowEffect_label);
 }
 
-sp_recovery::~sp_recovery()
+sp_customize_cmd::~sp_customize_cmd()
 {
     delete ui;
 }
 
-void sp_recovery::setDev(device device)
+void sp_customize_cmd::on_runBtn_clicked()
 {
-    dev = device;
-}
-void sp_recovery::on_runBtn_clicked()
-{
-    //qDebug() << "enter runBtn slot";
-    QString command;
-
-    if(zipPath != "")
-    {
-        command = "adb sideload ~ " + zipPath + " ~";
-    }
-    else
-    {
-        command = "adb sideload";
-    }
-
-    //qDebug() << "command: " << command;
-    //qDebug() << "running";
-    process->run_contains_empty(command, dev);
-    zipPath.clear();
-    labelDisplay.clear();
-    ui->filePaths->clear();
-}
-
-void sp_recovery::on_selectBtn_clicked()
-{
-    //qDebug() << "enter pushbutton slot";
-    zipPath.clear();
-    zipPath = QFileDialog::getOpenFileName(this, QStringLiteral("选择zip包"), "F:",QStringLiteral("压缩包(*.zip)"));
-
-    ui->filePaths->setText(zipPath);
-
-    //qDebug() << "zipPathis:" << zipPath;
+    process->run(ui->lineEdit->text());
 }

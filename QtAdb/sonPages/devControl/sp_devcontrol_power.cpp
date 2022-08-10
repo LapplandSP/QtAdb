@@ -65,9 +65,9 @@ void sp_devControl_power::setDev(device device)
 
 void sp_devControl_power::on_btn_rebootToSystem_clicked()
 {
-    qDebug() << "calling process->run('adb reboot', dev);";
+    //qDebug() << "calling process->run('adb reboot', dev);";
     process->run("adb reboot", dev);
-    qDebug() << "calling process->run('adb reboot', dev);";
+    //qDebug() << "calling process->run('adb reboot', dev);";
 }
 
 void sp_devControl_power::on_btn_rebootToRecovery_clicked()
