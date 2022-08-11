@@ -10,8 +10,6 @@ sp_dpiChanger::sp_dpiChanger(QWidget *parent) :
     process = new adbProcess;
     explainer = new textExplainer;
 
-    setDpiInfo();
-
     connect(this->ui->back_to_basePage,SIGNAL(clicked()),parent,SLOT(slot_destroySonPage()));
 
     ui->verticalLayout->setAlignment(Qt::AlignVCenter);
@@ -67,9 +65,9 @@ sp_dpiChanger::~sp_dpiChanger()
 
 void sp_dpiChanger::setDpiInfo()
 {
-    //qDebug() << "dve of sonPage = " << dev.addr;
+    qDebug() << "dve of sonPage = " << dev.addr;
     QString profile = process->run("adb shell wm density", dev).replace("Physical density", "默认").replace("Override density","当前").simplified();
-    //qDebug() << profile;
+    qDebug() << "02" << profile;
     ui->dpiInfo->setText(profile);
 }
 
@@ -100,6 +98,7 @@ void sp_dpiChanger::on_runBtn_clicked()
 
 void sp_dpiChanger::refresh()
 {
+    qDebug() << "refresh";
     setDpiInfo();
     ui->lineEdit->clear();
 }
@@ -111,6 +110,7 @@ void sp_dpiChanger::on_refreshBtn_clicked()
 
 void sp_dpiChanger::setDev(device device)
 {
+    qDebug() << "setDev";
     dev = device;
     setDpiInfo();
 }

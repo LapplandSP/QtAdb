@@ -47,14 +47,19 @@ MainWindow::MainWindow(QWidget *parent)
     explainer = new textExplainer();
     maker = new pageMaker();
 
-    /*启动ADB，将延长页面创建时间，在此期间显示启动界面*/
+    /*启动ADB，将延长页面创建时间，在此期间显示启动界面，显示了个勾八*/
     process->run("adb server");
     refreshDevList();
 
+    //displayWelcomePage();
+    //ui->indexList->setCurrentRow(7);
     /*用户未选择设备前，锁定界面*/
+    this->update();
+    on_refreshButton_clicked();
+    //initBasePage(6);
     lock();
     //qDebug() << "1";
-    displayWelcomePage();
+    //displayWelcomePage();
     //qDebug() << "2";
 }
 
@@ -77,41 +82,82 @@ void MainWindow::initEnvironmentPATH()              //方法：设置环境变�
 
 void MainWindow::refreshDevList()                   //方法：刷新设备列表
 {
-    ui->comboBox->clear();      //清空combobox
+
+
+    ui->comboBox->clear();
+    //qDebug() <<"aft";
     devList.clear();            //清空设备列表
+    //qDebug() <<"affffter";
 
+    //qDebug() <<"before";
     devList = explainer->getDevList_windows(process->run("adb devices -l"));    //重新赋值
-
+    //qDebug() <<"after0";
     /*将设备信息传入 List l ，并将l的值显示在combobox中*/
     QStringList l;
     l.clear();
+
+    //qDebug() <<"beffffffore";
     for (int i = 0 ; i < devList.size() ; i++ )
     {
+        //qDebug() <<"beffffffore i = " << i;
         QString devItem =devList[i].state + " " + explainer->get_words_after(devList[i].device_product, ":") + " " + explainer->get_words_after(devList[i].model, ":");
         l.append(devItem);
     }
-    ui->comboBox->addItems(l);
 
-    current_device = 0;         //重设当前设备
+    //qDebug() <<"afttttttttttttttter";
+    ui->comboBox->addItems(l);
+    //qDebug() <<"afterrrrrrrr";
+    if(devList.isEmpty())
+    {
+        current_device = -1;         //重设当前设备
+    }
+    else
+    {
+        current_device = 0;
+    }
 }
 
 void MainWindow::on_refreshButton_clicked()         //槽：按下刷新按钮
 {
+    //qDebug() <<"before";
     refreshDevList();
+
     lock();
+    /*
     if(currentPage != NULL)
     {
         currentPage->~basePage();
         currentPage = NULL;
-    }
-    displayWelcomePage();
-    ui->indexList->setCurrentRow(-1);
+    }*/
+    initBasePage(6);
+    //ui->indexList->setCurrentRow(6);
     qDebug() <<"8";
 }
 
 void MainWindow::setCurrentDevice(int index)        //槽：改变所选设备
 {
-    current_device = index;
+    if(index > 0)
+    {
+
+        if(currentPage != NULL)
+        {
+            currentPage->~basePage();
+            currentPage = NULL;
+        }
+        //initBasePage(6);
+        //ui->indexList->setCurrentRow(6);
+
+        current_device = index;
+        //initBasePage(0);
+        if(ui->indexList->currentRow() == 0)
+        {
+            initBasePage(0);
+        }
+        else
+        {
+            ui->indexList->setCurrentRow(0);
+        }
+    }
     unlock();
 }
 
@@ -120,6 +166,7 @@ void MainWindow::initBasePage(int key)              //槽：生成basePages
     while(key != -1)
     {
         this->setEnabled(false);
+
         if(WCMPage != NULL)         //销毁欢迎页面
         {
             //currentPage->playExitAnimation();
@@ -129,26 +176,44 @@ void MainWindow::initBasePage(int key)              //槽：生成basePages
             WCMPage = NULL;
         }
 
+
         if(currentPage != NULL)         //销毁上一个basePage
         {
             //currentPage->playExitAnimation();
             //currentPage->setDisabled(true);
             //delete currentPage;
-            currentPage->setDisabled(true);
+            //currentPage->setDisabled(true);
             currentPage->~basePage();
             currentPage = NULL;
         }
 
+
+
         currentPage = new basePage(this);
-        currentPage = maker->createPageWithKey(key,ui->page,devList[current_device]);   //*去nmd*究极开销
+        //devList[current_device];
+        //qDebug() <<"aaaaaaaaaaaaaaaaaafter";
+        qDebug() << "devlist is empty? " << devList.isEmpty();
+        if(devList.isEmpty())
+        {
+            device * noDevice = new device;
+            noDevice->addr = "#EMPTY#";
+            currentPage = maker->createPageWithKey(6,ui->page,*noDevice);
+        }
+        else
+        {
+            qDebug() << "devlist is not empty ,creating page with key " << key;
+            currentPage = maker->createPageWithKey(key,ui->page,devList[current_device]);
+            qDebug() << "page created";
+        }
+        //qDebug() <<"aaaaaaaaaaaaaaaaaafterrrrrrrrrrrrrrrrrrrrrr";
         //qDebug() << "currentPage = maker->createPageWithKey(key,ui->page,devList[current_device]); ended";
 
         ui->verticalLayout_2->addWidget(currentPage);
 
         currentPage->playLoadAnimation();
-        //connect(currentPage,SIGNAL(animationEnd()), currentPage,SLOT(refresh_listItem_effect()));
+        currentPage->repaint();
 
-        //currentPage->repaint();
+
         this->setEnabled(true);
         break;
     }
@@ -285,12 +350,6 @@ void MainWindow::setStyles()                        //方法：设置样式
     ui->WIFIBtn->setGraphicsEffect(shadowEffect_testBtn);
     ui->WSABtn->setGraphicsEffect(shadowEffect_WSABtn);
 }
-
-/*
-void MainWindow::hideCurrentPage()                  //方法：隐藏当前basePage
-{
-    currentPage->hide();
-}*/
 
 void MainWindow::initSonPage(int key)               //槽：生成子页面
 {
@@ -462,15 +521,15 @@ void MainWindow::on_WSABtn_clicked()                //槽：连接WSA
     msgBox->show();
 }
 
-/*
-void MainWindow::emit_signal_createBasePage(int key)
-{
-    emit createBasePage(key, ui->widget, devList[current_device], currentPage);
-}
-*/
-
 void MainWindow::displayWelcomePage()
 {
+    /*
+    WCMPage2 = new about(this->ui->page);
+    WCMPage2->setGeometry(QRect(301,111,WCMPage2->geometry().width(),WCMPage2->geometry().height()));
+    qDebug() << "initing... page's geometry is " << ui->page->geometry();
+    currentPage = WCMPage2;*/
+    //ui->indexList->setCurrentRow(7);
+/*
     if(WCMPage != NULL)         //销毁上一个basePage
     {
         //currentPage->setDisabled(true);
@@ -481,4 +540,15 @@ void MainWindow::displayWelcomePage()
 
     WCMPage = new welcomePage();
     ui->verticalLayout_2->addWidget(WCMPage);
+*//*
+    if(WCMPage2 != NULL)         //销毁上一个basePage
+    {
+        //currentPage->setDisabled(true);
+        //delete currentPage;
+        WCMPage2->~about();
+        WCMPage2 = NULL;
+    }
+
+    WCMPage2 = new about();
+    ui->verticalLayout_2->addWidget(WCMPage2);*/
 }

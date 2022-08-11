@@ -23,6 +23,7 @@ void adbThread::initThread(QString cmd, device d, QString key)
 void adbThread::run()
 {
     process = new adbProcess();
+    process->thread = true;
     //qDebug() << "explainKey is " << explainKey;
     //sleep(3);
     if(explain == false)
@@ -40,10 +41,23 @@ void adbThread::run()
         exit();
     }
 
+    else if(explainKey == "#INSTALL#")
+    {
+        connect(process,SIGNAL(outputGet(QString)),this,SLOT(result(QString)));
+        /*QString output = */process->run_contains_empty(command, dev);
+        //emit signal_output(output);
+        exit();
+    }
+
     else if(explain == true && explainKey != "#CPU#")
     {
         QString output = explainer->get_words_after(process->run(command, dev), explainKey);
         emit signal_output(output);
         exit();
     }
+}
+
+void adbThread::result(QString str)
+{
+    emit signal_output(str);
 }

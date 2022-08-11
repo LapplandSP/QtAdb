@@ -30,8 +30,9 @@ public:
     void showMsgBox(QString title,QString msg);
 
     bool explainError(QString err);
-    bool explainOutput(QString op);
+    bool explainOutput(QString op, bool thread);
     QMessageBox *msgBox;
+    bool thread = false;
 
 private:
     QString setState(QString state);

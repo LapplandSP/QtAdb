@@ -6,8 +6,14 @@ sp_installer::sp_installer(QWidget *parent) :
     ui(new Ui::sp_installer)
 {
     ui->setupUi(this);
+    setParent(parent);
+    ui->progressBar->hide();
+    this->repaint();
+    parent->repaint();
 
     process = new adbProcess();
+    thread = new adbThread();
+
     connect(this->ui->back_to_basePage,SIGNAL(clicked()),parent,SLOT(slot_destroySonPage()));
 
     QGraphicsDropShadowEffect *shadowEffect_runBtn = new QGraphicsDropShadowEffect();
@@ -72,12 +78,14 @@ void sp_installer::on_runBtn_clicked()
     {
         command = "adb install";
     }
-    //qDebug() << "enter runBtn slot 1";
-    //qDebug() << "enter runBtn slot 2";
-    //qDebug() << "enter runBtn slot 4";
-    //qDebug() << "command: " << command;
-    //qDebug() << "running";
-    process->run_contains_empty(command, dev);
+
+
+    thread->initThread(command,dev,"#INSTALL#");
+    connect(thread,SIGNAL(signal_output(QString)),this,SLOT(stop_progressBar(QString)));
+    thread->start();
+    ui->progressBar->show();
+    this->setDisabled(true);
+    //process->run_contains_empty(command, dev);
     apkPath.clear();
     labelDisplay.clear();
     ui->filePaths->clear();
@@ -92,4 +100,20 @@ void sp_installer::on_selectBtn_clicked()
     ui->filePaths->setText(apkPath);
 
     //qDebug() << "apkPathis:" << apkPath;
+}
+
+void sp_installer::stop_progressBar(QString str)
+{
+    if(str.contains("Success"))
+    {
+        ui->progressBar->hide();
+        this->setEnabled(true);
+        ui->filePaths->setText("安装成功");
+    }
+    else
+    {
+        ui->progressBar->hide();
+        this->setEnabled(true);
+        ui->filePaths->setText("出错");
+    }
 }

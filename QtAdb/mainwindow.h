@@ -15,6 +15,7 @@
 #include "pagemaker.h"
 #include "threads/thread_createpage.h"
 #include "welcomepage.h"
+#include "about.h"
 
 #include <QCoreApplication>
 #include <QStringList>
@@ -92,5 +93,6 @@ private:
     basePage * currentPage;
     animationWidget * tmpPage;
     welcomePage * WCMPage;
+    about * WCMPage2;
 };
 #endif // MAINWINDOW_H

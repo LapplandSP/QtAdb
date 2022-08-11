@@ -28,6 +28,7 @@ public:
     QString run_contains_empty(QString command, device dev);
 
     QString standardOutput;
+    bool thread = false;
 
     textExplainer *explainer;
     /*test*/

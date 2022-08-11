@@ -9,6 +9,11 @@ adbProcess::adbProcess()
 
 QString adbProcess::run(QString command)                   //Adb 命令解析 - 单条命令
 {
+    if(thread)
+    {
+        explainer->thread = true;
+    }
+
     QStringList args_0;
     QStringList args_1;
 
@@ -69,13 +74,18 @@ QString adbProcess::run(QString command)                   //Adb 命令解析 - 
     QString output;
     output = readAllStandardOutput();
     standardOutput.append(output);
-    explainer->explainOutput(output);
+    explainer->explainOutput(output , thread);
     emit outputGet(output);
     return output;
 }
 
 QString adbProcess::run(QString command, device dev)                   //Adb 命令解析 - 对指定设备发送单条命令
 {
+    if(thread)
+    {
+        explainer->thread = true;
+    }
+
     //Sleep(500);
     QStringList args_0;
     QStringList args_1;
@@ -144,7 +154,7 @@ QString adbProcess::run(QString command, device dev)                   //Adb 命
     QString output;
     output = readAllStandardOutput();
     //qDebug() << "run output:" << output << "\n";
-    explainer->explainOutput(output);
+    explainer->explainOutput(output , thread);
 
     emit outputGet(output);
     return output;
@@ -152,6 +162,11 @@ QString adbProcess::run(QString command, device dev)                   //Adb 命
 
 QString adbProcess::run_contains_empty(QString command, device dev)                   //Adb 命令解析 - 对指定设备发送单条命令（可能包含空格）
 {
+
+    if(thread)
+    {
+        explainer->thread = true;
+    }
 
     QStringList args_0;
     QStringList args_1;
@@ -211,7 +226,7 @@ QString adbProcess::run_contains_empty(QString command, device dev)             
     QString output;
     output = readAllStandardOutput();
     //qDebug() << "run output:" << output << "\n";
-    explainer->explainOutput(output);
+    explainer->explainOutput(output, thread);
 
     emit outputGet(output);
     return output;
@@ -219,6 +234,11 @@ QString adbProcess::run_contains_empty(QString command, device dev)             
 
 QString adbProcess::run(QString command, QString write_command)                   //Adb 命令解析 - 发送单条命令并向控制台输入内容
 {
+
+    if(thread)
+    {
+        explainer->thread = true;
+    }
 
     QStringList args_0;
     QStringList args_1;
@@ -281,7 +301,7 @@ QString adbProcess::run(QString command, QString write_command)                 
     output = readAllStandardOutput();
     standardOutput.append(output);
 
-    explainer->explainOutput(output);
+    explainer->explainOutput(output, thread);
 
     emit outputGet(output);
     return output;
@@ -289,6 +309,11 @@ QString adbProcess::run(QString command, QString write_command)                 
 
 QString adbProcess::run(QString command, device dev, QString write_command)                   //Adb 命令解析 - 对指定设备发送单条命令并向控制台输入内容
 {
+
+    if(thread)
+    {
+        explainer->thread = true;
+    }
 
     QStringList args_0;
     QStringList args_1;
@@ -356,7 +381,7 @@ QString adbProcess::run(QString command, device dev, QString write_command)     
     output = readAllStandardOutput();
     //qDebug() << "run output:" << output << "\n";
 
-    explainer->explainOutput(output);
+    explainer->explainOutput(output, thread);
 
     emit outputGet(output);
     return output;

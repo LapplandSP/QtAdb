@@ -13,7 +13,13 @@ pageMaker::pageMaker()
 
 basePage* pageMaker::createPageWithKey(int key, QWidget *parent, device dev)
 {
+    qDebug() << "key in createPageWithKey() is " << key ;
     int k = key;
+    if(dev.addr.toInt() == -1)
+    {
+        k = 6;
+    }
+
     switch(k)
     {
     case 0:

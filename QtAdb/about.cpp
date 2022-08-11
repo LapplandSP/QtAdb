@@ -6,7 +6,7 @@ about::about(QWidget *parent) :
     ui(new Ui::about)
 {
     ui->setupUi(this);
-    //this->setLayout(ui->verticalLayout);
+
     self_castrate();
 
     QGraphicsDropShadowEffect *shadowEffect_btn_website = new QGraphicsDropShadowEffect();

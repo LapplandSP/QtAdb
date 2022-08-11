@@ -200,13 +200,13 @@ bool textExplainer::explainError(QString err)
     return true;
 }
 
-bool textExplainer::explainOutput(QString op)
+bool textExplainer::explainOutput(QString op, bool thread)
 {
     //qDebug() << "output = " << op;
     op = op.simplified();
 
     /*普通*/
-    if(op.contains("No such file or directory"))
+    if(op.contains("No such file or directory") && thread == false)
     {
         showMsgBox("失败"," · 应用未安装 \n · 应用安装后未首次运行");
     }
@@ -216,13 +216,16 @@ bool textExplainer::explainOutput(QString op)
 
 void textExplainer::showMsgBox(QString title, QString msg)
 {
-    msgBox = new QMessageBox;
-    msgBox->setWindowIcon(QIcon(":/ico/image/ico/link.svg"));
-    msgBox->setStyleSheet("background-color:rgba(255,255,255,1);border:0px; border-radius:0px;");
-    msgBox->setWindowTitle(title);
-    msgBox->setText(msg);
-    msgBox->addButton(" ✓ ", QMessageBox::AcceptRole);
-    msgBox->show();
+    if(!thread)
+    {
+        msgBox = new QMessageBox;
+        msgBox->setWindowIcon(QIcon(":/ico/image/ico/link.svg"));
+        msgBox->setStyleSheet("background-color:rgba(255,255,255,1);border:0px; border-radius:0px;");
+        msgBox->setWindowTitle(title);
+        msgBox->setText(msg);
+        msgBox->addButton(" ✓ ", QMessageBox::AcceptRole);
+        msgBox->show();
+    }
 }
 
 QString textExplainer::setState(QString state)

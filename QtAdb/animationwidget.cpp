@@ -39,8 +39,15 @@ void animationWidget::playLoadAnimation()
     opacityLoadAnimation->setEndValue(1.0);
     opacityLoadAnimation->start();*/
     animation->setDuration(500);
+    //qDebug() << "parent is " << parent;
+    //qDebug() << "parent's geometry is " << parent->geometry();
+    /*
     animation->setEndValue(QRect(parent->geometry().x(), parent->geometry().y(), this->width(),this->height()));
-    animation->setStartValue(QRect(parent->geometry().x() + 50, parent->geometry().y(), this->width(),this->height()));
+    animation->setStartValue(QRect(parent->geometry().x() + 50, parent->geometry().y(), this->width(),this->height()));*/
+
+    animation->setEndValue(QRect(301, 111, this->width(),this->height()));
+    animation->setStartValue(QRect(301 + 50, 111, this->width(),this->height()));
+
     animation->setEasingCurve(QEasingCurve::OutQuart);
 
     this->show();

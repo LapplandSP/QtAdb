@@ -160,5 +160,7 @@ void basePage::setDev(device device)
 
 void basePage::self_castrate()
 {
-    ui->listWidget->hide();
+    delete ui->listWidget;
+    delete ui->mainLayout;
+    delete ui->verticalLayout;
 }

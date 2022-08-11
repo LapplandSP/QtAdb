@@ -14,6 +14,7 @@ public:
     void initThread(QString cmd, device dev);
     void initThread(QString cmd, device dev, QString explainKey);
     void initThread_for_cpu(QString cmd, device dev);
+    //void initThread(QString cmd, device dev);
     bool explain = false;
     QString command;
     QString explainKey;
@@ -26,7 +27,7 @@ signals:
     void signal_output(QString);
 
 public slots:
-    //static void myThreadSlot(int);
+    void result(QString);
 
 protected:
     void run() override;
