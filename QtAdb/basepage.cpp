@@ -73,6 +73,7 @@ basePage::~basePage()
         sonPage->~basePage();*/
 
     //qDebug() << "~basePage deleted" << "\n";
+    delete SPManager;
     delete ui;
 }
 /*

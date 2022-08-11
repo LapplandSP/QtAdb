@@ -14,7 +14,6 @@
 #include "basepage.h"
 #include "pagemaker.h"
 #include "threads/thread_createpage.h"
-#include "welcomepage.h"
 #include "about.h"
 
 #include <QCoreApplication>
@@ -33,7 +32,6 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 signals:
-    //void createBasePage(int, QWidget*, device, basePage*);
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -42,7 +40,6 @@ public:
     adbProcess *process;
     textExplainer *explainer;
     pageMaker *maker;
-    QMovie *movie;
 
     QWidget * getInfo;
     QLineEdit * le_outIp;
@@ -51,8 +48,6 @@ public:
     QLineEdit * le_port;
     QLineEdit * le_code;
 
-    //QThread* sub;
-    //thread_createPage * thread_BPCreator;
 
     int current_device;
     QList<device> devList;
@@ -68,17 +63,10 @@ private slots:
     void setCurrentDevice(int index);
     void initBasePage(int key);
     void initSonPage(int key);
-    void playLoadingGif();
-    void stopLoadingGif();
-
     void on_adbKillerBtn_clicked();
 
     void on_WIFIBtn_clicked();
     void connectWIFIDev();
-
-
-    //void emit_signal_createBasePage(int key);
-    /*(int key, QWidget *parent, device dev)*/
 
     void on_WSABtn_clicked();
 
@@ -88,11 +76,10 @@ private:
     void initEnvironmentPATH();
     void addIndexItems();
     void setStyles();
-    void displayWelcomePage();
 
     basePage * currentPage;
     animationWidget * tmpPage;
-    welcomePage * WCMPage;
     about * WCMPage2;
 };
+
 #endif // MAINWINDOW_H

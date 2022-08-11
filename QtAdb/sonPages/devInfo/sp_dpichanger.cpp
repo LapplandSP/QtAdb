@@ -24,10 +24,10 @@ sp_dpiChanger::sp_dpiChanger(QWidget *parent) :
                                      "QPushButton:hover{background-color:rgba(255,255,255,0.7);}"
                                      "QPushButton:pressed{background-color:rgba(255,255,255,0.6);}");
 
-    QGraphicsDropShadowEffect *shadowEffect_runBtn = new QGraphicsDropShadowEffect();
-    QGraphicsDropShadowEffect *shadowEffect_showOutputBtn = new QGraphicsDropShadowEffect();
-    QGraphicsDropShadowEffect *shadowEffect_back_to_basePage = new QGraphicsDropShadowEffect();
-    QGraphicsDropShadowEffect *shadowEffect_refreshBtn = new QGraphicsDropShadowEffect();
+    QGraphicsDropShadowEffect *shadowEffect_runBtn = new QGraphicsDropShadowEffect(this);
+    QGraphicsDropShadowEffect *shadowEffect_showOutputBtn = new QGraphicsDropShadowEffect(this);
+    QGraphicsDropShadowEffect *shadowEffect_back_to_basePage = new QGraphicsDropShadowEffect(this);
+    QGraphicsDropShadowEffect *shadowEffect_refreshBtn = new QGraphicsDropShadowEffect(this);
 
     shadowEffect_runBtn->setOffset(0,0);
     shadowEffect_runBtn->setColor(Qt::gray);
@@ -49,13 +49,6 @@ sp_dpiChanger::sp_dpiChanger(QWidget *parent) :
     ui->runBtn->setGraphicsEffect(shadowEffect_runBtn);
     ui->showOutputBtn->setGraphicsEffect(shadowEffect_showOutputBtn);
     ui->refreshBtn->setGraphicsEffect(shadowEffect_refreshBtn);
-
-    /*
-    QGraphicsDropShadowEffect *shadowEffect_widget = new QGraphicsDropShadowEffect();
-    shadowEffect_widget->setOffset(0,0);
-    shadowEffect_widget->setColor(Qt::gray);
-    shadowEffect_widget->setBlurRadius(5);
-    ui->widget->setGraphicsEffect(shadowEffect_widget);*/
 }
 
 sp_dpiChanger::~sp_dpiChanger()

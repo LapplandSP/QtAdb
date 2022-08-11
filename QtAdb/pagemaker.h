@@ -16,6 +16,7 @@ class pageMaker
 public:
     //pageMaker();
     pageMaker();
+    ~pageMaker();
 
     adbProcess *process;
     textExplainer *explainer;

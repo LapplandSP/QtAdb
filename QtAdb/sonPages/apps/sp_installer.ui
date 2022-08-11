@@ -155,14 +155,12 @@ border-radius:4px;</string>
 	border-radius:4px;
 	text-align:center;
 	/*border:1px solid #E8EDF2;*/
-    border:1px solid #E8EDF2;
-	background-color: rgb(255, 255, 255);
-	border-color: rgb(180, 180, 180);
+    border:0px solid #E8EDF2;
+	background-color: qlineargradient(x1:0,y1:1,x1:1,y1:0,stop:0 #11998e, stop:1 #38ef7d);
 }
 QProgressBar:chunk{
 	border-radius:4px;
-	/*background-color:#1ABC9C;*/
-	background-color:#BDBDBD;
+	background-color:rgba(255,255,255,0.2);
 }
 </string>
           </property>

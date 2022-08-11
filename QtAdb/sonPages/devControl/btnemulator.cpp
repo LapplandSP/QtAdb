@@ -171,7 +171,7 @@ void btnEmulator::on_btn_calc_clicked()
 
 void btnEmulator::setShadow(QWidget* wgt)
 {
-    QGraphicsDropShadowEffect *shadowEffect_widget = new QGraphicsDropShadowEffect();
+    QGraphicsDropShadowEffect *shadowEffect_widget = new QGraphicsDropShadowEffect(this);
     shadowEffect_widget->setOffset(0,0);
     shadowEffect_widget->setColor(Qt::gray);
     shadowEffect_widget->setBlurRadius(5);

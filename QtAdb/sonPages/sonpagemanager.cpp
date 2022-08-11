@@ -6,6 +6,12 @@ sonPageManager::sonPageManager()
     explainer = new textExplainer();
 }
 
+sonPageManager::~sonPageManager()
+{
+    //delete process;
+    //delete explainer;
+}
+
 QWidget* sonPageManager::selector(QWidget *parent , QString parentName, int key, device dev)
 {
     if(parentName == "devInfo")

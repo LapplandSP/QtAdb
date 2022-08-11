@@ -17,31 +17,31 @@ sp_devControl_power::sp_devControl_power(QWidget *parent) :
     shadowEffect_widget->setBlurRadius(5);
     ui->widget->setGraphicsEffect(shadowEffect_widget);*/
 
-    QGraphicsDropShadowEffect *shadowEffect_back_to_basePage = new QGraphicsDropShadowEffect();
+    QGraphicsDropShadowEffect *shadowEffect_back_to_basePage = new QGraphicsDropShadowEffect(this);
     shadowEffect_back_to_basePage->setOffset(0,0);
     shadowEffect_back_to_basePage->setColor(Qt::gray);
     shadowEffect_back_to_basePage->setBlurRadius(5);
     ui->back_to_basePage->setGraphicsEffect(shadowEffect_back_to_basePage);
 
-    QGraphicsDropShadowEffect *shadowEffect_btn_powerDown = new QGraphicsDropShadowEffect();
+    QGraphicsDropShadowEffect *shadowEffect_btn_powerDown = new QGraphicsDropShadowEffect(this);
     shadowEffect_btn_powerDown->setOffset(0,0);
     shadowEffect_btn_powerDown->setColor(Qt::gray);
     shadowEffect_btn_powerDown->setBlurRadius(5);
     ui->btn_powerDown->setGraphicsEffect(shadowEffect_btn_powerDown);
 
-    QGraphicsDropShadowEffect *shadowEffect_btn_rebootToSystem = new QGraphicsDropShadowEffect();
+    QGraphicsDropShadowEffect *shadowEffect_btn_rebootToSystem = new QGraphicsDropShadowEffect(this);
     shadowEffect_btn_rebootToSystem->setOffset(0,0);
     shadowEffect_btn_rebootToSystem->setColor(Qt::gray);
     shadowEffect_btn_rebootToSystem->setBlurRadius(5);
     ui->btn_rebootToSystem->setGraphicsEffect(shadowEffect_btn_rebootToSystem);
 
-    QGraphicsDropShadowEffect *shadowEffect_rebootToRecovery_clicked = new QGraphicsDropShadowEffect();
+    QGraphicsDropShadowEffect *shadowEffect_rebootToRecovery_clicked = new QGraphicsDropShadowEffect(this);
     shadowEffect_rebootToRecovery_clicked->setOffset(0,0);
     shadowEffect_rebootToRecovery_clicked->setColor(Qt::gray);
     shadowEffect_rebootToRecovery_clicked->setBlurRadius(5);
     ui->btn_rebootToRecovery->setGraphicsEffect(shadowEffect_rebootToRecovery_clicked);
 
-    QGraphicsDropShadowEffect *shadowEffect_btn_rebootToFastboot = new QGraphicsDropShadowEffect();
+    QGraphicsDropShadowEffect *shadowEffect_btn_rebootToFastboot = new QGraphicsDropShadowEffect(this);
     shadowEffect_btn_rebootToFastboot->setOffset(0,0);
     shadowEffect_btn_rebootToFastboot->setColor(Qt::gray);
     shadowEffect_btn_rebootToFastboot->setBlurRadius(5);

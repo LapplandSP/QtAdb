@@ -1,9 +1,4 @@
 #include "pagemaker.h"
-/*
-pageMaker::pageMaker()
-{
-
-}*/
 
 pageMaker::pageMaker()
 {
@@ -11,9 +6,15 @@ pageMaker::pageMaker()
     explainer = new textExplainer();
 }
 
+pageMaker::~pageMaker()
+{
+    //delete process;
+    //delete explainer;
+}
+
 basePage* pageMaker::createPageWithKey(int key, QWidget *parent, device dev)
 {
-    qDebug() << "key in createPageWithKey() is " << key ;
+    //qDebug() << "key in createPageWithKey() is " << key ;
     int k = key;
     if(dev.addr.toInt() == -1)
     {

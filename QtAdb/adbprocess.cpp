@@ -4,7 +4,6 @@ adbProcess::adbProcess()
 {
     explainer = new textExplainer;
     connect(this , SIGNAL(readyReadStandardError()) , this , SLOT(on_readerror()));
-
 }
 
 QString adbProcess::run(QString command)                   //Adb 命令解析 - 单条命令
@@ -392,6 +391,7 @@ adbProcess::~adbProcess()
     run("adb kill-server");
     terminate();
     waitForFinished();
+    delete explainer;
 }
 
 void adbProcess::on_readerror()

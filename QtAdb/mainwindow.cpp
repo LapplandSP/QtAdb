@@ -17,17 +17,11 @@ MainWindow::MainWindow(QWidget *parent)
     initEnvironmentPATH();
 
     /*加载动画GIF*/
-    movie = new QMovie(":/gif/image/gif/final.gif");
-    //sub = new QThread;
-
-    /*页面内容更新线程*/
-    //thread_BPCreator = new thread_createPage;
-    //thread_BPCreator->moveToThread(sub);
-    //sub->start();
+    //movie = new QMovie(":/gif/image/gif/final.gif");
 
     /*currentPage指针*/
     currentPage = NULL;
-    WCMPage = NULL;
+    //WCMPage = NULL;
 
     /*devList 中的当前设备索引*/
     current_device = 0;
@@ -51,22 +45,18 @@ MainWindow::MainWindow(QWidget *parent)
     process->run("adb server");
     refreshDevList();
 
-    //displayWelcomePage();
-    //ui->indexList->setCurrentRow(7);
     /*用户未选择设备前，锁定界面*/
     this->update();
     on_refreshButton_clicked();
-    //initBasePage(6);
     lock();
-    //qDebug() << "1";
-    //displayWelcomePage();
-    //qDebug() << "2";
 }
 
 MainWindow::~MainWindow()
 {
+    ui->indexList->clear();
     delete process;
     delete explainer;
+    delete maker;
     delete ui;
 }
 
@@ -82,31 +72,22 @@ void MainWindow::initEnvironmentPATH()              //方法：设置环境变�
 
 void MainWindow::refreshDevList()                   //方法：刷新设备列表
 {
-
-
     ui->comboBox->clear();
-    //qDebug() <<"aft";
     devList.clear();            //清空设备列表
-    //qDebug() <<"affffter";
-
-    //qDebug() <<"before";
     devList = explainer->getDevList_windows(process->run("adb devices -l"));    //重新赋值
-    //qDebug() <<"after0";
+
     /*将设备信息传入 List l ，并将l的值显示在combobox中*/
     QStringList l;
     l.clear();
 
-    //qDebug() <<"beffffffore";
     for (int i = 0 ; i < devList.size() ; i++ )
     {
-        //qDebug() <<"beffffffore i = " << i;
         QString devItem =devList[i].state + " " + explainer->get_words_after(devList[i].device_product, ":") + " " + explainer->get_words_after(devList[i].model, ":");
         l.append(devItem);
     }
 
-    //qDebug() <<"afttttttttttttttter";
     ui->comboBox->addItems(l);
-    //qDebug() <<"afterrrrrrrr";
+
     if(devList.isEmpty())
     {
         current_device = -1;         //重设当前设备
@@ -119,7 +100,6 @@ void MainWindow::refreshDevList()                   //方法：刷新设备列�
 
 void MainWindow::on_refreshButton_clicked()         //槽：按下刷新按钮
 {
-    //qDebug() <<"before";
     refreshDevList();
 
     lock();
@@ -129,19 +109,20 @@ void MainWindow::on_refreshButton_clicked()         //槽：按下刷新按钮
         currentPage->~basePage();
         currentPage = NULL;
     }*/
+
     initBasePage(6);
-    //ui->indexList->setCurrentRow(6);
     qDebug() <<"8";
 }
 
 void MainWindow::setCurrentDevice(int index)        //槽：改变所选设备
 {
-    if(index > 0)
+    if(index >= 0)
     {
 
         if(currentPage != NULL)
         {
-            currentPage->~basePage();
+            delete currentPage;
+            //currentPage->~basePage();
             currentPage = NULL;
         }
         //initBasePage(6);
@@ -151,11 +132,14 @@ void MainWindow::setCurrentDevice(int index)        //槽：改变所选设备
         //initBasePage(0);
         if(ui->indexList->currentRow() == 0)
         {
+            qDebug() << "initBasePage";
             initBasePage(0);
         }
         else
         {
+            qDebug() << "setCurrentRow";
             ui->indexList->setCurrentRow(0);
+
         }
     }
     unlock();
@@ -167,32 +151,16 @@ void MainWindow::initBasePage(int key)              //槽：生成basePages
     {
         this->setEnabled(false);
 
-        if(WCMPage != NULL)         //销毁欢迎页面
-        {
-            //currentPage->playExitAnimation();
-            //currentPage->setDisabled(true);
-            //delete currentPage;
-            WCMPage->~welcomePage();
-            WCMPage = NULL;
-        }
-
-
         if(currentPage != NULL)         //销毁上一个basePage
         {
             //currentPage->playExitAnimation();
-            //currentPage->setDisabled(true);
-            //delete currentPage;
-            //currentPage->setDisabled(true);
-            currentPage->~basePage();
+            delete currentPage;
+            //currentPage->~basePage();
             currentPage = NULL;
         }
 
-
-
         currentPage = new basePage(this);
-        //devList[current_device];
-        //qDebug() <<"aaaaaaaaaaaaaaaaaafter";
-        qDebug() << "devlist is empty? " << devList.isEmpty();
+
         if(devList.isEmpty())
         {
             device * noDevice = new device;
@@ -201,18 +169,13 @@ void MainWindow::initBasePage(int key)              //槽：生成basePages
         }
         else
         {
-            qDebug() << "devlist is not empty ,creating page with key " << key;
             currentPage = maker->createPageWithKey(key,ui->page,devList[current_device]);
-            qDebug() << "page created";
         }
-        //qDebug() <<"aaaaaaaaaaaaaaaaaafterrrrrrrrrrrrrrrrrrrrrr";
-        //qDebug() << "currentPage = maker->createPageWithKey(key,ui->page,devList[current_device]); ended";
 
         ui->verticalLayout_2->addWidget(currentPage);
 
         currentPage->playLoadAnimation();
-        currentPage->repaint();
-
+        //currentPage->repaint();
 
         this->setEnabled(true);
         break;
@@ -228,10 +191,6 @@ void MainWindow::addItemToIndex(indexListItem *itemWidget)  //方法：向indexi
 
 void MainWindow::addIndexItems()                    //方法：初始化向indexList中添加的item，完成indexList创建。
 {
-/*
-        basePage *wgt = new basePage(this);
-        currentPage = wgt;*/
-
     indexListItem *devInfo = new indexListItem(this->ui->indexList);
     devInfo->setText("设备信息");
     devInfo->setPic("image:url(:/ico/image/ico/smartphone-line.svg);background-color:rgba(255,255,255,0);");
@@ -325,22 +284,22 @@ void MainWindow::setStyles()                        //方法：设置样式
     ui->iconLabel->setStyleSheet("background-color:transparent;");
     ui->fakeSpacer->setStyleSheet("background-color:transparent;");
 
-    QGraphicsDropShadowEffect *shadowEffect_refreshButton = new QGraphicsDropShadowEffect();
+    QGraphicsDropShadowEffect *shadowEffect_refreshButton = new QGraphicsDropShadowEffect(this);
     shadowEffect_refreshButton->setOffset(0,0);
     shadowEffect_refreshButton->setColor(Qt::gray);
     shadowEffect_refreshButton->setBlurRadius(5);
 
-    QGraphicsDropShadowEffect *shadowEffect_killAdbBtn = new QGraphicsDropShadowEffect();
+    QGraphicsDropShadowEffect *shadowEffect_killAdbBtn = new QGraphicsDropShadowEffect(this);
     shadowEffect_killAdbBtn->setOffset(0,0);
     shadowEffect_killAdbBtn->setColor(Qt::gray);
     shadowEffect_killAdbBtn->setBlurRadius(5);
 
-    QGraphicsDropShadowEffect *shadowEffect_testBtn = new QGraphicsDropShadowEffect();
+    QGraphicsDropShadowEffect *shadowEffect_testBtn = new QGraphicsDropShadowEffect(this);
     shadowEffect_testBtn->setOffset(0,0);
     shadowEffect_testBtn->setColor(Qt::gray);
     shadowEffect_testBtn->setBlurRadius(5);
 
-    QGraphicsDropShadowEffect *shadowEffect_WSABtn = new QGraphicsDropShadowEffect();
+    QGraphicsDropShadowEffect *shadowEffect_WSABtn = new QGraphicsDropShadowEffect(this);
     shadowEffect_WSABtn->setOffset(0,0);
     shadowEffect_WSABtn->setColor(Qt::gray);
     shadowEffect_WSABtn->setBlurRadius(5);
@@ -369,70 +328,58 @@ void MainWindow::on_adbKillerBtn_clicked()          //槽：杀死ADB
     process->run("adb kill-server");
 }
 
-void MainWindow::playLoadingGif()                   //槽：播放加载动画
-{
-    qDebug() << "playLoadingGif";
-    ui->loadingLabel->setMovie(movie);
-    movie->start();
-    ui->loadingLabel->show();
-}
-
-void MainWindow::stopLoadingGif()                   //槽：隐藏加载动画 + 设置currentpage参数，并发出完成basepage创建的信号
-{
-    ui->loadingLabel->setVisible(false);
-}
-
 void MainWindow::on_WIFIBtn_clicked()               //槽：弹出无线调试连接窗口，获取无线调试参数
 {
     getInfo = new QWidget();
+    getInfo->setMaximumSize(500,300);
     getInfo->setWindowTitle("无线调试");
     getInfo->setStyleSheet("background-color:rgba(255,255,255,1);");
     getInfo->setWindowIcon(QIcon(":/ico/image/ico/link.svg"));
     getInfo->setWindowIconText("test");
 
-    QLabel * title = new QLabel();
+    QLabel * title = new QLabel(getInfo);
     title->setText("通过WI-FI连接设备");
 
-    QWidget *outWgt = new QWidget();
+    QWidget *outWgt = new QWidget(getInfo);
     outWgt->setStyleSheet("border-radius: 4px;border:1px solid #BDBDBD;");
     QVBoxLayout * outLayout = new QVBoxLayout();
-    QLabel * step1 = new QLabel();
+    QLabel * step1 = new QLabel(getInfo);
     step1->setText("第一步：打开 [开发者选项 -> 无线调试]");
     step1->setStyleSheet("border-radius: 4px;border-bottom:1px solid #BDBDBD;");
-    QLabel * lb_outIp = new QLabel();
+    QLabel * lb_outIp = new QLabel(getInfo);
     lb_outIp->setText("无线调试IP地址：");
     lb_outIp->setStyleSheet("border-radius: 4px;border:0px solid #BDBDBD;");
-    QLabel * lb_outPort = new QLabel();
+    QLabel * lb_outPort = new QLabel(getInfo);
     lb_outPort->setText("无线调试端口：");
     lb_outPort->setStyleSheet("border-radius: 4px;border:0px solid #BDBDBD;");
 
-    le_outIp = new QLineEdit();
+    le_outIp = new QLineEdit(getInfo);
     //le_outIp->setStyleSheet("border-radius: 4px;border-bottom:2px solid #146AFF;");
-    le_outPort = new QLineEdit();
+    le_outPort = new QLineEdit(getInfo);
     //le_outPort->setStyleSheet("border-radius: 4px;border-bottom:2px solid #146AFF;");
 
 
-    QWidget *inWgt = new QWidget();
+    QWidget *inWgt = new QWidget(getInfo);
     inWgt->setStyleSheet("border-radius: 4px;border:1px solid #BDBDBD;");
     QVBoxLayout * inLayout = new QVBoxLayout();
-    QLabel * step2 = new QLabel();
+    QLabel * step2 = new QLabel(getInfo);
     step2->setText("第二步：点击 [使用配对码配对设备]");
     step2->setStyleSheet("border-radius: 4px;border-bottom:1px solid #BDBDBD;");
-    QLabel * lb_ipAddr = new QLabel();
+    QLabel * lb_ipAddr = new QLabel(getInfo);
     lb_ipAddr->setText("配对IP地址：");
     lb_ipAddr->setStyleSheet("border-radius: 4px;border:0px solid #BDBDBD;border-bottom:2px");
-    QLabel * lb_port = new QLabel();
+    QLabel * lb_port = new QLabel(getInfo);
     lb_port->setText("配对端口：");
     lb_port->setStyleSheet("border-radius: 4px;border:0px solid #BDBDBD;");
-    QLabel * lb_code = new QLabel();
+    QLabel * lb_code = new QLabel(getInfo);
     lb_code->setText("配对码：");
     lb_code->setStyleSheet("border-radius: 4px;border:0px solid #BDBDBD;");
 
-    le_ipAddr = new QLineEdit();
+    le_ipAddr = new QLineEdit(getInfo);
     //le_ipAddr->setStyleSheet("border-radius: 4px;border-bottom:2px solid #146AFF;");
-    le_port = new QLineEdit();
+    le_port = new QLineEdit(getInfo);
     //le_port->setStyleSheet("border-radius: 4px;border-bottom:2px solid #146AFF;");
-    le_code = new QLineEdit();
+    le_code = new QLineEdit(getInfo);
     //le_code->setStyleSheet("border-radius: 4px;border-bottom:2px solid #146AFF;");
 
     QHBoxLayout * lo_outIp = new QHBoxLayout();
@@ -455,9 +402,9 @@ void MainWindow::on_WIFIBtn_clicked()               //槽：弹出无线调试�
     QPushButton * getInfoBtn = new QPushButton(getInfo);
     getInfoBtn->setText("连接");
     getInfoBtn->setStyleSheet("QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}QPushButton:hover{background-color:rgba(255,255,255,0.7);}QPushButton:pressed{background-color:rgba(255,255,255,0.6);}");
-    QVBoxLayout * mainLayout = new QVBoxLayout();
+    QVBoxLayout * mainLayout = new QVBoxLayout(getInfo);
 
-    QGraphicsDropShadowEffect *shadowEffect_getInfoBtn = new QGraphicsDropShadowEffect();
+    QGraphicsDropShadowEffect *shadowEffect_getInfoBtn = new QGraphicsDropShadowEffect(getInfo);
     shadowEffect_getInfoBtn->setOffset(0,0);
     shadowEffect_getInfoBtn->setColor(Qt::gray);
     shadowEffect_getInfoBtn->setBlurRadius(5);
@@ -486,6 +433,7 @@ void MainWindow::on_WIFIBtn_clicked()               //槽：弹出无线调试�
 
     connect(getInfoBtn,SIGNAL(clicked()),this,SLOT(connectWIFIDev()));
     getInfo->show();
+    qDebug() << "size is " << getInfo->geometry();
 }
 
 void MainWindow::connectWIFIDev()                   //槽：连接无线调试设备
@@ -519,36 +467,4 @@ void MainWindow::on_WSABtn_clicked()                //槽：连接WSA
     msgBox->setText("· 已尝试连接，请刷新设备列表并选择WSA");
     msgBox->addButton(" ✓ ", QMessageBox::AcceptRole);
     msgBox->show();
-}
-
-void MainWindow::displayWelcomePage()
-{
-    /*
-    WCMPage2 = new about(this->ui->page);
-    WCMPage2->setGeometry(QRect(301,111,WCMPage2->geometry().width(),WCMPage2->geometry().height()));
-    qDebug() << "initing... page's geometry is " << ui->page->geometry();
-    currentPage = WCMPage2;*/
-    //ui->indexList->setCurrentRow(7);
-/*
-    if(WCMPage != NULL)         //销毁上一个basePage
-    {
-        //currentPage->setDisabled(true);
-        //delete currentPage;
-        WCMPage->~welcomePage();
-        WCMPage = NULL;
-    }
-
-    WCMPage = new welcomePage();
-    ui->verticalLayout_2->addWidget(WCMPage);
-*//*
-    if(WCMPage2 != NULL)         //销毁上一个basePage
-    {
-        //currentPage->setDisabled(true);
-        //delete currentPage;
-        WCMPage2->~about();
-        WCMPage2 = NULL;
-    }
-
-    WCMPage2 = new about();
-    ui->verticalLayout_2->addWidget(WCMPage2);*/
 }

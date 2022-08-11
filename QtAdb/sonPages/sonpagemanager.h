@@ -17,6 +17,7 @@ class sonPageManager
 {
 public:
     sonPageManager();
+    ~sonPageManager();
 
     adbProcess *process;
     textExplainer *explainer;

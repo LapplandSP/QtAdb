@@ -16,11 +16,11 @@ sp_installer::sp_installer(QWidget *parent) :
 
     connect(this->ui->back_to_basePage,SIGNAL(clicked()),parent,SLOT(slot_destroySonPage()));
 
-    QGraphicsDropShadowEffect *shadowEffect_runBtn = new QGraphicsDropShadowEffect();
-    QGraphicsDropShadowEffect *shadowEffect_showOutputBtn = new QGraphicsDropShadowEffect();
-    QGraphicsDropShadowEffect *shadowEffect_back_to_basePage = new QGraphicsDropShadowEffect();
-    QGraphicsDropShadowEffect *shadowEffect_refreshBtn = new QGraphicsDropShadowEffect();
-    QGraphicsDropShadowEffect *shadowEffect_selectBtn = new QGraphicsDropShadowEffect();
+    QGraphicsDropShadowEffect *shadowEffect_runBtn = new QGraphicsDropShadowEffect(this);
+    QGraphicsDropShadowEffect *shadowEffect_showOutputBtn = new QGraphicsDropShadowEffect(this);
+    QGraphicsDropShadowEffect *shadowEffect_back_to_basePage = new QGraphicsDropShadowEffect(this);
+    QGraphicsDropShadowEffect *shadowEffect_refreshBtn = new QGraphicsDropShadowEffect(this);
+    QGraphicsDropShadowEffect *shadowEffect_selectBtn = new QGraphicsDropShadowEffect(this);
 
     shadowEffect_runBtn->setOffset(0,0);
     shadowEffect_runBtn->setColor(Qt::gray);
