@@ -35,9 +35,7 @@
       </size>
      </property>
      <property name="font">
-      <font>
-       <family>MiSans Medium</family>
-      </font>
+      <font/>
      </property>
      <property name="styleSheet">
       <string notr="true">border-radius: 4px;
@@ -114,7 +112,7 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
              </font>
             </property>
             <property name="text">
-             <string>测试版本：beta-v0.2</string>
+             <string>测试版本：beta-v0.4</string>
             </property>
            </widget>
           </item>

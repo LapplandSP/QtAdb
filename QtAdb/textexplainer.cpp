@@ -72,7 +72,8 @@ QList<device> textExplainer::getDevList_windows(QString tmpStr)
     {
         tmpList[i] = tmpList[i].simplified();
 
-        if (tmpList[i] == "")
+        //qDebug() << "tmplist[" << i << "] =" <<  tmpList[i];
+        if (tmpList[i] == "" || tmpList[i] == "\r")
         {
             continue;
         }
@@ -83,13 +84,26 @@ QList<device> textExplainer::getDevList_windows(QString tmpStr)
 
         dev.addr = tmp[0];
         dev.state = setState(tmp[1]);
-        dev.device_product = tmp[2];
-        dev.model = tmp[3];
-        dev.device_debug = tmp[4];
-        dev.transport_id = tmp[5];
-        devList.append(dev);
+        //qDebug() << dev.state;
+        //qDebug() << "*tmplist[" << i << "] =" <<  tmpList[i];
+        if(dev.state == "[未响应]")
+        {
+            dev.transport_id = tmp[2];
+            devList.append(dev);
+            continue;
+        }
+        else
+        {
+            dev.device_product = tmp[2];
+            dev.model = tmp[3];
+            dev.device_debug = tmp[4];
+            dev.transport_id = tmp[5];
+            devList.append(dev);
+        }
+        //qDebug() << "**tmplist[" << i << "] =" <<  tmpList[i];
     }
     return devList;
+    //qDebug() << "get dev list success!";
 }
 
 QString textExplainer::get_words_after(QString str , QString key)
@@ -261,3 +275,17 @@ void textExplainer::slot_explain_cpu_output(QString s)
     emit textExplained(str);
 }
 */
+
+QStringList textExplainer::explainPermissionGroups(QString s)
+{
+    QStringList list;
+    list = s.split("\n");
+    /*
+    for(int i = 0; i<=list.count(); i--)
+    {
+        qDebug() << "/+*********\nlist.count() = " << list.count() <<"\nbefore index out of range: \n i = " << i << "\n list[i] = "<< list[i] << "\n ***************+/";
+        QString tmpStr = get_words_after(list[i],"permission group:");
+        list[i] = tmpStr;
+    }*/
+    return list;
+}

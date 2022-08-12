@@ -8,6 +8,7 @@
 #include <QSizePolicy>
 #include <QScroller>
 #include <QLineEdit>
+#include <QMouseEvent>
 #include "adbprocess.h"
 #include "textexplainer.h"
 #include "indexlistitem.h"
@@ -69,6 +70,7 @@ private slots:
     void connectWIFIDev();
 
     void on_WSABtn_clicked();
+    void slot_taiChi();
 
 private:
     Ui::MainWindow *ui;
@@ -76,6 +78,9 @@ private:
     void initEnvironmentPATH();
     void addIndexItems();
     void setStyles();
+
+    bool taiChi = true;
+    QTimer *taiChiTimer;
 
     basePage * currentPage;
     animationWidget * tmpPage;

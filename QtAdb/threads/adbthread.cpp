@@ -2,7 +2,7 @@
 
 adbThread::adbThread(QObject* parent)
 {
-
+    setParent(parent);
 }
 
 void adbThread::initThread(QString cmd, device d)
@@ -14,8 +14,10 @@ void adbThread::initThread(QString cmd, device d)
 
 void adbThread::initThread(QString cmd, device d, QString key)
 {
+    qDebug() << "d = " << d.model <<cmd << key;
     command = cmd;
     dev = d;
+    qDebug() << "dev = " << dev.model;
     explain = true;
     explainKey = key;
 }
@@ -37,6 +39,14 @@ void adbThread::run()
     else if(explainKey == "#CPU#")
     {
         QString output = explainer->explain_cpu_output(process->run(command, dev));
+        emit signal_output(output);
+        exit();
+    }
+
+    else if(explainKey == "#PERMISSIONGROUPS#")
+    {
+        //qDebug() << "dev = " << &dev;
+        QString output = process->run(command, dev);
         emit signal_output(output);
         exit();
     }

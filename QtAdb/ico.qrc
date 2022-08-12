@@ -71,6 +71,7 @@
         <file>image/ico/about/wechat.svg</file>
         <file>image/ico/logo.svg</file>
         <file>image/ico/code-s-slash-line.svg</file>
+        <file>image/ico/share-box-line.svg</file>
     </qresource>
     <qresource prefix="/test">
         <file>image/test/back.png</file>

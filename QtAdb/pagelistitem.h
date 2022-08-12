@@ -39,6 +39,8 @@ private slots:
 private:
     Ui::pageListItem *ui;
 
+    QGraphicsDropShadowEffect *shadowEffect_icon;
+
 public slots:
     void slot_setText(QString t, QString p);
     void slot_setText_title(QString t);

@@ -29,7 +29,7 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <property name="bottomMargin">
-        <number>11</number>
+        <number>0</number>
        </property>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout" stretch="2,0,10">

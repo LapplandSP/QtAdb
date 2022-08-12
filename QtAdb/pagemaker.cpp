@@ -301,7 +301,7 @@ basePage* pageMaker::createPage_apps(QWidget *parent, device dev)
     apps->isBasePage = true;
     //activatorPage *activator = new activatorPage(parent);
     apps->whoYouAre("apps");
-    int val[20] = {1};
+    int val[20] = {1,2,3,4,5,6};
     apps->setEnableValue(val);
     apps->setDev(dev);
 
@@ -310,6 +310,36 @@ basePage* pageMaker::createPage_apps(QWidget *parent, device dev)
     installer->setPic(":/ico/image/ico/install-line.svg");
     installer->setSelectable();
     apps->addItemsToList(installer);
+
+    pageListItem *permissionGroups = new pageListItem(apps);
+    permissionGroups->setText("已知权限组","adb shell pm list permission-groups");
+    permissionGroups->setPic(":/ico/image/ico/about/information-line.svg");
+    permissionGroups->setSelectable();
+    apps->addItemsToList(permissionGroups);
+
+    pageListItem *permissions = new pageListItem(apps);
+    permissions->setText("已知权限","adb shell pm list permissions");
+    permissions->setPic(":/ico/image/ico/about/information-line.svg");
+    permissions->setSelectable();
+    apps->addItemsToList(permissions);
+
+    pageListItem *packages = new pageListItem(apps);
+    packages->setText("软件包","adb shell pm list packages");
+    packages->setPic(":/ico/image/ico/android-line.svg");
+    packages->setSelectable();
+    apps->addItemsToList(packages);
+
+    pageListItem *features = new pageListItem(apps);
+    features->setText("系统功能","adb shell pm list features");
+    features->setPic(":/ico/image/ico/tools-line.svg");
+    features->setSelectable();
+    apps->addItemsToList(features);
+
+    pageListItem *libraries = new pageListItem(apps);
+    libraries->setText("库","adb shell pm list libraries");
+    libraries->setPic(":/ico/image/ico/btnEmulator/menu-line.svg");
+    libraries->setSelectable();
+    apps->addItemsToList(libraries);
 
     return apps;
 }

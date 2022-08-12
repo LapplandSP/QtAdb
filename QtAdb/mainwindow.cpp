@@ -76,17 +76,33 @@ void MainWindow::refreshDevList()                   //方法：刷新设备列�
     devList.clear();            //清空设备列表
     devList = explainer->getDevList_windows(process->run("adb devices -l"));    //重新赋值
 
+    QList<int> off;    //未响应设备索引
+
     /*将设备信息传入 List l ，并将l的值显示在combobox中*/
     QStringList l;
     l.clear();
 
     for (int i = 0 ; i < devList.size() ; i++ )
     {
-        QString devItem =devList[i].state + " " + explainer->get_words_after(devList[i].device_product, ":") + " " + explainer->get_words_after(devList[i].model, ":");
+        QString devItem = devList[i].state + " " + explainer->get_words_after(devList[i].model, ":") + " " + devList[i].addr;
         l.append(devItem);
+        if(devList[i].state == "[未响应]")
+        {
+            off.append(i);
+            /*
+            QVariant v(0);
+            ui->comboBox->setItemData(i, v, Qt::UserRole - 1);
+            */
+        }
     }
 
     ui->comboBox->addItems(l);
+
+    for(int i = 0; i < off.count();i++)
+    {
+        QVariant v(0);
+        ui->comboBox->setItemData(off[i], v, Qt::UserRole - 1);
+    }
 
     if(devList.isEmpty())
     {
@@ -132,12 +148,12 @@ void MainWindow::setCurrentDevice(int index)        //槽：改变所选设备
         //initBasePage(0);
         if(ui->indexList->currentRow() == 0)
         {
-            qDebug() << "initBasePage";
+            //qDebug() << "initBasePage";
             initBasePage(0);
         }
         else
         {
-            qDebug() << "setCurrentRow";
+            //qDebug() << "setCurrentRow";
             ui->indexList->setCurrentRow(0);
 
         }
@@ -149,7 +165,8 @@ void MainWindow::initBasePage(int key)              //槽：生成basePages
 {
     while(key != -1)
     {
-        this->setEnabled(false);
+        //this->setEnabled(false);
+        this->lock();
 
         if(currentPage != NULL)         //销毁上一个basePage
         {
@@ -160,6 +177,7 @@ void MainWindow::initBasePage(int key)              //槽：生成basePages
         }
 
         currentPage = new basePage(this);
+        connect(currentPage,SIGNAL(animationEnd()),this,SLOT(slot_taiChi()));
 
         if(devList.isEmpty())
         {
@@ -176,8 +194,11 @@ void MainWindow::initBasePage(int key)              //槽：生成basePages
 
         currentPage->playLoadAnimation();
         //currentPage->repaint();
+        taiChiTimer = new QTimer(this);
+        connect(taiChiTimer, SIGNAL(timeout()), this, SLOT(slot_taiChi()));
+        taiChiTimer->setSingleShot(true);
+        taiChiTimer->start(750);
 
-        this->setEnabled(true);
         break;
     }
 }
@@ -206,7 +227,7 @@ void MainWindow::addIndexItems()                    //方法：初始化向index
     addItemToIndex(activator);
 
     indexListItem *apps = new indexListItem(this->ui->indexList);
-    apps->setText("应用");
+    apps->setText("软件包管理器");
     apps->setPic("image:url(:/ico/image/ico/google-play-line.svg);background-color:rgba(255,255,255,0);");
     addItemToIndex(apps);
 
@@ -467,4 +488,28 @@ void MainWindow::on_WSABtn_clicked()                //槽：连接WSA
     msgBox->setText("· 已尝试连接，请刷新设备列表并选择WSA");
     msgBox->addButton(" ✓ ", QMessageBox::AcceptRole);
     msgBox->show();
+}
+
+void MainWindow::slot_taiChi()
+{
+    //qDebug() <<"taiChi -" << taiChi;
+    /*
+    if(taiChi)
+    {
+        this->resize(this->geometry().width() + 5,this->geometry().height());
+    }
+    else
+    {
+        this->resize(this->geometry().width() - 5,this->geometry().height());
+    }*/
+    taiChi = !taiChi;
+    currentPage->repaint();
+    delete taiChiTimer;
+    taiChiTimer = NULL;
+
+    if(ui->comboBox->currentIndex() != -1)
+    {
+        this->unlock();
+    }
+    //this->setEnabled(true);
 }

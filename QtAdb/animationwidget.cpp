@@ -11,8 +11,8 @@ animationWidget::animationWidget(QWidget *p)
 void animationWidget::playLoadAnimation()
 {
     animation->setDuration(750);
-    animation->setEndValue(QRect(301, 111, this->width(),this->height()));
-    animation->setStartValue(QRect(301 + 50, 111, this->width(),this->height()));
+    animation->setEndValue(QRect(301, 117, this->width(),this->height()));
+    animation->setStartValue(QRect(301 + 50, 117, this->width(),this->height()));
 
     animation->setEasingCurve(QEasingCurve::OutQuart);
 

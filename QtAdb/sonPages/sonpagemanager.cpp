@@ -201,13 +201,44 @@ sp_activator* sonPageManager::createSonPageFor_activator(QWidget *parent, int ke
     return NULL;
 }
 
-sp_installer* sonPageManager::createSonPageFor_apps(QWidget *parent, int key, device dev)
+QWidget* sonPageManager::createSonPageFor_apps(QWidget *parent, int key, device dev)
 {
     switch(key +1)
     {
     case 1:
     {
         sp_installer *page = new sp_installer(parent);
+        page->setDev(dev);
+        return page;
+    }
+    case 2:
+    {
+        sp_permissionGroups *page = new sp_permissionGroups(parent);
+        page->setDev(dev);
+        return page;
+    }
+    case 3:
+    {
+        sp_permissions *page = new sp_permissions(parent);
+        page->setDev(dev);
+        return page;
+    }
+    case 4:
+    {
+        sp_packages *page = new sp_packages(parent);
+        page->setDev(dev);
+        return page;
+    }
+    case 5:
+    {
+        qDebug() << "SPM.DEV = " << dev.model;
+        sp_features *page = new sp_features(parent);
+        page->setDev(dev);
+        return page;
+    }
+    case 6:
+    {
+        sp_libraries *page = new sp_libraries(parent);
         page->setDev(dev);
         return page;
     }

@@ -19,7 +19,13 @@ SOURCES += \
     pagemaker.cpp \
     sonPages/activator/sp_activator.cpp \
     sonPages/advanced/sp_customize_cmd.cpp \
+    sonPages/apps/sp_features.cpp \
     sonPages/apps/sp_installer.cpp \
+    sonPages/apps/sp_libraries.cpp \
+    sonPages/apps/sp_packages.cpp \
+    sonPages/apps/sp_permissiongroups.cpp \
+    sonPages/apps/sp_permissions.cpp \
+    sonPages/apps/tp_packageprofile.cpp \
     sonPages/devControl/btnemulator.cpp \
     sonPages/devControl/sp_devcontrol_power.cpp \
     sonPages/devInfo/sp_dpichanger.cpp \
@@ -44,7 +50,13 @@ HEADERS += \
     pagemaker.h \
     sonPages/activator/sp_activator.h \
     sonPages/advanced/sp_customize_cmd.h \
+    sonPages/apps/sp_features.h \
     sonPages/apps/sp_installer.h \
+    sonPages/apps/sp_libraries.h \
+    sonPages/apps/sp_packages.h \
+    sonPages/apps/sp_permissiongroups.h \
+    sonPages/apps/sp_permissions.h \
+    sonPages/apps/tp_packageprofile.h \
     sonPages/devControl/btnemulator.h \
     sonPages/devControl/sp_devcontrol_power.h \
     sonPages/devInfo/sp_dpichanger.h \
@@ -66,7 +78,13 @@ FORMS += \
     pagelistitem.ui \
     sonPages/activator/sp_activator.ui \
     sonPages/advanced/sp_customize_cmd.ui \
+    sonPages/apps/sp_features.ui \
     sonPages/apps/sp_installer.ui \
+    sonPages/apps/sp_libraries.ui \
+    sonPages/apps/sp_packages.ui \
+    sonPages/apps/sp_permissiongroups.ui \
+    sonPages/apps/sp_permissions.ui \
+    sonPages/apps/tp_packageprofile.ui \
     sonPages/devControl/btnemulator.ui \
     sonPages/devControl/sp_devcontrol_power.ui \
     sonPages/devInfo/sp_dpichanger.ui \

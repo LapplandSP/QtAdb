@@ -31,14 +31,18 @@ public:
 
     bool explainError(QString err);
     bool explainOutput(QString op, bool thread);
+
     QMessageBox *msgBox;
     bool thread = false;
+
+    QStringList explainPermissionGroups(QString s);
 
 private:
     QString setState(QString state);
 
 signals:
     void textExplained(QString);
+    void permissionGroupsExplained(QStringList);
 
 public slots:
     void slot_get_words_after(QString s, QString k);
