@@ -29,6 +29,7 @@ SOURCES += \
     sonPages/devControl/btnemulator.cpp \
     sonPages/devControl/sp_devcontrol_power.cpp \
     sonPages/devInfo/sp_dpichanger.cpp \
+    sonPages/devInfo/sp_wmsize.cpp \
     sonPages/pay.cpp \
     sonPages/recovery/sp_recovery.cpp \
     sonPages/sonpagebase.cpp \
@@ -60,6 +61,7 @@ HEADERS += \
     sonPages/devControl/btnemulator.h \
     sonPages/devControl/sp_devcontrol_power.h \
     sonPages/devInfo/sp_dpichanger.h \
+    sonPages/devInfo/sp_wmsize.h \
     sonPages/pay.h \
     sonPages/recovery/sp_recovery.h \
     sonPages/sonpagebase.h \
@@ -88,6 +90,7 @@ FORMS += \
     sonPages/devControl/btnemulator.ui \
     sonPages/devControl/sp_devcontrol_power.ui \
     sonPages/devInfo/sp_dpichanger.ui \
+    sonPages/devInfo/sp_wmsize.ui \
     sonPages/pay.ui \
     sonPages/recovery/sp_recovery.ui \
     sonPages/sonpagebase.ui \
@@ -105,6 +108,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    ico.qrc
+    ico.qrc \
+    styles.qrc
 
 RC_FILE += logo.rc

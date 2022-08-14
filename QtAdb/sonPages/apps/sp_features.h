@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QStandardItemModel>
 #include <QGraphicsDropShadowEffect>
+#include <QScrollBar>
+#include <QFile>
 //#include <QAbstractItemView>
 #include "../../threads/adbthread.h"
 

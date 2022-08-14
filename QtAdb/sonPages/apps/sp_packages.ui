@@ -6,14 +6,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>592</width>
-    <height>557</height>
+    <width>580</width>
+    <height>413</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <property name="topMargin">
+    <number>0</number>
+   </property>
    <item>
     <widget class="QWidget" name="widget" native="true">
      <property name="styleSheet">
@@ -24,6 +27,9 @@ border:0px solid #BDBDBD;</string>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="leftMargin">
        <number>11</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
       </property>
       <property name="rightMargin">
        <number>11</number>
@@ -36,20 +42,20 @@ border:0px solid #BDBDBD;</string>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <property name="spacing">
-           <number>14</number>
+           <number>0</number>
           </property>
           <item>
            <widget class="QLabel" name="icon">
             <property name="minimumSize">
              <size>
-              <width>40</width>
-              <height>40</height>
+              <width>30</width>
+              <height>30</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>40</width>
-              <height>40</height>
+              <width>30</width>
+              <height>30</height>
              </size>
             </property>
             <property name="styleSheet">
@@ -78,6 +84,7 @@ image: url(:/ico/image/ico/android-line.svg);</string>
             </property>
             <property name="font">
              <font>
+              <family>MiSans Medium</family>
               <pointsize>18</pointsize>
               <bold>true</bold>
              </font>
@@ -124,9 +131,7 @@ QProgressBar:chunk{
         <item>
          <widget class="QListView" name="listView">
           <property name="font">
-           <font>
-            <family>MiSans Medium</family>
-           </font>
+           <font/>
           </property>
          </widget>
         </item>
@@ -134,6 +139,11 @@ QProgressBar:chunk{
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
            <widget class="QCheckBox" name="checkBox_d">
+            <property name="font">
+             <font>
+              <family>MiSans Medium</family>
+             </font>
+            </property>
             <property name="text">
              <string>仅显示已停用</string>
             </property>
@@ -141,6 +151,11 @@ QProgressBar:chunk{
           </item>
           <item>
            <widget class="QCheckBox" name="checkBox_e">
+            <property name="font">
+             <font>
+              <family>MiSans Medium</family>
+             </font>
+            </property>
             <property name="text">
              <string>仅显示已启用</string>
             </property>
@@ -148,6 +163,11 @@ QProgressBar:chunk{
           </item>
           <item>
            <widget class="QCheckBox" name="checkBox_3">
+            <property name="font">
+             <font>
+              <family>MiSans Medium</family>
+             </font>
+            </property>
             <property name="text">
              <string>第三方</string>
             </property>
@@ -155,6 +175,11 @@ QProgressBar:chunk{
           </item>
           <item>
            <widget class="QCheckBox" name="checkBox_s">
+            <property name="font">
+             <font>
+              <family>MiSans Medium</family>
+             </font>
+            </property>
             <property name="text">
              <string>系统</string>
             </property>

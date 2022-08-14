@@ -20,8 +20,10 @@ public:
     explicit animationWidget(QWidget *parent = nullptr);
     ~animationWidget();
 
+    int wgtHeight = 427;
 
     void playLoadAnimation();
+    void playLoadAnimation(int h);
     void playExitAnimation();
 
     bool isBasePage;

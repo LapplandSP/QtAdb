@@ -2,6 +2,9 @@
 #define TP_PACKAGEPROFILE_H
 
 #include <QWidget>
+#include <QGraphicsDropShadowEffect>
+#include <QTimer>
+#include <Windows.h>
 #include "../../textexplainer.h"
 #include "../../adbprocess.h"
 #include "../../threads/adbthread.h"
@@ -30,6 +33,14 @@ private:
     adbThread * thread_btn;
     adbProcess * process;
     textExplainer *explainer;
+
+    void setShadow(QWidget* wgt);
+
+    bool uninstall_clicked = false;
+    bool clear_clicked = false;
+    bool enable_clicked = false;
+    bool disable_clicked = false;
+
 signals:
     void packageChanged();
     /*

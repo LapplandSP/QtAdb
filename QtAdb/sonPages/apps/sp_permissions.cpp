@@ -111,6 +111,10 @@ void sp_permissions::on_back_to_basePage_2_clicked()
     settings->setWindowTitle("选项");
     settings->move(ui->back_to_basePage_2->geometry().x(),ui->back_to_basePage_2->geometry().y());
     settings->exec();
+
+    QFile file("://qss/scrollbar.qss");
+    file.open(QFile::ReadOnly);
+    ui->tableView->verticalScrollBar()->setStyleSheet(file.readAll());
 }
 
 void sp_permissions::setArg()
@@ -338,9 +342,12 @@ void sp_permissions::refresh_tableView(QString s)
 void sp_permissions::on_open_another_window_clicked()
 {
     QWidget *wgt = new QWidget();
+    wgt->setWindowTitle("查看");
+    wgt->setStyleSheet("background-color:white;border:0px solid white;");
     QVBoxLayout *layout = new QVBoxLayout();
     QTableView *view = new QTableView();
     view->setModel(current_model);
+    view->setStyleSheet("background-color:white;border:0px;");
     wgt->setLayout(layout);
     layout->addWidget(view);
     wgt ->showMaximized();

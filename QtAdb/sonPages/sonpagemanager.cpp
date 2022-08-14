@@ -45,10 +45,17 @@ QWidget* sonPageManager::selector(QWidget *parent , QString parentName, int key,
     return NULL;
 }
 
-sp_dpiChanger* sonPageManager::createSonPageFor_devInfo(QWidget *parent, int key, device dev)
+QWidget* sonPageManager::createSonPageFor_devInfo(QWidget *parent, int key, device dev)
 {
     switch(key +1)
     {
+    case 2:
+    {
+        sp_wmsize *page = new sp_wmsize(parent);
+        page->setDev(dev);
+        return page;
+    }
+
     case 3:
     {
         sp_dpiChanger *page = new sp_dpiChanger(parent);
@@ -292,17 +299,6 @@ QWidget* sonPageManager::createSonPageFor_advanced(QWidget *parent, int key, dev
         sp_customize_cmd *page = new sp_customize_cmd(parent);
         //page->setDev(dev);
         return page;
-    }
-    case 2:
-    {
-        //QString envPath = qgetenv("PATH");      //获取当前环境变量
-        QString appDirPath = QApplication::applicationDirPath();    //获取程序所在位置
-        QString batPath = appDirPath + "/platform-tools/open-cmd-here.bat";
-        //qDebug()<<"batPath = " << batPath;
-        QProcess batProcess;
-        batProcess.start(batPath);
-        batProcess.waitForFinished();
-        return NULL;
     }
         break;
     }

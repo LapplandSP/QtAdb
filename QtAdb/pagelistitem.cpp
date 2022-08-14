@@ -9,7 +9,7 @@ pageListItem::pageListItem(QWidget *parent) :
     ui->enableLight->setVisible(false);
 
     ui->widget->setStyleSheet("QWidget{background-color:transparent; border-radius:4px; border-color:gray;border:0px;}");
-    ui->pic->setStyleSheet("QPushButton{background-color:rgba(255,255,255,0.7);border-radius:4px;border:0px;}");
+    ui->pic->setStyleSheet("QPushButton{background-color:rgba(255,255,255,0.6);border-radius:4px;border:0px;}");
 
     setStyles();
 }

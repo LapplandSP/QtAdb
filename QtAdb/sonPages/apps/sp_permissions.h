@@ -9,6 +9,8 @@
 #include <QStandardItemModel>
 #include "../../textexplainer.h"
 #include "../../threads/adbthread.h"
+#include <QScrollBar>
+#include <QFile>
 
 namespace Ui {
 class sp_permissions;

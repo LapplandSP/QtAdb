@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>767</width>
-    <height>206</height>
+    <width>407</width>
+    <height>207</height>
    </rect>
   </property>
   <property name="font">
    <font>
-    <family>MiSans Medium</family>
+    <pointsize>9</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -21,46 +21,97 @@
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>7</number>
+     </property>
      <property name="bottomMargin">
       <number>5</number>
      </property>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>14</number>
+       </property>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_3">
+         <property name="spacing">
+          <number>7</number>
+         </property>
          <item>
           <widget class="QLabel" name="label">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="font">
             <font>
-             <family>MiSans Medium</family>
+             <pointsize>10</pointsize>
             </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>包名</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_3">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="font">
             <font>
-             <family>MiSans Medium</family>
+             <pointsize>10</pointsize>
             </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>关联文件</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_2">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="font">
             <font>
-             <family>MiSans Medium</family>
+             <pointsize>10</pointsize>
             </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
            </property>
            <property name="text">
             <string>安装者</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -68,15 +119,28 @@
        </item>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="spacing">
+          <number>7</number>
+         </property>
          <item>
           <widget class="QLineEdit" name="lineEdit_name">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="font">
             <font>
-             <family>MiSans Medium</family>
+             <pointsize>9</pointsize>
             </font>
            </property>
            <property name="acceptDrops">
             <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border:2px solid #BDBDBD;
+border-radius:4px;</string>
            </property>
            <property name="readOnly">
             <bool>true</bool>
@@ -85,13 +149,23 @@
          </item>
          <item>
           <widget class="QLineEdit" name="lineEdit_path">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="font">
             <font>
-             <family>MiSans Medium</family>
+             <pointsize>9</pointsize>
             </font>
            </property>
            <property name="acceptDrops">
             <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border:2px solid #BDBDBD;
+border-radius:4px;</string>
            </property>
            <property name="readOnly">
             <bool>true</bool>
@@ -100,13 +174,23 @@
          </item>
          <item>
           <widget class="QLineEdit" name="lineEdit_installer">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
            <property name="font">
             <font>
-             <family>MiSans Medium</family>
+             <pointsize>9</pointsize>
             </font>
            </property>
            <property name="acceptDrops">
             <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border:2px solid #BDBDBD;
+border-radius:4px;</string>
            </property>
            <property name="readOnly">
             <bool>true</bool>
@@ -118,41 +202,68 @@
       </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <item>
-        <widget class="QPushButton" name="uninstall">
-         <property name="font">
-          <font>
-           <family>MiSans Medium</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>卸载</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="clear">
-         <property name="font">
-          <font>
-           <family>MiSans Medium</family>
-          </font>
-         </property>
-         <property name="text">
-          <string>清除所有数据</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="tips">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:rgba(255,255,255,0.6);border-radius:4px;border:0px;</string>
+       </property>
+       <property name="text">
+        <string>双击以确认操作</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <property name="spacing">
+        <number>14</number>
+       </property>
        <item>
         <widget class="QPushButton" name="enable">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
          <property name="font">
           <font>
-           <family>MiSans Medium</family>
+           <pointsize>9</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>启用</string>
@@ -161,13 +272,64 @@
        </item>
        <item>
         <widget class="QPushButton" name="disable">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
          <property name="font">
           <font>
-           <family>MiSans Medium</family>
+           <pointsize>9</pointsize>
           </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
          </property>
          <property name="text">
           <string>停用</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="uninstall">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>卸载</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="clear">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>清除所有数据</string>
          </property>
         </widget>
        </item>

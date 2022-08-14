@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QGraphicsDropShadowEffect>
+#include <QScrollBar>
+#include <QFile>
 #include "adbprocess.h"
 #include "../sonpagebase.h"
 #include "../standardoutputpage.h"
@@ -22,7 +24,7 @@ public:
     void setUp(QString qss, QString title, QString profile, QString command);
     QString command;
     device dev;
-    standardOutputPage *page;
+    standardOutputPage *page = NULL;
     QWidget *parents;
 
     void setDev(device device);

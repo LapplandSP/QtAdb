@@ -10,6 +10,11 @@
     <height>458</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>MiSans Normal</family>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -18,7 +23,7 @@
     <number>0</number>
    </property>
    <property name="topMargin">
-    <number>11</number>
+    <number>0</number>
    </property>
    <property name="rightMargin">
     <number>0</number>
@@ -36,6 +41,9 @@ border:0px solid #BDBDBD;</string>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="leftMargin">
        <number>11</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
       </property>
       <property name="rightMargin">
        <number>11</number>
@@ -89,7 +97,6 @@ border:0px solid #BDBDBD;</string>
             </property>
             <property name="font">
              <font>
-              <family>MiSans Normal</family>
               <pointsize>18</pointsize>
               <bold>true</bold>
              </font>
@@ -109,7 +116,6 @@ border:0px solid #BDBDBD;</string>
          <widget class="QTextBrowser" name="textBrowser">
           <property name="font">
            <font>
-            <family>MiSans Normal</family>
             <pointsize>12</pointsize>
             <stylestrategy>PreferAntialias</stylestrategy>
            </font>

@@ -75,12 +75,10 @@ void about::on_btn_coolapk_clicked()
     QDesktopServices::openUrl(QUrl("http://www.coolapk.com/u/692559", QUrl::TolerantMode));
 }
 
-
 void about::on_btn_github_clicked()
 {
     QDesktopServices::openUrl(QUrl("https://github.com/LapplandSP", QUrl::TolerantMode));
 }
-
 
 void about::on_btn_money_2_clicked()
 {

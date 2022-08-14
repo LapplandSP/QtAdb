@@ -3,7 +3,7 @@
 
 /*
  * 待实现：
- * ******************************adbProcess 的read std output不应与主页面位于同一个线程
+ *
  * 显示输出
  * 代码规范化，提升封装程度
  * 写注释
@@ -36,6 +36,7 @@ MainWindow::MainWindow(QWidget *parent)
     addIndexItems();    //设置左侧目录
     setStyles();        //设置样式
 
+
     /*初始化对象*/
     process = new adbProcess();
     explainer = new textExplainer();
@@ -47,7 +48,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     /*用户未选择设备前，锁定界面*/
     this->update();
-    on_refreshButton_clicked();
+
+    initBasePage(6);
+    currentPage->playLoadAnimation(427);
     lock();
 }
 
@@ -146,6 +149,12 @@ void MainWindow::setCurrentDevice(int index)        //槽：改变所选设备
 
         current_device = index;
         //initBasePage(0);
+        /*
+        if(devList[current_device].state == "[侧载]")
+        {
+            initBasePage(5);
+        }*/
+
         if(ui->indexList->currentRow() == 0)
         {
             //qDebug() << "initBasePage";
@@ -155,7 +164,6 @@ void MainWindow::setCurrentDevice(int index)        //槽：改变所选设备
         {
             //qDebug() << "setCurrentRow";
             ui->indexList->setCurrentRow(0);
-
         }
     }
     unlock();
@@ -177,6 +185,9 @@ void MainWindow::initBasePage(int key)              //槽：生成basePages
         }
 
         currentPage = new basePage(this);
+        //qDebug() << "height in initBasePage()" << ui->widget_height->height();
+        currentPage->wgtHeight = ui->widget_height->height();
+        //qDebug() << "height2 in initBasePage()" << currentPage->wgtHeight;
         connect(currentPage,SIGNAL(animationEnd()),this,SLOT(slot_taiChi()));
 
         if(devList.isEmpty())
@@ -192,8 +203,8 @@ void MainWindow::initBasePage(int key)              //槽：生成basePages
 
         ui->verticalLayout_2->addWidget(currentPage);
 
-        currentPage->playLoadAnimation();
-        //currentPage->repaint();
+        currentPage->playLoadAnimation(ui->widget_height->height());
+        //currentPage->setVisible(true);
         taiChiTimer = new QTimer(this);
         connect(taiChiTimer, SIGNAL(timeout()), this, SLOT(slot_taiChi()));
         taiChiTimer->setSingleShot(true);
@@ -325,10 +336,16 @@ void MainWindow::setStyles()                        //方法：设置样式
     shadowEffect_WSABtn->setColor(Qt::gray);
     shadowEffect_WSABtn->setBlurRadius(5);
 
+    QGraphicsDropShadowEffect *shadowEffect_cmdBtn = new QGraphicsDropShadowEffect(this);
+    shadowEffect_cmdBtn->setOffset(0,0);
+    shadowEffect_cmdBtn->setColor(Qt::gray);
+    shadowEffect_cmdBtn->setBlurRadius(5);
+
     ui->refreshButton->setGraphicsEffect(shadowEffect_refreshButton);
     ui->adbKillerBtn->setGraphicsEffect(shadowEffect_killAdbBtn);
     ui->WIFIBtn->setGraphicsEffect(shadowEffect_testBtn);
     ui->WSABtn->setGraphicsEffect(shadowEffect_WSABtn);
+    ui->cmdBtn->setGraphicsEffect(shadowEffect_cmdBtn);
 }
 
 void MainWindow::initSonPage(int key)               //槽：生成子页面
@@ -503,7 +520,7 @@ void MainWindow::slot_taiChi()
         this->resize(this->geometry().width() - 5,this->geometry().height());
     }*/
     taiChi = !taiChi;
-    currentPage->repaint();
+    //currentPage->resize(1,1);
     delete taiChiTimer;
     taiChiTimer = NULL;
 
@@ -512,4 +529,14 @@ void MainWindow::slot_taiChi()
         this->unlock();
     }
     //this->setEnabled(true);
+}
+
+void MainWindow::on_cmdBtn_clicked()
+{
+    QString appDirPath = QApplication::applicationDirPath();
+    QString batPath = appDirPath + "/platform-tools/open-cmd-here.bat";
+    //qDebug()<<"batPath = " << batPath;
+    QProcess batProcess;
+    batProcess.start(batPath);
+    batProcess.waitForFinished();
 }

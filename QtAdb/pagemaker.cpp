@@ -21,25 +21,55 @@ basePage* pageMaker::createPageWithKey(int key, QWidget *parent, device dev)
         k = 6;
     }
 
+    /*
+    if(dev.state == "[未响应]" || dev.state == "[REC]" || dev.state == "[侧载]" || dev.state == "[未知]")
+    {
+
+    }
+    */
+
     switch(k)
     {
     case 0:
         if(dev.state == "[开机]")
         {
             return createPage_devInfo(parent , dev);
-            break;
+            //break;
+        }
+        else if(dev.state == "[REC]")
+        {
+            return createPage_devInfo_rec(parent, dev);
+            //break;
         }
         else
         {
-            return createPage_devInfo_powerdown(parent, dev);
+            return createPage_disabled(parent);
+            //break;
         }
+        break;
 
     case 1:
-        return createPage_acvitator(parent, dev);
+        if(dev.state == "[未响应]" || dev.state == "[REC]" || dev.state == "[侧载]" || dev.state == "[未知]")
+        {
+            return createPage_disabled(parent);
+        }
+        else
+        {
+            return createPage_acvitator(parent, dev);
+        }
         break;
+
     case 2:
-        return createPage_apps(parent, dev);
+        if(dev.state == "[未响应]" || dev.state == "[REC]" || dev.state == "[侧载]" || dev.state == "[未知]")
+        {
+            return createPage_disabled(parent);
+        }
+        else
+        {
+            return createPage_apps(parent, dev);
+        }
         break;
+
     case 3:
         return createPage_devControl(parent, dev);
         break;
@@ -68,7 +98,7 @@ basePage* pageMaker::createPage_devInfo(QWidget *parent, device dev)
     basePage *devInfo = new basePage(parent);
     devInfo->isBasePage = true;
     devInfo->whoYouAre("devInfo");
-    int val[20] = {3};
+    int val[20] = {2,3};
     //qDebug() << "!!!!!!!!!!!!!!!!!!!" << *val;
     devInfo->setEnableValue(val);
     devInfo->setDev(dev);
@@ -90,6 +120,7 @@ basePage* pageMaker::createPage_devInfo(QWidget *parent, device dev)
     screen_resolution->thread->initThread("adb shell wm size", dev, ": ");
     QEventLoop::connect(screen_resolution->thread,SIGNAL(signal_output(QString)),screen_resolution->item,SLOT(slot_setText_profile(QString)));
     screen_resolution->thread->start();
+    screen_resolution->item->setSelectable();
     devInfo->addItemsToList(screen_resolution->item);
 
     //adb shell wm density
@@ -169,7 +200,7 @@ basePage* pageMaker::createPage_devInfo(QWidget *parent, device dev)
     return devInfo;
 }
 
-basePage* pageMaker::createPage_devInfo_powerdown(QWidget *parent, device dev)
+basePage* pageMaker::createPage_devInfo_rec(QWidget *parent, device dev)
 {
     /*
     CItemWidget* pItemWidget = new CItemWidget(this)；
@@ -193,7 +224,7 @@ basePage* pageMaker::createPage_devInfo_powerdown(QWidget *parent, device dev)
     productModel->setPic(":/ico/image/ico/profile-line.svg");
     devInfo->addItemsToList(productModel);
 
-
+/*
     pageListItem *screen_resolution = new pageListItem(devInfo);
     screen_resolution->setText("屏幕分辨率","当前状态无法获取");
     screen_resolution->setPic(":/ico/image/ico/fullscreen-line.svg");
@@ -212,7 +243,7 @@ basePage* pageMaker::createPage_devInfo_powerdown(QWidget *parent, device dev)
     pageListItem *android_id = new pageListItem(devInfo);
     android_id->setText("Android Id","当前状态无法获取");
     android_id->setPic(":/ico/image/ico/barcode-line.svg");
-    devInfo->addItemsToList(android_id);
+    devInfo->addItemsToList(android_id);*/
 
     //adb shell getprop ro.build.version.release
     pageListItem *android_version = new pageListItem(devInfo);
@@ -346,28 +377,50 @@ basePage* pageMaker::createPage_apps(QWidget *parent, device dev)
 
 basePage* pageMaker::createPage_devControl(QWidget *parent, device dev)
 {
-    basePage *devControl = new basePage(parent);
-    devControl->isBasePage = true;
-    //activatorPage *activator = new activatorPage(parent);
-    devControl->whoYouAre("devControl");
-    int val[20] = {1,2};
-    devControl->setEnableValue(val);
-    devControl->setDev(dev);
+    if(dev.state == "[未响应]" || dev.state == "[REC]" || dev.state == "[侧载]" || dev.state == "[未知]")
+    {
+        basePage *devControl = new basePage(parent);
+        devControl->isBasePage = true;
+        //activatorPage *activator = new activatorPage(parent);
+        devControl->whoYouAre("devControl");
+        int val[20] = {1};
+        devControl->setEnableValue(val);
+        devControl->setDev(dev);
 
-    pageListItem *power = new pageListItem(devControl);
-    power->setText("电源","adb reboot <n>");
-    power->setPic(":/ico/image/ico/shut-down-line.svg");
-    power->setSelectable();
-    devControl->addItemsToList(power);
+        pageListItem *power = new pageListItem(devControl);
+        power->setText("电源","adb reboot <n>");
+        power->setPic(":/ico/image/ico/shut-down-line.svg");
+        power->setSelectable();
+        devControl->addItemsToList(power);
 
-    pageListItem *btnEmulate = new pageListItem(devControl);
-    btnEmulate->setText("按键模拟","adb shell input keyevent <key>");
-    btnEmulate->setPic(":/ico/image/ico/drag-move-line.svg");
-    btnEmulate->setSelectable();
-    devControl->addItemsToList(btnEmulate);
+        return devControl;
+    }
+    else
+    {
+        basePage *devControl = new basePage(parent);
+        devControl->isBasePage = true;
+        //activatorPage *activator = new activatorPage(parent);
+        devControl->whoYouAre("devControl");
+        int val[20] = {1,2};
+        devControl->setEnableValue(val);
+        devControl->setDev(dev);
 
-    return devControl;
+        pageListItem *power = new pageListItem(devControl);
+        power->setText("电源","adb reboot <n>");
+        power->setPic(":/ico/image/ico/shut-down-line.svg");
+        power->setSelectable();
+        devControl->addItemsToList(power);
+
+        pageListItem *btnEmulate = new pageListItem(devControl);
+        btnEmulate->setText("按键模拟","adb shell input keyevent <key>");
+        btnEmulate->setPic(":/ico/image/ico/drag-move-line.svg");
+        btnEmulate->setSelectable();
+        devControl->addItemsToList(btnEmulate);
+
+        return devControl;
+    }
 }
+
 
 basePage* pageMaker::createPage_recovery(QWidget *parent, device dev)
 {
@@ -385,13 +438,6 @@ basePage* pageMaker::createPage_recovery(QWidget *parent, device dev)
     power->setSelectable();
     recovery->addItemsToList(power);
 
-    /*
-    pageListItem *btnEmulate = new pageListItem(recovery);
-    btnEmulate->setText("按键模拟","adb shell input keyevent <key>");
-    btnEmulate->setPic(":/ico/image/ico/refund-line.svg");
-    btnEmulate->setSelectable();
-    recovery->addItemsToList(btnEmulate);*/
-
     return recovery;
 }
 
@@ -401,7 +447,7 @@ basePage* pageMaker::createPage_advanced(QWidget *parent, device dev)
     advanced->isBasePage = true;
     //activatorPage *activator = new activatorPage(parent);
     advanced->whoYouAre("advanced");
-    int val[20] = {1,2};
+    int val[20] = {1};
     advanced->setEnableValue(val);
     advanced->setDev(dev);
 
@@ -410,12 +456,6 @@ basePage* pageMaker::createPage_advanced(QWidget *parent, device dev)
     customize_command->setPic(":/ico/image/ico/code-s-slash-line.svg");
     customize_command->setSelectable();
     advanced->addItemsToList(customize_command);
-
-    pageListItem *open_cmd = new pageListItem(advanced);
-    open_cmd->setText("命令行","cmd");
-    open_cmd->setPic(":/ico/image/ico/terminal-box-line.svg");
-    open_cmd->setSelectable();
-    advanced->addItemsToList(open_cmd);
 
     /*
     pageListItem *btnEmulate = new pageListItem(recovery);
@@ -431,6 +471,25 @@ basePage* pageMaker::createPage_about(QWidget *parent)
 {
     about* abt = new about(parent);
     return abt;
+}
+
+basePage* pageMaker::createPage_disabled(QWidget *parent)
+{
+    basePage *disabled = new basePage(parent);
+    disabled->isBasePage = true;
+    disabled->whoYouAre("disabled");
+    int val[20] = {};
+    //qDebug() << "!!!!!!!!!!!!!!!!!!!" << *val;
+    disabled->setEnableValue(val);
+    /**/
+
+    pageListItem *productModel = new pageListItem(disabled);
+    //qDebug() << "dev of pageMaker" << dev.addr;
+    productModel->setText("设备未开机","功能暂不可用");
+    productModel->setPic(":/ico/image/ico/close-circle-line.svg");
+    disabled->addItemsToList(productModel);
+
+    return disabled;
 }
 
 pageMaker::pageListItemStruct* pageMaker::initStruct(QWidget* parent)

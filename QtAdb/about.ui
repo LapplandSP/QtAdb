@@ -112,7 +112,7 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
              </font>
             </property>
             <property name="text">
-             <string>测试版本：beta-v0.4</string>
+             <string>测试版本：beta-v0.5</string>
             </property>
            </widget>
           </item>

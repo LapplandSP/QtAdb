@@ -11,6 +11,7 @@ btnEmulator::btnEmulator(QWidget *parent) :
     explainer = new textExplainer();
     this->setStyleSheet("QToolTip{border:1px solid #BDBDBD; background-color: #ffffff; color:rgba(117, 117, 117, 0.9);font-family: MiSans Medium; font-size:12px;border-radius:4px;}");
 
+
     setStyles();
 }
 
@@ -217,6 +218,7 @@ void btnEmulator::setStyles()
     setShadow(ui->btn_calender);
     setShadow(ui->btn_calc);
     setShadow(ui->back_to_basePage);
+    setShadow(ui->tips);
 
     setShadow(ui->label);
     setShadow(ui->label_2);

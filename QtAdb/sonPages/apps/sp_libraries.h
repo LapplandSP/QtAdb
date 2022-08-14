@@ -6,6 +6,8 @@
 #include <QGraphicsDropShadowEffect>
 //#include <QAbstractItemView>
 #include "../../threads/adbthread.h"
+#include <QScrollBar>
+#include <QFile>
 
 namespace Ui {
 class sp_libraries;

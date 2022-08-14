@@ -72,6 +72,8 @@ private slots:
     void on_WSABtn_clicked();
     void slot_taiChi();
 
+    void on_cmdBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
 

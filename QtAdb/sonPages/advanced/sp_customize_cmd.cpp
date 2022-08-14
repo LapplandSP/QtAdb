@@ -13,7 +13,6 @@ sp_customize_cmd::sp_customize_cmd(QWidget *parent) :
     QGraphicsDropShadowEffect *shadowEffect_runBtn = new QGraphicsDropShadowEffect(this);
     QGraphicsDropShadowEffect *shadowEffect_showOutputBtn = new QGraphicsDropShadowEffect(this);
     QGraphicsDropShadowEffect *shadowEffect_back_to_basePage = new QGraphicsDropShadowEffect(this);
-    QGraphicsDropShadowEffect *shadowEffect_refreshBtn = new QGraphicsDropShadowEffect(this);
 
     shadowEffect_runBtn->setOffset(0,0);
     shadowEffect_runBtn->setColor(Qt::gray);
@@ -27,14 +26,9 @@ sp_customize_cmd::sp_customize_cmd(QWidget *parent) :
     shadowEffect_back_to_basePage->setColor(Qt::gray);
     shadowEffect_back_to_basePage->setBlurRadius(5);
 
-    shadowEffect_refreshBtn->setOffset(0,0);
-    shadowEffect_refreshBtn->setColor(Qt::gray);
-    shadowEffect_refreshBtn->setBlurRadius(5);
-
     ui->back_to_basePage->setGraphicsEffect(shadowEffect_back_to_basePage);
     ui->runBtn->setGraphicsEffect(shadowEffect_runBtn);
     ui->showOutputBtn->setGraphicsEffect(shadowEffect_showOutputBtn);
-    ui->refreshBtn->setGraphicsEffect(shadowEffect_refreshBtn);
 
     QGraphicsDropShadowEffect *shadowEffect_textBrowser = new QGraphicsDropShadowEffect(this);
     shadowEffect_textBrowser->setOffset(0,0);

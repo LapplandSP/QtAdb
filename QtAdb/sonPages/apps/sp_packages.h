@@ -9,6 +9,8 @@
 #include <QFileDialog>
 #include "../../threads/adbthread.h"
 #include "tp_packageprofile.h"
+#include <QScrollBar>
+#include <QFile>
 /*
 struct package
 {

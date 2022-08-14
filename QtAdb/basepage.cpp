@@ -53,8 +53,25 @@ basePage::basePage(QWidget *parent) :
                                 "QListWidget::item:hover{background-color:rgba(255,255,255,0.7);}"
                                 "QListWidget::item::selected{background-color:rgba(255,255,255,0.5);color:black;}"
      * */
-    ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    ui->listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    ui->listWidget->setViewMode(QListView::ListMode);
+    ui->listWidget->setFlow(QListView::TopToBottom);
+    ui->listWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    //ui->listWidget->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    ui->listWidget->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+
+    QFile file("://qss/scrollbar.qss");
+    file.open(QFile::ReadOnly);
+    ui->listWidget->verticalScrollBar()->setStyleSheet(file.readAll());
+    //QScroller::grabGesture(ui->listWidget,QScroller::LeftMouseButtonGesture);
+
+    /*
+    view->setViewMode(QListView::ListMode);
+    view->setFlow(QListView::TopToBottom);
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setHorizontalScrollMode(QListWidget::ScrollPerPixel);
+    QScroller::grabGesture(view,QScroller::LeftMouseButtonGesture);
+    */
 
     connect(ui->listWidget,SIGNAL(currentRowChanged(int)),this,SLOT(slot_createSonPage(int)));
     /*透明度动画
@@ -100,6 +117,13 @@ void basePage::setFather(QWidget *parent)
 
 void basePage::slot_createSonPage(int key)
 {
+    this->setDisabled(true);
+
+    listTimer = new QTimer(this);
+    connect(listTimer, SIGNAL(timeout()), this, SLOT(unlock()));
+    listTimer->setSingleShot(true);
+    listTimer->start(500);
+
     emit creatingSonPage();
     if(isEnable(key) && key >= 0)
     {
@@ -112,15 +136,16 @@ void basePage::slot_createSonPage(int key)
             ui->mainLayout->addWidget(sonPage);
         }
     }
-    //ui->listWidget->setCurrentRow(-1);
+    ui->listWidget->setCurrentRow(-1);
 }
 
 void basePage::slot_destroySonPage()
 {
+
     if(sonPage == NULL)
         throw "trying to destroy sonPage, but sonPage == NULL;";
 
-    sonPage->~QWidget();
+    delete sonPage;
     sonPage = NULL;
     ui->listWidget->setVisible(true);
 }
@@ -164,4 +189,9 @@ void basePage::self_castrate()
     delete ui->listWidget;
     delete ui->mainLayout;
     delete ui->verticalLayout;
+}
+
+void basePage::unlock()
+{
+    this->setDisabled(false);
 }

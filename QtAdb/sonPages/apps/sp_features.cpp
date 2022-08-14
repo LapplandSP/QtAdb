@@ -30,7 +30,9 @@ sp_features::sp_features(QWidget *parent) :
 
     ui->back_to_basePage->setGraphicsEffect(shadowEffect_back_to_basePage);
     ui->refreshBtn->setGraphicsEffect(shadowEffect_refreshBtn);
-
+    QFile file("://qss/scrollbar.qss");
+    file.open(QFile::ReadOnly);
+    ui->listView->verticalScrollBar()->setStyleSheet(file.readAll());
 }
 
 sp_features::~sp_features()

@@ -14,6 +14,8 @@ tp_packageProfile::tp_packageProfile(QWidget *parent ,QString packageName) :
 
     thread_file = new adbThread();
 
+    //this->setStyleSheet("background-color:white;");
+
 
     thread_installer = new adbThread();
 
@@ -21,6 +23,17 @@ tp_packageProfile::tp_packageProfile(QWidget *parent ,QString packageName) :
     ui->lineEdit_name->isReadOnly();
     ui->lineEdit_installer->isReadOnly();
     ui->lineEdit_path->isReadOnly();
+
+    setShadow(ui->label);
+    setShadow(ui->label_2);
+    setShadow(ui->label_3);
+    setShadow(ui->tips);
+    setShadow(ui->uninstall);
+    setShadow(ui->clear);
+    setShadow(ui->enable);
+    setShadow(ui->disable);
+
+    //this->setStyleSheet("background-color:white;");
 }
 
 tp_packageProfile::~tp_packageProfile()
@@ -40,40 +53,89 @@ void tp_packageProfile::set_installer(QString s)
 
 void tp_packageProfile::on_uninstall_clicked()
 {
-    QString cmd = "adb shell pm uninstall ";
-    cmd.append(name);
-    process->run(cmd,dev);
+    if(uninstall_clicked)
+    {
+        ui->tips->setText("已执行「卸载」命令，本窗口将关闭");
 
-    emit packageChanged();
-    this->close();
+        QString cmd = "adb shell pm uninstall ";
+        cmd.append(name);
+        process->run(cmd,dev);
+
+        emit packageChanged();
+        this->close();
+
+        uninstall_clicked = false;
+    }
+    else
+    {
+        ui->tips->setText("再次点击以卸载，卸载后本窗口将关闭");
+        uninstall_clicked = true;
+    }
 }
 
 
 void tp_packageProfile::on_clear_clicked()
 {
-    QString cmd = "adb shell pm clear ";
-    cmd.append(name);
-    process->run(cmd,dev);
+    if(clear_clicked)
+    {
+        ui->tips->setText("已执行「清除应用数据」命令");
+
+        QString cmd = "adb shell pm clear ";
+        cmd.append(name);
+        process->run(cmd,dev);
+
+        clear_clicked = false;
+    }
+    else
+    {
+        ui->tips->setText("再次点击以清除");
+        clear_clicked = true;
+    }
 }
 
 
 void tp_packageProfile::on_enable_clicked()
 {
-    QString cmd = "adb shell pm enable ";
-    cmd.append(name);
-    process->run(cmd,dev);
+    if(enable_clicked)
+    {
+        ui->tips->setText("已执行「启用」命令");
 
-    emit packageChanged();
+        QString cmd = "adb shell pm enable ";
+        cmd.append(name);
+        process->run(cmd,dev);
+
+        emit packageChanged();
+
+        enable_clicked = false;
+    }
+    else
+    {
+        ui->tips->setText("再次点击以启用");
+        enable_clicked = true;
+    }
 }
 
 
 void tp_packageProfile::on_disable_clicked()
 {
-    QString cmd = "adb shell pm disable ";
-    cmd.append(name);
-    process->run(cmd,dev);
+    if(disable_clicked)
+    {
+        ui->tips->setText("已执行「停用」命令");
 
-    emit packageChanged();
+        QString cmd = "adb shell pm disable ";
+        cmd.append(name);
+        process->run(cmd,dev);
+
+        emit packageChanged();
+
+        disable_clicked = false;
+    }
+    else
+    {
+        ui->tips->setText("再次点击以停用");
+        disable_clicked = true;
+    }
+
 }
 
 void tp_packageProfile::setDevice(device d)
@@ -91,4 +153,13 @@ void tp_packageProfile::setDevice(device d)
     thread_installer->initThread(command_installer , dev);
     connect(thread_installer,SIGNAL(signal_output(QString)),this,SLOT(set_installer(QString)));
     thread_installer->start();
+}
+
+void tp_packageProfile::setShadow(QWidget* wgt)
+{
+    QGraphicsDropShadowEffect *shadowEffect_widget = new QGraphicsDropShadowEffect(this);
+    shadowEffect_widget->setOffset(0,0);
+    shadowEffect_widget->setColor(Qt::gray);
+    shadowEffect_widget->setBlurRadius(5);
+    wgt->setGraphicsEffect(shadowEffect_widget);
 }

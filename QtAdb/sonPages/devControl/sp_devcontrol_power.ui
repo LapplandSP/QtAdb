@@ -17,6 +17,9 @@
    <property name="leftMargin">
     <number>0</number>
    </property>
+   <property name="topMargin">
+    <number>11</number>
+   </property>
    <property name="rightMargin">
     <number>0</number>
    </property>
@@ -29,6 +32,9 @@ border:0px solid #BDBDBD;</string>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <property name="leftMargin">
+       <number>11</number>
+      </property>
+      <property name="topMargin">
        <number>11</number>
       </property>
       <property name="rightMargin">
@@ -88,7 +94,6 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
             </property>
             <property name="font">
              <font>
-              <family>MiSans Normal</family>
               <pointsize>12</pointsize>
              </font>
             </property>
@@ -148,7 +153,6 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
             </property>
             <property name="font">
              <font>
-              <family>MiSans Normal</family>
               <pointsize>12</pointsize>
              </font>
             </property>
@@ -208,7 +212,6 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
             </property>
             <property name="font">
              <font>
-              <family>MiSans Normal</family>
               <pointsize>12</pointsize>
              </font>
             </property>
@@ -268,7 +271,6 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
             </property>
             <property name="font">
              <font>
-              <family>MiSans Normal</family>
               <pointsize>12</pointsize>
              </font>
             </property>

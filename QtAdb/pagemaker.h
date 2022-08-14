@@ -25,7 +25,7 @@ public:
 
 
     basePage *createPage_devInfo(QWidget *parent, device dev);
-    basePage *createPage_devInfo_powerdown(QWidget *parent, device dev);
+    basePage *createPage_devInfo_rec(QWidget *parent, device dev);
 
     basePage *createPage_acvitator(QWidget *parent, device dev);
     basePage *createPage_apps(QWidget *parent,device dev);
@@ -37,6 +37,8 @@ public:
     basePage *createPage_advanced(QWidget *parent, device dev);
 
     basePage *createPage_about(QWidget *parent);
+
+    basePage *createPage_disabled(QWidget *parent);
 
 
     //activatorPage *createSonPage_activator(QWidget *parent, device dev);

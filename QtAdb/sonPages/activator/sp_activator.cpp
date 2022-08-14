@@ -42,11 +42,20 @@ sp_activator::sp_activator(QWidget *parent) :
     shadowEffect_textBrowser->setColor(Qt::gray);
     shadowEffect_textBrowser->setBlurRadius(5);
     ui->textBrowser->setGraphicsEffect(shadowEffect_textBrowser);
+
+    QFile file("://qss/scrollbar.qss");
+    file.open(QFile::ReadOnly);
+    ui->textBrowser->verticalScrollBar()->setStyleSheet(file.readAll());
 }
 
 sp_activator::~sp_activator()
 {
     //delete process;
+    if(page != NULL)
+    {
+        delete page;
+    }
+
     delete ui;
 }
 
@@ -73,6 +82,7 @@ void sp_activator::on_showOutputBtn_clicked(bool checked)
     if(checked)
     {
         page = new standardOutputPage(NULL,process);
+        connect(process,SIGNAL(outputGet(QString)),page,SLOT(update(QString)));
         /*
         parents->mapToGlobal(parents->pos());
         page->move(parents->pos().x() + parents->width() + this->width()/2 + 22,0);*/

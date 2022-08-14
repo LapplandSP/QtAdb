@@ -5,6 +5,7 @@
 #include "adbprocess.h"
 #include "textexplainer.h"
 #include "devInfo/sp_dpichanger.h"
+#include "devInfo/sp_wmsize.h"
 #include "activator/sp_activator.h"
 #include "apps/sp_installer.h"
 #include "apps/sp_permissiongroups.h"
@@ -32,7 +33,7 @@ public:
 
 private:
 
-    sp_dpiChanger* createSonPageFor_devInfo(QWidget *parent, int key, device dev);
+    QWidget* createSonPageFor_devInfo(QWidget *parent, int key, device dev);
     sp_activator* createSonPageFor_activator(QWidget *parent, int key, device dev);
     QWidget* createSonPageFor_apps(QWidget *parent, int key, device dev);
     QWidget* createSonPageFor_devControl(QWidget *parent, int key, device dev);

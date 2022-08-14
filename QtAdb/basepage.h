@@ -5,6 +5,9 @@
 #include <QGraphicsEffect>
 #include <QGraphicsOpacityEffect>
 #include <QPropertyAnimation>
+#include <QScroller>
+#include <QScrollBar>
+
 #include "pagelistitem.h"
 #include "sonPages/sonpagemanager.h"
 #include "animationwidget.h"
@@ -51,6 +54,8 @@ private:
 
     bool isEnable(int k);
 
+    QTimer *listTimer;
+
     //QGraphicsOpacityEffect* exitOpacity;
 
 public slots:
@@ -61,6 +66,7 @@ public slots:
 private slots:
     void slot_createSonPage(int key);
     void slot_destroySonPage();
+    void unlock();
 };
 
 #endif // BASEPAGE_H

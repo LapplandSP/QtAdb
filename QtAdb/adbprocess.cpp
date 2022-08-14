@@ -156,6 +156,7 @@ QString adbProcess::run(QString command, device dev)                   //Adb 命
     explainer->explainOutput(output , thread);
 
     emit outputGet(output);
+    //qDebug() << "run output:" << output << "\n";
     return output;
 }
 
@@ -398,6 +399,9 @@ void adbProcess::on_readerror()
 {
     QString text = this->readAllStandardError().data();
     explainer->explainError(text);
+
+    emit outputGet(text);
+    qDebug() << "error on adb process:" << text << "\n";
     //if(text.contains(""))
     //QMessageBox::information(0, "Error", this->readAllStandardError().data());
 }
