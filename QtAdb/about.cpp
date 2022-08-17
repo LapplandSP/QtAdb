@@ -5,9 +5,8 @@ about::about(QWidget *parent) :
     basePage(parent),
     ui(new Ui::about)
 {
-    ui->setupUi(this);
-
     self_castrate();
+    ui->setupUi(this);
 
     QGraphicsDropShadowEffect *shadowEffect_btn_website = new QGraphicsDropShadowEffect(this);
     shadowEffect_btn_website->setOffset(0,0);
@@ -58,6 +57,9 @@ about::about(QWidget *parent) :
     ui->btn_money->hide();
     ui->btn_money_3->hide();
     ui->btn_money_4->hide();
+
+    this->setStyleSheet("QToolTip{border:1px solid #BDBDBD; background-color: #ffffff; color:rgba(117, 117, 117, 0.9);font-family: MiSans Medium; font-size:12px;border-radius:4px;}");
+
 }
 
 about::~about()

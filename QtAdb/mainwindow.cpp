@@ -36,11 +36,22 @@ MainWindow::MainWindow(QWidget *parent)
     addIndexItems();    //设置左侧目录
     setStyles();        //设置样式
 
-
     /*初始化对象*/
     process = new adbProcess();
     explainer = new textExplainer();
     maker = new pageMaker();
+    listener = new usb_listener();
+
+    //connect(listener, SIGNAL(DevicePlugIn()),this,SLOT(DevicePlugIn()));
+    //connect(listener, SIGNAL(DevicePlugOut()),this,SLOT(DevicePlugOut()));
+    connect(listener, SIGNAL(DeviceChanged()),this,SLOT(refreshDevListLater()));
+    connect(this, SIGNAL(adbDeviceChanged()),this,SLOT(DeviceChanged()));
+    qApp->installNativeEventFilter(listener);
+
+    //listener->EmitMySignal();
+    this->setAttribute(Qt::WA_NativeWindow);
+
+    /*启动监听*/
 
     /*启动ADB，将延长页面创建时间，在此期间显示启动界面，显示了个勾八*/
     process->run("adb server");
@@ -75,9 +86,97 @@ void MainWindow::initEnvironmentPATH()              //方法：设置环境变�
 
 void MainWindow::refreshDevList()                   //方法：刷新设备列表
 {
-    ui->comboBox->clear();
+    //ui->comboBox->clear();
+    /*DEBUG*/
+    bool changed = false;
+    qDebug() << "******************一次调用*********************";
+    qDebug() << "refreshDevList devList is empty? " << devList.isEmpty() << QTime::currentTime();
+    qDebug() << "devList.size()" << devList.size();
+
+    for(int i = 0; i < devList.size();i++)
+    {
+        qDebug() << "devList[" << i << "] is :" << devList[i].addr;
+    }
+
+    /*DEBUG_END*/
+    qDebug() << "shit 0";
+    bool devList_is_empty = devList.isEmpty();
+
+    QList<device> tmpList;
+
+    /*给tmpList赋值*/
+    if(!devList_is_empty)
+    {
+        for(int i = 0; i < devList.size();i++)
+        {
+            qDebug() << "shit 3.1";
+            device dev;
+            dev.device_debug = devList[i].device_debug;
+            dev.device_product = devList[i].device_product;
+            dev.addr = devList[i].addr;
+            dev.model = devList[i].model;
+            dev.state = devList[i].state;
+            dev.transport_id = devList[i].transport_id;
+            tmpList.append(dev);
+        }
+    }
+    qDebug() << "tmpList.size()" << tmpList.size();
+
+    //ui->comboBox->clear();
     devList.clear();            //清空设备列表
     devList = explainer->getDevList_windows(process->run("adb devices -l"));    //重新赋值
+    qDebug() << "devList after explain:" << devList.isEmpty();
+
+    /*
+    qDebug() << "shit 1";
+    for(int i = 0; i < tmpList.size();i++)
+    {
+        qDebug() << "shit 2";
+        qDebug() << "tmpList[" << i << "] is :" << devList[i].addr;
+    }
+    for(int i = 0; i < devList.size();i++)
+    {
+        qDebug() << "shit 3";
+        qDebug() << "devList new[" << i << "] is :" << devList[i].addr;
+    }
+    qDebug() << "shit finish";*/
+
+
+    /*判断列表内容是否变化，若变化则发送 adbDeviceChanged 信号*/
+    if(!devList_is_empty)
+    {
+        if(devList.size() == tmpList.size())
+        {
+            for(int i = 0; i < devList.size() && i < tmpList.size() ; i++)
+            {
+                if(devList[i].addr != tmpList[i].addr)
+                {
+                    emit adbDeviceChanged();
+                    changed = true;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            emit adbDeviceChanged();
+            changed = true;
+        }
+    }
+    else if(!devList.isEmpty() && tmpList.isEmpty())
+    {
+        emit adbDeviceChanged();
+        changed = true;
+    }
+    else if(devList.isEmpty() && !tmpList.isEmpty())
+    {
+        emit adbDeviceChanged();
+        changed = true;
+    }
+    else
+    {
+        qDebug() << "else:" << devList.isEmpty() << tmpList.isEmpty() << devList_is_empty;
+    }
 
     QList<int> off;    //未响应设备索引
 
@@ -89,6 +188,7 @@ void MainWindow::refreshDevList()                   //方法：刷新设备列�
     {
         QString devItem = devList[i].state + " " + explainer->get_words_after(devList[i].model, ":") + " " + devList[i].addr;
         l.append(devItem);
+        qDebug() << "l[" << i << "] = " << l[i];
         if(devList[i].state == "[未响应]")
         {
             off.append(i);
@@ -99,7 +199,21 @@ void MainWindow::refreshDevList()                   //方法：刷新设备列�
         }
     }
 
-    ui->comboBox->addItems(l);
+    if(changed)
+    {
+        qDebug() <<"changed so clear";
+        ui->comboBox->clear();
+        ui->comboBox->addItems(l);
+    }
+
+    if(!liangYi)
+    {
+        qDebug() <<"liangYi so clear";
+        ui->comboBox->clear();
+        ui->comboBox->addItems(l);
+    }
+
+    liangYi = false;
 
     for(int i = 0; i < off.count();i++)
     {
@@ -115,6 +229,10 @@ void MainWindow::refreshDevList()                   //方法：刷新设备列�
     {
         current_device = 0;
     }
+
+    liangYi = false;
+
+    qDebug() << "******************一次调用结束*********************";
 }
 
 void MainWindow::on_refreshButton_clicked()         //槽：按下刷新按钮
@@ -130,7 +248,6 @@ void MainWindow::on_refreshButton_clicked()         //槽：按下刷新按钮
     }*/
 
     initBasePage(6);
-    qDebug() <<"8";
 }
 
 void MainWindow::setCurrentDevice(int index)        //槽：改变所选设备
@@ -539,4 +656,61 @@ void MainWindow::on_cmdBtn_clicked()
     QProcess batProcess;
     batProcess.start(batPath);
     batProcess.waitForFinished();
+}
+
+void MainWindow::DevicePlugIn()
+{
+    qDebug() << "DevicePlugIn";
+}
+
+void MainWindow::DevicePlugOut()
+{
+    qDebug() << "DevicePlugout";
+}
+
+void MainWindow::DeviceChanged()
+{
+    if(firstBoot == true)
+    {
+        firstBoot = false;
+    }
+    else
+    {
+        QMessageBox::StandardButton result=QMessageBox::warning(NULL, "检测到USB热插拔","您可能插入或拔出了一台ADB设备\n"
+                                                                                   "将对设备列表进行刷新\n"
+                                                                                   "（⚠️这会中断当前正在执行的任务）");
+
+        //msgBox->setStyleSheet("background-color:rgba(255,255,255,1);border:0px; border-radius:0px;");
+        //QMessageBox::StandardButton result=QMessageBox::warning(this, "Title","text");
+        //qDebug() << "result =" << result;
+        if(result)
+        {
+            //这里要delete adbprocess
+            on_refreshButton_clicked();
+        }
+        else
+        {
+
+        }
+        //qDebug() << "DeviceChanged";
+    }
+}
+
+void MainWindow::slot_refreshDevList()
+{
+    //qDebug() << "slot_refreshDevList";
+    liangYi = true;
+    refreshDevList();
+}
+
+
+void MainWindow::refreshDevListLater()
+{
+
+    //qDebug() << ">>>>>>>>>>>>>>>>>>>>>>refreshDevListLater";
+    QTimer *timer = new QTimer();
+    connect(timer, SIGNAL(timeout()), this, SLOT(slot_refreshDevList()));
+    timer->setSingleShot(true);
+    timer->start(1000);
+    //timer->deleteLater();
 }

@@ -21,6 +21,7 @@ sp_installer::sp_installer(QWidget *parent) :
     QGraphicsDropShadowEffect *shadowEffect_back_to_basePage = new QGraphicsDropShadowEffect(this);
     QGraphicsDropShadowEffect *shadowEffect_refreshBtn = new QGraphicsDropShadowEffect(this);
     QGraphicsDropShadowEffect *shadowEffect_selectBtn = new QGraphicsDropShadowEffect(this);
+    QGraphicsDropShadowEffect *shadowEffect_tips = new QGraphicsDropShadowEffect(this);
 
     shadowEffect_runBtn->setOffset(0,0);
     shadowEffect_runBtn->setColor(Qt::gray);
@@ -42,11 +43,16 @@ sp_installer::sp_installer(QWidget *parent) :
     shadowEffect_selectBtn->setColor(Qt::gray);
     shadowEffect_selectBtn->setBlurRadius(5);
 
+    shadowEffect_tips->setOffset(0,0);
+    shadowEffect_tips->setColor(Qt::green);
+    shadowEffect_tips->setBlurRadius(5);
+
     ui->back_to_basePage->setGraphicsEffect(shadowEffect_back_to_basePage);
     ui->runBtn->setGraphicsEffect(shadowEffect_runBtn);
     ui->showOutputBtn->setGraphicsEffect(shadowEffect_showOutputBtn);
     ui->refreshBtn->setGraphicsEffect(shadowEffect_refreshBtn);
     ui->selectBtn->setGraphicsEffect(shadowEffect_selectBtn);
+    ui->tips->setGraphicsEffect(shadowEffect_tips);
 
     /*
     QGraphicsDropShadowEffect *shadowEffect_widget = new QGraphicsDropShadowEffect();

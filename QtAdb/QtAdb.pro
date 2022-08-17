@@ -1,4 +1,5 @@
 QT       += core gui
+QT += serialport
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -38,6 +39,7 @@ SOURCES += \
     textexplainer.cpp \
     threads/adbthread.cpp \
     threads/thread_createpage.cpp \
+    usb_listener.cpp \
     welcomepage.cpp
 
 HEADERS += \
@@ -70,6 +72,7 @@ HEADERS += \
     textexplainer.h \
     threads/adbthread.h \
     threads/thread_createpage.h \
+    usb_listener.h \
     welcomepage.h
 
 FORMS += \

@@ -204,6 +204,37 @@ QProgressBar:chunk{
          </spacer>
         </item>
         <item>
+         <widget class="QLabel" name="tips">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>MiSans Medium</family>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color:rgba(255,255,255,0.6);border-radius:4px;border:0px;</string>
+          </property>
+          <property name="text">
+           <string>执行时切勿插拔设备</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="QPushButton" name="back_to_basePage">

@@ -89,7 +89,7 @@ void sp_recovery::on_runBtn_clicked()
 {
     //qDebug() << "enter runBtn slot";
     ui->progressBar->setVisible(true);
-    ui->output->setText("正在刷入，请在设备端查看进度");
+    ui->output->setText("正在刷入，请在设备端查看进度，切勿插拔设备");
 
     QString command;
 
@@ -109,21 +109,6 @@ void sp_recovery::on_runBtn_clicked()
 
 
     this->setDisabled(true);
-
-    /*
-    pageListItemStruct *productModel = initStruct(devInfo);
-    productModel->item->setText_title("设备型号 | DeviceModel");
-    productModel->item->setPic(":/ico/image/ico/profile-line.svg");
-    productModel->thread->initThread("adb shell getprop ro.product.model", dev);
-    QEventLoop::connect(productModel->thread,SIGNAL(signal_output(QString)),productModel->item,SLOT(slot_setText_profile(QString)));
-    //QEventLoop::connect(devInfo,SIGNAL(animationEnd()),productModel->item,SLOT(slot_setStyles()));
-    productModel->thread->start();
-    devInfo->addItemsToList(productModel->item);
-    //qDebug() << "item is in thread" << productModel->item->thread();*/
-
-    //qDebug() << "command: " << command;
-    //qDebug() << "running";
-    //process->run_contains_empty(command, dev);
 
     zipPath.clear();
     labelDisplay.clear();

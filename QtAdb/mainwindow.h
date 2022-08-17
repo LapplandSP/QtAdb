@@ -1,5 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+/*
+#define 布尔 bool
+#define 为 =
+#define 真 true*/
 
 #include <QMainWindow>
 #include <QDir>
@@ -14,8 +18,8 @@
 #include "indexlistitem.h"
 #include "basepage.h"
 #include "pagemaker.h"
-#include "threads/thread_createpage.h"
 #include "about.h"
+#include "usb_listener.h"
 
 #include <QCoreApplication>
 #include <QStringList>
@@ -33,6 +37,7 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 signals:
+    void adbDeviceChanged();
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -48,7 +53,6 @@ public:
     QLineEdit * le_ipAddr;
     QLineEdit * le_port;
     QLineEdit * le_code;
-
 
     int current_device;
     QList<device> devList;
@@ -81,12 +85,28 @@ private:
     void addIndexItems();
     void setStyles();
 
-    bool taiChi = true;
+    bool taiChi = true;     //界面锁定定时器
+    bool liangYi = false;   //判断刷新按钮槽函数是被谁调用：false：click（）调用 ； true： 自行connect（）
+    bool bagua = true;      //忘了是干啥的了
+
+    //布尔 太极 为 真;
+
+
+    bool firstBoot = true;
     QTimer *taiChiTimer;
+    QTimer *baguaTimer;
 
     basePage * currentPage;
     animationWidget * tmpPage;
     about * WCMPage2;
+    usb_listener *listener;
+
+public slots:
+    void DevicePlugIn();
+    void DevicePlugOut();
+    void DeviceChanged();
+    void slot_refreshDevList();
+    void refreshDevListLater();
 };
 
 #endif // MAINWINDOW_H
