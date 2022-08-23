@@ -72,6 +72,12 @@
         <file>image/ico/logo.svg</file>
         <file>image/ico/code-s-slash-line.svg</file>
         <file>image/ico/share-box-line.svg</file>
+        <file>image/ico/user-line.svg</file>
+        <file>image/ico/user-settings-line.svg</file>
+        <file>image/ico/signal-wifi-error-line.svg</file>
+        <file>image/ico/donut-chart-line.svg</file>
+        <file>image/ico/layout-top-2-line.svg</file>
+        <file>image/ico/stack-line.svg</file>
     </qresource>
     <qresource prefix="/test">
         <file>image/test/back.png</file>
@@ -88,5 +94,37 @@
         <file>image/activatorApps/island.png</file>
         <file>image/activatorApps/shizuku.png</file>
         <file>image/activatorApps/taichi.png</file>
+        <file>image/activatorApps/scene5.png</file>
+        <file>image/activatorApps/watchfps.png</file>
+        <file>image/activatorApps/permissiondog.png</file>
+        <file>image/activatorApps/hail.png</file>
+        <file>image/activatorApps/bg.png</file>
+        <file>image/activatorApps/apkinstaller.png</file>
+    </qresource>
+    <qresource prefix="/linkIcons">
+        <file>image/webicons/android.png</file>
+        <file>image/webicons/cheri.png</file>
+        <file>image/webicons/crd.png</file>
+        <file>image/webicons/dot.png</file>
+        <file>image/webicons/evoX.png</file>
+        <file>image/webicons/havoc.png</file>
+        <file>image/webicons/nus.png</file>
+        <file>image/webicons/OF.png</file>
+        <file>image/webicons/OFlogo.svg</file>
+        <file>image/webicons/paranoid.png</file>
+        <file>image/webicons/pp.png</file>
+        <file>image/webicons/projectarcana.png</file>
+        <file>image/webicons/rr.png</file>
+        <file>image/webicons/spark.svg</file>
+        <file>image/webicons/syb.png</file>
+        <file>image/webicons/twrp.png</file>
+        <file>image/webicons/atmb.png</file>
+        <file>image/webicons/jamcz.png</file>
+        <file>image/webicons/los.png</file>
+        <file>image/webicons/lsposed.png</file>
+        <file>image/webicons/magisk.png</file>
+        <file>image/webicons/pe.png</file>
+        <file>image/webicons/scrcpy.svg</file>
+        <file>image/webicons/MIUI.png</file>
     </qresource>
 </RCC>

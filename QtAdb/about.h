@@ -7,6 +7,7 @@
 #include "basepage.h"
 #include "sonPages/pay.h"
 #include "animationwidget.h"
+#include "sonPages/links.h"
 
 namespace Ui {
 class about;
@@ -28,6 +29,8 @@ private slots:
     void on_btn_github_clicked();
 
     void on_btn_money_2_clicked();
+
+    void on_btn_links_clicked();
 
 private:
     Ui::about *ui;

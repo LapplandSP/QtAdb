@@ -13,10 +13,15 @@
 #include "apps/sp_packages.h"
 #include "apps/sp_features.h"
 #include "apps/sp_libraries.h"
+#include "apps/sp_users.h"
 #include "devControl/sp_devcontrol_power.h"
 #include "devControl/btnemulator.h"
 #include "recovery/sp_recovery.h"
 #include "advanced/sp_customize_cmd.h"
+#include "advanced/sp_accounts.h"
+#include "advanced/sp_captive_portal.h"
+#include "advanced/sp_scales.h"
+#include "advanced/sp_status_bar.h"
 
 
 class sonPageManager

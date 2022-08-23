@@ -118,6 +118,18 @@ QString textExplainer::get_words_after(QString str , QString key)
     return text;
 }
 
+QString textExplainer::get_words_before(QString str , QString key)
+{
+    QString text = str;
+    //qDebug() << "text is:" << text << "\n";
+    int index = str.indexOf(key);
+    //qDebug() << "index =" << index << "\n";
+    text = text.left(index);
+    //qDebug() << "key.size =" << key.size() << "\n";
+    text = text.simplified();
+    return text;
+}
+
 QString textExplainer::explain_cpu_output(QString str)
 {
     QString text = str;
@@ -148,7 +160,8 @@ bool textExplainer::explainError(QString err)
     /*启动*/
     else if(err.contains("daemon not running")){}
     else if(err.contains("daemon started successfully")){}
-    /*应用安装*/
+    else if(err.contains("doesn't match this client")){}
+    /*软件包*/
     else if(err.contains("install requires an argument"))
     {
         showMsgBox("提示"," · 请先选择安装包");
@@ -157,10 +170,23 @@ bool textExplainer::explainError(QString err)
     {
         showMsgBox("错误"," · 当前设备状态无法安装应用");
     }
+    else if(err.contains("Shell cannot change component state for") && err.contains("cmd: not found"))
+    {
+        showMsgBox("错误"," · 无法执行该指令");
+    }
+    /*用户*/
+    else if(err.contains("couldn't remove user id 0"))
+    {
+        showMsgBox("无法操作"," · 无法删除默认用户");
+    }
+    else if(err.contains("no user id specified"))
+    {
+        showMsgBox("未选择"," · 请先选择一个用户");
+    }
     /* 设备管理员 */
     else if(err.contains("Not allowed to set the device owner because there are already several users on the device"))
     {
-        showMsgBox("失败"," · 请先清除所有用户并关闭多用户模式");
+        showMsgBox("失败"," · 请先清除所有用户并关闭多用户模式  \n · 可在「软件包管理器」-「用户」中查看并删除用户  \n");
     }
     else if(err.contains("Unknown admin"))
     {
@@ -168,7 +194,7 @@ bool textExplainer::explainError(QString err)
     }
     else if(err.contains("Not allowed to set the device owner because there are already some accounts on the device"))
     {
-        showMsgBox("失败"," · 请先退出所有账户");
+        showMsgBox("失败"," · 请先退出所有账户  \n · 可在「其它」-「账户」中查看设备中的账户  \n · 或在设备设置中查看并退出账户  \n");
     }
     else if(err.contains("Trying to set the device owner, but device owner is already set."))
     {
@@ -206,10 +232,15 @@ bool textExplainer::explainError(QString err)
     {
         showMsgBox("完成"," · 成功\n · 你之所以会看到这条提示，是因为ADB本身将成功的消息以错误输出方式输出\n · 您无需关注此错误");
     }
+    else if(err.contains("Bad arguments"))
+    {
+        showMsgBox("错误"," · 参数有误");
+    }
     else
     {
         showMsgBox("错误"," · 未知错误！\n" + err +"\n · 若此处出现并不完整的报错或一大串包含 '.android.os'、'java' 等字样的错误，您可以视情况忽忽视它，并查阅另一条报错\n");
     }
+
     qDebug() << "<<<<<<<<<<<<<<<<ERROR>>>>>>>>>>>>>>>>" << "\n" << err;
     return true;
 }
@@ -280,12 +311,30 @@ QStringList textExplainer::explainPermissionGroups(QString s)
 {
     QStringList list;
     list = s.split("\n");
-    /*
-    for(int i = 0; i<=list.count(); i--)
-    {
-        qDebug() << "/+*********\nlist.count() = " << list.count() <<"\nbefore index out of range: \n i = " << i << "\n list[i] = "<< list[i] << "\n ***************+/";
-        QString tmpStr = get_words_after(list[i],"permission group:");
-        list[i] = tmpStr;
-    }*/
+
     return list;
+}
+
+QStringList textExplainer::explainAccounts(QString s)
+{
+    QStringList final;
+    QStringList classific_as_users;
+    classific_as_users = s.split("}:");
+
+    for(int i = 1; i<classific_as_users.count(); i++)
+    {
+        qDebug() << "/+*********\n classific_as_users.count() = " << classific_as_users.count() <<"\n before index out of range: \n i = " << i << "\n list[i] = "<< classific_as_users[i] << "\n ***************+/";
+        QStringList tmpList;
+        tmpList = get_words_before(classific_as_users[i],"AccountId,").split("Account ");
+        if(!tmpList.isEmpty())
+        {
+            QString num = QString::number(i-1);
+            tmpList[0] = tmpList[0].replace("Accounts:", "属于用户" + num + "的账户数量为：");
+        }
+
+        qDebug() << "tmpList =" << tmpList;
+        final.append(tmpList);
+        //classific_as_users[i] = tmpStr;
+    }
+    return final;
 }

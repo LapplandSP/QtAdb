@@ -61,7 +61,7 @@ border:0px solid #BDBDBD;</string>
             <property name="styleSheet">
              <string notr="true">border-radius: 4px;
 border:0px solid #BDBDBD;
-image: url(:/ico/image/ico/btnEmulator/menu-line.svg);</string>
+image: url(:/ico/image/ico/stack-line.svg);</string>
             </property>
             <property name="text">
              <string/>

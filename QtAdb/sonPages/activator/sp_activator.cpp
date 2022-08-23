@@ -46,6 +46,7 @@ sp_activator::sp_activator(QWidget *parent) :
     QFile file("://qss/scrollbar.qss");
     file.open(QFile::ReadOnly);
     ui->textBrowser->verticalScrollBar()->setStyleSheet(file.readAll());
+    ui->textBrowser->setTextInteractionFlags(Qt::NoTextInteraction);
 }
 
 sp_activator::~sp_activator()

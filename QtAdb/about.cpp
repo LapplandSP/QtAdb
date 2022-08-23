@@ -51,8 +51,14 @@ about::about(QWidget *parent) :
     shadowEffect_btn_version->setOffset(0,0);
     shadowEffect_btn_version->setColor(Qt::gray);
     shadowEffect_btn_version->setBlurRadius(5);
-
     ui->btn_version->setGraphicsEffect(shadowEffect_btn_version);
+
+    QGraphicsDropShadowEffect *shadowEffect_btn_links = new QGraphicsDropShadowEffect(this);
+    shadowEffect_btn_links->setOffset(0,0);
+    shadowEffect_btn_links->setColor(Qt::gray);
+    shadowEffect_btn_links->setBlurRadius(5);
+    ui->btn_links->setGraphicsEffect(shadowEffect_btn_links);
+
 
     ui->btn_money->hide();
     ui->btn_money_3->hide();
@@ -90,5 +96,12 @@ void about::on_btn_money_2_clicked()
     payPage->setBaseSize(300,500);
     payPage->setWindowTitle("请我喝可乐");
     payPage->show();
+}
+
+
+void about::on_btn_links_clicked()
+{
+    links *linksPage = new links();
+    linksPage->show();
 }
 

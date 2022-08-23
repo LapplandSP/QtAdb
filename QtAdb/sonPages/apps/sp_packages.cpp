@@ -87,12 +87,14 @@ void sp_packages::refresh_tableView(QString s)
             }
         }
         ui->listView->setStyleSheet("QListView::item{height:24px;}");
+        model->sort(Qt::AscendingOrder);
         ui->listView->setModel(model);
         this->update();
     }
 
     ui->progressBar->setVisible(false);
     delete emptyModel;
+
 }
 
 void sp_packages::on_listView_clicked(const QModelIndex &index)

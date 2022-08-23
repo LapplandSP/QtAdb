@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "qobjectdefs.h"
 #include "ui_mainwindow.h"
 
 /*
@@ -46,6 +47,7 @@ MainWindow::MainWindow(QWidget *parent)
     //connect(listener, SIGNAL(DevicePlugOut()),this,SLOT(DevicePlugOut()));
     connect(listener, SIGNAL(DeviceChanged()),this,SLOT(refreshDevListLater()));
     connect(this, SIGNAL(adbDeviceChanged()),this,SLOT(DeviceChanged()));
+
     qApp->installNativeEventFilter(listener);
 
     //listener->EmitMySignal();
@@ -63,6 +65,8 @@ MainWindow::MainWindow(QWidget *parent)
     initBasePage(6);
     currentPage->playLoadAnimation(427);
     lock();
+
+    reset_monitorBars();
 }
 
 MainWindow::~MainWindow()
@@ -89,17 +93,17 @@ void MainWindow::refreshDevList()                   //方法：刷新设备列�
     //ui->comboBox->clear();
     /*DEBUG*/
     bool changed = false;
-    qDebug() << "******************一次调用*********************";
-    qDebug() << "refreshDevList devList is empty? " << devList.isEmpty() << QTime::currentTime();
-    qDebug() << "devList.size()" << devList.size();
+    //qDebug() << "******************一次调用*********************";
+    //qDebug() << "refreshDevList devList is empty? " << devList.isEmpty() << QTime::currentTime();
+    //qDebug() << "devList.size()" << devList.size();
 
     for(int i = 0; i < devList.size();i++)
     {
-        qDebug() << "devList[" << i << "] is :" << devList[i].addr;
+        //qDebug() << "devList[" << i << "] is :" << devList[i].addr;
     }
 
     /*DEBUG_END*/
-    qDebug() << "shit 0";
+    //qDebug() << "shit 0";
     bool devList_is_empty = devList.isEmpty();
 
     QList<device> tmpList;
@@ -109,7 +113,7 @@ void MainWindow::refreshDevList()                   //方法：刷新设备列�
     {
         for(int i = 0; i < devList.size();i++)
         {
-            qDebug() << "shit 3.1";
+            //qDebug() << "shit 3.1";
             device dev;
             dev.device_debug = devList[i].device_debug;
             dev.device_product = devList[i].device_product;
@@ -120,12 +124,12 @@ void MainWindow::refreshDevList()                   //方法：刷新设备列�
             tmpList.append(dev);
         }
     }
-    qDebug() << "tmpList.size()" << tmpList.size();
+    //qDebug() << "tmpList.size()" << tmpList.size();
 
     //ui->comboBox->clear();
     devList.clear();            //清空设备列表
     devList = explainer->getDevList_windows(process->run("adb devices -l"));    //重新赋值
-    qDebug() << "devList after explain:" << devList.isEmpty();
+    //qDebug() << "devList after explain:" << devList.isEmpty();
 
     /*
     qDebug() << "shit 1";
@@ -175,7 +179,7 @@ void MainWindow::refreshDevList()                   //方法：刷新设备列�
     }
     else
     {
-        qDebug() << "else:" << devList.isEmpty() << tmpList.isEmpty() << devList_is_empty;
+        //qDebug() << "else:" << devList.isEmpty() << tmpList.isEmpty() << devList_is_empty;
     }
 
     QList<int> off;    //未响应设备索引
@@ -188,7 +192,7 @@ void MainWindow::refreshDevList()                   //方法：刷新设备列�
     {
         QString devItem = devList[i].state + " " + explainer->get_words_after(devList[i].model, ":") + " " + devList[i].addr;
         l.append(devItem);
-        qDebug() << "l[" << i << "] = " << l[i];
+        //qDebug() << "l[" << i << "] = " << l[i];
         if(devList[i].state == "[未响应]")
         {
             off.append(i);
@@ -201,14 +205,14 @@ void MainWindow::refreshDevList()                   //方法：刷新设备列�
 
     if(changed)
     {
-        qDebug() <<"changed so clear";
+        //qDebug() <<"changed so clear";
         ui->comboBox->clear();
         ui->comboBox->addItems(l);
     }
 
     if(!liangYi)
     {
-        qDebug() <<"liangYi so clear";
+        //qDebug() <<"liangYi so clear";
         ui->comboBox->clear();
         ui->comboBox->addItems(l);
     }
@@ -232,11 +236,25 @@ void MainWindow::refreshDevList()                   //方法：刷新设备列�
 
     liangYi = false;
 
-    qDebug() << "******************一次调用结束*********************";
+    //qDebug() << "******************一次调用结束*********************";
 }
 
 void MainWindow::on_refreshButton_clicked()         //槽：按下刷新按钮
 {
+    if(thread_mon != NULL)
+    {
+        //siXiangTimer->stop();
+        siXiangTimer->deleteLater();
+        siXiangTimer = NULL;
+        qDebug() <<"thread_mon != NULL";
+        qDebug() <<"disconnect";
+        thread_mon->disconnect();
+        qDebug() <<"exit()";
+        thread_mon->quit();
+        qDebug() <<"deleteLater()";
+        //thread_mon->deleteLater();
+    }
+
     refreshDevList();
 
     lock();
@@ -248,12 +266,45 @@ void MainWindow::on_refreshButton_clicked()         //槽：按下刷新按钮
     }*/
 
     initBasePage(6);
+    reset_monitorBars();
 }
 
 void MainWindow::setCurrentDevice(int index)        //槽：改变所选设备
 {
+    qDebug() <<"MainWindow:if";
+
+    if(thread_mon != NULL && siXiangTimer != NULL)
+    {
+        qDebug() <<"stop";
+        //siXiangTimer->stop();
+        qDebug() <<"delete";
+        siXiangTimer->deleteLater();
+        qDebug() <<"=NULL";
+        siXiangTimer = NULL;
+        qDebug() <<"thread_mon != NULL";
+        qDebug() <<"disconnect";
+        thread_mon->disconnect();
+        qDebug() <<"exit()";
+        thread_mon->quit();
+        qDebug() <<"deleteLater()";
+        thread_mon->deleteLater();
+    }
+
+
+
     if(index >= 0)
     {
+        qDebug() <<"NEW";
+        siXiangTimer = new QTimer();
+        thread_mon = new thread_monitor(devList[current_device]);
+        qDebug() <<"CONNECT";
+        connect(siXiangTimer,SIGNAL(timeout()),thread_mon,SLOT(getInfo()));
+        connect(thread_mon,SIGNAL(signal_monitor(float,float)),this,SLOT(slot_update_monitor(float,float)));
+        qDebug() <<"START";
+        thread_mon->start();
+        siXiangTimer->start(2000);
+        ui->progressBar_CPU->setRange(0,100);
+        ui->progressBar_RAM->setRange(0,100);
 
         if(currentPage != NULL)
         {
@@ -371,7 +422,7 @@ void MainWindow::addIndexItems()                    //方法：初始化向index
 
     //:/ico/image/ico/code-s-slash-line.svg //05
     indexListItem *advanced = new indexListItem(this->ui->indexList);
-    advanced->setText("高级");
+    advanced->setText("其它");
     advanced->setPic("image:url(:/ico/image/ico/code-s-slash-line.svg);background-color:rgba(255,255,255,0);");
     addItemToIndex(advanced);
 
@@ -430,7 +481,7 @@ void MainWindow::setStyles()                        //方法：设置样式
     ui->refreshButton->setStyleSheet("QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;}"
                                      "QPushButton:hover{background-color:rgba(255,255,255,0.7);}"
                                      "QPushButton:pressed{background-color:rgba(255,255,255,0.6);}");
-    ui->iconLabel->setStyleSheet("background-color:transparent;");
+    //ui->iconLabel->setStyleSheet("background-color:transparent;");
     ui->fakeSpacer->setStyleSheet("background-color:transparent;");
 
     QGraphicsDropShadowEffect *shadowEffect_refreshButton = new QGraphicsDropShadowEffect(this);
@@ -458,11 +509,17 @@ void MainWindow::setStyles()                        //方法：设置样式
     shadowEffect_cmdBtn->setColor(Qt::gray);
     shadowEffect_cmdBtn->setBlurRadius(5);
 
+    QGraphicsDropShadowEffect *shadowEffect_monitor = new QGraphicsDropShadowEffect(this);
+    shadowEffect_monitor->setOffset(0,0);
+    shadowEffect_monitor->setColor(Qt::gray);
+    shadowEffect_monitor->setBlurRadius(5);
+
     ui->refreshButton->setGraphicsEffect(shadowEffect_refreshButton);
     ui->adbKillerBtn->setGraphicsEffect(shadowEffect_killAdbBtn);
     ui->WIFIBtn->setGraphicsEffect(shadowEffect_testBtn);
     ui->WSABtn->setGraphicsEffect(shadowEffect_WSABtn);
     ui->cmdBtn->setGraphicsEffect(shadowEffect_cmdBtn);
+    ui->widget_monitor->setGraphicsEffect(shadowEffect_monitor);
 }
 
 void MainWindow::initSonPage(int key)               //槽：生成子页面
@@ -588,7 +645,7 @@ void MainWindow::on_WIFIBtn_clicked()               //槽：弹出无线调试�
 
     connect(getInfoBtn,SIGNAL(clicked()),this,SLOT(connectWIFIDev()));
     getInfo->show();
-    qDebug() << "size is " << getInfo->geometry();
+    //qDebug() << "size is " << getInfo->geometry();
 }
 
 void MainWindow::connectWIFIDev()                   //槽：连接无线调试设备
@@ -713,4 +770,25 @@ void MainWindow::refreshDevListLater()
     timer->setSingleShot(true);
     timer->start(1000);
     //timer->deleteLater();
+}
+
+void MainWindow::slot_update_monitor(float cpu_useage, float mem_useage)
+{
+    //qDebug() << "cpu_useage is " <<cpu_useage ;
+    //qDebug() << "mem_useage" << mem_useage;
+
+    int cpu_credit = (int)(cpu_useage*100);
+    //qDebug() << "cpu_credit" << cpu_credit;
+    ui->progressBar_CPU->setValue(cpu_credit);
+
+    int mem_credit = (int)(mem_useage*100);
+    //qDebug() << "mem_credit" << mem_credit;
+    ui->progressBar_RAM->setValue(mem_credit);
+}
+
+void MainWindow::reset_monitorBars()
+{
+    //qDebug() << "reset";
+    ui->progressBar_CPU->setValue(0);
+    ui->progressBar_RAM->setValue(0);
 }

@@ -68,6 +68,7 @@ void adbThread::run()
         {
             //qDebug() << "dev = " << &dev;
             QString output = process->run(command, dev);
+            //qDebug() << "output = " << output;
             emit signal_output(output);
             exit();
         }

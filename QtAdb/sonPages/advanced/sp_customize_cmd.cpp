@@ -48,6 +48,7 @@ sp_customize_cmd::~sp_customize_cmd()
     delete ui;
 }
 
+
 void sp_customize_cmd::on_runBtn_clicked()
 {
     process->run(ui->lineEdit->text());

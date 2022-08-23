@@ -202,9 +202,120 @@ sp_activator* sonPageManager::createSonPageFor_activator(QWidget *parent, int ke
         return page;
         break;
     }
+    case 10 :
+    {
+        sp_activator *page = new sp_activator(parent);
+        page->setDev(dev);
+        page->setUp("border:0px;image:url(:/activatorApps/image/activatorApps/scene5.png);", "激活 Scene5",
+                    "激活 Scene5 的 ADB 模式  \n"
+                    "可以使用大部分查看功能和部分修改功能  \n",
+                    "adb shell sh /data/user/0/com.omarea.vtools/files/up.sh");
+        return page;
+        break;
+    }
+
+    case 11 :
+    {
+        sp_activator *page = new sp_activator(parent);
+        page->setDev(dev);
+        page->setUp("border:0px;image:url(:/activatorApps/image/activatorApps/watchfps.png);", "激活 看帧数+",
+                    "激活 看帧数+ 的 ADB 模式  \n"
+                    "在屏幕上直观的显示当前帧数。  \n"
+                    "方便、简单、美观。  \n"
+                    "不用复杂的操作，没有任何风险  \n",
+                    "adb shell sh /sdcard/Download/watchfps/watchfps.sh");
+        return page;
+        break;
+    }
+
+    case 12 :
+    {
+        sp_activator *page = new sp_activator(parent);
+        page->setDev(dev);
+        page->setUp("border:0px;image:url(:/activatorApps/image/activatorApps/permissiondog.png);", "激活 权限狗",
+                    "激活 权限狗 的 ADB 模式  \n"
+                    "**什么是 AppOps?**  \n"
+                    "AppOps 是 Android 系统内存在的一个权限管理功能.与大家熟知的 运行时权限 不同,它至今没有开放管理入口,因此这项功能鲜为人知.  \n"
+                    "正因为包括许多开发者的人们不了解 AppOps,应用通常不会检测 AppOps 设置,我们得以借助它在不会被应用发现的条件下拒绝应用申请的权限.(例如某应用不授权定位权限就无法使用,我们可以设置此应用的 AppOps 定位权限为忽略.这样我们就可以在拒绝定位权限后正常使用此应用了.)  \n"
+                    "**权限狗又是什么?**  \n"
+                    "我们知道,Android 尚未开放 AppOps 管理功能.而权限狗就是一个能够管理 AppOps 设置的第三方工具.  \n",
+                    "adb shell sh /storage/emulated/0/Android/data/com.web1n.permissiondog/files/starter.sh");
+        return page;
+        break;
+    }
+
+    case 13 :
+    {
+        sp_activator *page = new sp_activator(parent);
+        page->setDev(dev);
+        page->setUp("border:0px;image:url(:/activatorApps/image/activatorApps/hail.png);", "激活 雹",
+                    "激活 雹 的 「设备所有者 - 隐藏」 模式  \n"
+                    "此模式通过将雹设置为设备所有者 (Device Owner)，调用```DevicePolicyManager.setApplicationHidden```方法隐藏应用。  \n",
+                    "adb shell dpm set-device-owner com.aistra.hail/.receiver.DeviceAdminReceiver");
+        return page;
+        break;
+    }
+
+    case 14 :
+    {
+        sp_activator *page = new sp_activator(parent);
+        page->setDev(dev);
+        page->setUp("border:0px;image:url(:/activatorApps/image/activatorApps/bg.png);", "为 BatteryGuru 授予 使用情况访问 权限",
+                    "授予 BatteryGuru 使用情况访问权限  \n"
+                    "在某些定制 ROM 上可能不会生效  \n"
+                    "授予应用程序权限，否则 BatteryGuru 的一些功能将无法工作。  \n",
+                    "adb shell pm grant com.paget96.batteryguru android.permission.PACKAGE_USAGE_STATS");
+        return page;
+        break;
+    }
+
+    case 15 :
+    {
+        sp_activator *page = new sp_activator(parent);
+        page->setDev(dev);
+        page->setUp("border:0px;image:url(:/activatorApps/image/activatorApps/bg.png);", "为 BatteryGuru 授予 修改安全系统设置 权限",
+                    "授予 BatteryGuru 修改安全系统设置权限  \n"
+                    "在某些定制 ROM 上可能不会生效  \n"
+                    "用于更改一些系统设置，例如 Android Doze 参数或系统节电状态  \n"
+                    "也可以使用 Root  \n",
+                    "adb shell pm grant com.paget96.batteryguru android.permission.WRITE_SECURE_SETTINGS");
+        return page;
+        break;
+    }
+
+    case 16 :
+    {
+        sp_activator *page = new sp_activator(parent);
+        page->setDev(dev);
+        page->setUp("border:0px;image:url(:/activatorApps/image/activatorApps/bg.png);", "为 BatteryGuru 授予 DUMP 权限",
+                    "授予 BatteryGuru 读取 DUMP 权限  \n"
+                    "在某些定制 ROM 上可能不会生效  \n"
+                    "允许应用检查系统内部状态的权限，用来检测设置状态（例如空闲和 Doze 模式）。  \n"
+                    "也可以使用 Root  \n",
+                    "adb shell pm grant com.paget96.batteryguru android.permission.DUMP");
+        return page;
+        break;
+    }
+
+    case 17 :
+    {
+        sp_activator *page = new sp_activator(parent);
+        page->setDev(dev);
+        page->setUp("border:0px;image:url(:/activatorApps/image/activatorApps/apkinstaller.png);", "激活 安装狮",
+                    "激活 安装狮 - DPM  \n"
+                    "安装狮的主要功能是安装APK和卸载应用  \n"
+                    "除了原生 Android 外的绝大部分定制系统由于系统的限制，无法将本应用设置为默认安装与卸载应用,而且发起安装时这些系统会直接让系统默认的软件包安装程序来处理，也没有很好的解决办法  \n"
+                    "这种情况推荐用本应用内的 选择文件安装 功能或用一些支持选择打开方式的文件管理器等来发起安装  \n"
+                    "安装前请关闭Google Play的安全扫描，请在开发者选项打开USB安装、关闭监控ADB安装应用等等以防止安装失败。  \n",
+                    "adb shell dpm set-device-owner com.modosa.apkinstaller/.receiver.AdminReceiver");
+        return page;
+        break;
+    }
+
 
     break;
     }
+
     return NULL;
 }
 
@@ -238,7 +349,7 @@ QWidget* sonPageManager::createSonPageFor_apps(QWidget *parent, int key, device 
     }
     case 5:
     {
-        qDebug() << "SPM.DEV = " << dev.model;
+        //qDebug() << "SPM.DEV = " << dev.model;
         sp_features *page = new sp_features(parent);
         page->setDev(dev);
         return page;
@@ -246,6 +357,12 @@ QWidget* sonPageManager::createSonPageFor_apps(QWidget *parent, int key, device 
     case 6:
     {
         sp_libraries *page = new sp_libraries(parent);
+        page->setDev(dev);
+        return page;
+    }
+    case 7:
+    {
+        sp_users *page = new sp_users(parent);
         page->setDev(dev);
         return page;
     }
@@ -300,6 +417,31 @@ QWidget* sonPageManager::createSonPageFor_advanced(QWidget *parent, int key, dev
         //page->setDev(dev);
         return page;
     }
+    case 2:
+    {
+        sp_accounts *page = new sp_accounts(parent);
+        page->setDev(dev);
+        return page;
+    }
+    case 3:
+    {
+        sp_captive_portal *page = new sp_captive_portal(parent);
+        page->setDev(dev);
+        return page;
+    }
+    case 4:
+    {
+        sp_scales *page = new sp_scales(parent);
+        page->setDev(dev);
+        return page;
+    }
+    case 5:
+    {
+        sp_status_bar *page = new sp_status_bar(parent);
+        page->setDev(dev);
+        return page;
+    }
+
         break;
     }
     return NULL;

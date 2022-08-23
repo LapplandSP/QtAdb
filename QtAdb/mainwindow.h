@@ -20,6 +20,7 @@
 #include "pagemaker.h"
 #include "about.h"
 #include "usb_listener.h"
+#include "threads/thread_monitor.h"
 
 #include <QCoreApplication>
 #include <QStringList>
@@ -95,11 +96,15 @@ private:
     bool firstBoot = true;
     QTimer *taiChiTimer;
     QTimer *baguaTimer;
+    QTimer *siXiangTimer = NULL;
 
     basePage * currentPage;
     animationWidget * tmpPage;
     about * WCMPage2;
     usb_listener *listener;
+
+    thread_monitor *thread_mon = NULL;
+
 
 public slots:
     void DevicePlugIn();
@@ -107,6 +112,8 @@ public slots:
     void DeviceChanged();
     void slot_refreshDevList();
     void refreshDevListLater();
+    void slot_update_monitor(float,float);
+    void reset_monitorBars();
 };
 
 #endif // MAINWINDOW_H

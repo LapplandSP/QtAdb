@@ -18,8 +18,11 @@
 /*background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(238, 154, 229, 255), stop:1 rgba(89, 97, 249, 255));*/</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+   <layout class="QVBoxLayout" name="verticalLayout_8">
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
      <widget class="QWidget" name="widget" native="true">
       <property name="styleSheet">
        <string notr="true"/>
@@ -29,9 +32,12 @@
         <number>11</number>
        </property>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout" stretch="2,0,10">
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,10">
+         <property name="topMargin">
+          <number>5</number>
+         </property>
          <item>
-          <widget class="QLabel" name="iconLabel">
+          <widget class="QWidget" name="widget_monitor" native="true">
            <property name="minimumSize">
             <size>
              <width>250</width>
@@ -44,73 +50,235 @@
              <height>100</height>
             </size>
            </property>
-           <property name="font">
-            <font>
-             <family>MiSans Demibold</family>
-            </font>
+           <property name="styleSheet">
+            <string notr="true">background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}\nQPushButton:hover{background-color:rgba(255,255,255,0.7);</string>
            </property>
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt; color:#41cd52;&quot;&gt;Qt&lt;/span&gt;&lt;span style=&quot; font-size:36pt;&quot;&gt;ADB&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <property name="leftMargin">
+             <number>5</number>
+            </property>
+            <property name="topMargin">
+             <number>5</number>
+            </property>
+            <property name="rightMargin">
+             <number>5</number>
+            </property>
+            <property name="bottomMargin">
+             <number>5</number>
+            </property>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <property name="spacing">
+                 <number>3</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_CPU">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>MiSans Medium</family>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+                  </property>
+                  <property name="text">
+                   <string>CPU</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_RAM">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>30</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>MiSans Medium</family>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+                  </property>
+                  <property name="text">
+                   <string>RAM</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_5">
+                <property name="spacing">
+                 <number>3</number>
+                </property>
+                <item>
+                 <widget class="QProgressBar" name="progressBar_CPU">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>MiSans Medium</family>
+                    <pointsize>9</pointsize>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QProgressBar{
+	font:9pt;
+	border-radius:10px;
+	text-align:center;
+	/*border:1px solid #E8EDF2;*/
+    border:0px solid #E8EDF2;
+	background-color: rgba(255,255,255,0);
+}
+QProgressBar:chunk{
+	border-radius:10px;
+	background-color:qlineargradient(x1:0,y1:1,x1:1,y1:0,stop:0 #11998e, stop:1 #38ef7d);
+}
+</string>
+                  </property>
+                  <property name="maximum">
+                   <number>100</number>
+                  </property>
+                  <property name="value">
+                   <number>50</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QProgressBar" name="progressBar_RAM">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>MiSans Medium</family>
+                    <pointsize>9</pointsize>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QProgressBar{
+	font:9pt;
+	border-radius:10px;
+	text-align:center;
+	/*border:1px solid #E8EDF2;*/
+    border:0px solid #E8EDF2;
+	background-color: rgba(255,255,255,0);
+}
+QProgressBar:chunk{
+	border-radius:10px;
+	background-color:qlineargradient(x1:0,y1:1,x1:1,y1:0,stop:0 #11998e, stop:1 #38ef7d);
+}
+</string>
+                  </property>
+                  <property name="value">
+                   <number>50</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout">
+              <property name="spacing">
+               <number>7</number>
+              </property>
+              <item>
+               <widget class="QComboBox" name="comboBox">
+                <property name="minimumSize">
+                 <size>
+                  <width>210</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>210</width>
+                  <height>30</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="refreshButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>30</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <property name="toolTip">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;刷新设备列表&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string/>
+                </property>
+                <property name="icon">
+                 <iconset resource="ico.qrc">
+                  <normaloff>:/ico/image/ico/refresh-line.svg</normaloff>:/ico/image/ico/refresh-line.svg</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>18</width>
+                  <height>18</height>
+                 </size>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout">
-           <item>
-            <widget class="QComboBox" name="comboBox">
-             <property name="minimumSize">
-              <size>
-               <width>210</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>210</width>
-               <height>30</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="refreshButton">
-             <property name="minimumSize">
-              <size>
-               <width>30</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>30</width>
-               <height>30</height>
-              </size>
-             </property>
-             <property name="toolTip">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;刷新设备列表&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="icon">
-              <iconset resource="ico.qrc">
-               <normaloff>:/ico/image/ico/refresh-line.svg</normaloff>:/ico/image/ico/refresh-line.svg</iconset>
-             </property>
-             <property name="iconSize">
-              <size>
-               <width>18</width>
-               <height>18</height>
-              </size>
-             </property>
-            </widget>
-           </item>
-          </layout>
          </item>
          <item>
           <widget class="QListWidget" name="indexList">
@@ -140,13 +308,13 @@
         <widget class="QLabel" name="fakeSpacer">
          <property name="minimumSize">
           <size>
-           <width>30</width>
+           <width>0</width>
            <height>0</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>30</width>
+           <width>0</width>
            <height>16777215</height>
           </size>
          </property>
@@ -163,7 +331,7 @@
             <number>11</number>
            </property>
            <property name="topMargin">
-            <number>16</number>
+            <number>5</number>
            </property>
            <property name="rightMargin">
             <number>16</number>

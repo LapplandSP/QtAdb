@@ -265,7 +265,7 @@ basePage* pageMaker::createPage_acvitator(QWidget *parent, device dev)
     activator->isBasePage = true;
     //activatorPage *activator = new activatorPage(parent);
     activator->whoYouAre("activator");
-    int val[20] = {1,2,3,4,5,6,7,8,9};
+    int val[20] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17};
     activator->setEnableValue(val);
     activator->setDev(dev);
 
@@ -323,6 +323,55 @@ basePage* pageMaker::createPage_acvitator(QWidget *parent, device dev)
     Island->setSelectable();
     activator->addItemsToList(Island);
 
+    pageListItem *scene = new pageListItem(activator);
+    scene->setText("Scene","adb shell sh /data/user/0/com.omarea.vtools/files/up.sh");
+    scene->setPic(":/activatorApps/image/activatorApps/scene5.png");
+    scene->setSelectable();
+    activator->addItemsToList(scene);
+
+    pageListItem *watchfps = new pageListItem(activator);
+    watchfps->setText("看帧数+","adb shell sh /sdcard/Download/watchfps/watchfps.sh");
+    watchfps->setPic(":/activatorApps/image/activatorApps/watchfps.png");
+    watchfps->setSelectable();
+    activator->addItemsToList(watchfps);
+
+    pageListItem *permissiondog = new pageListItem(activator);
+    permissiondog->setText("权限狗","adb shell sh /storage/emulated/0/Android/data/com.web1n.permissiondog/files/starter.sh");
+    permissiondog->setPic(":/activatorApps/image/activatorApps/permissiondog.png");
+    permissiondog->setSelectable();
+    activator->addItemsToList(permissiondog);
+
+    pageListItem *hail = new pageListItem(activator);
+    hail->setText("雹","adb shell dpm set-device-owner com.aistra.hail/.receiver.DeviceAdminReceiver");
+    hail->setPic(":/activatorApps/image/activatorApps/hail.png");
+    hail->setSelectable();
+    activator->addItemsToList(hail);
+
+    pageListItem *bg_useage = new pageListItem(activator);
+    bg_useage->setText("BatteryGuru - 使用情况访问权限","adb shell pm grant com.paget96.batteryguru android.permission.PACKAGE_USAGE_STATS");
+    bg_useage->setPic(":/activatorApps/image/activatorApps/bg.png");
+    bg_useage->setSelectable();
+    activator->addItemsToList(bg_useage);
+
+    pageListItem *bg_secure = new pageListItem(activator);   //15
+    bg_secure->setText("BatteryGuru - 修改安全系统设置","adb shell pm grant com.paget96.batteryguru android.permission.WRITE_SECURE_SETTINGS");
+    bg_secure->setPic(":/activatorApps/image/activatorApps/bg.png");
+    bg_secure->setSelectable();
+    activator->addItemsToList(bg_secure);
+
+    pageListItem *bg_dump = new pageListItem(activator);
+    bg_dump->setText("BatteryGuru - 读取 DUMP","adb shell pm grant com.paget96.batteryguru android.permission.DUMP");
+    bg_dump->setPic(":/activatorApps/image/activatorApps/bg.png");
+    bg_dump->setSelectable();
+    activator->addItemsToList(bg_dump);
+
+    pageListItem *apkInstaller = new pageListItem(activator);
+    apkInstaller->setText("安装狮","adb shell dpm set-device-owner com.modosa.apkinstaller/.receiver.AdminReceiver");
+    apkInstaller->setPic(":/activatorApps/image/activatorApps/apkinstaller.png");
+    apkInstaller->setSelectable();
+    activator->addItemsToList(apkInstaller);
+
+
     return activator;
 }
 
@@ -332,7 +381,7 @@ basePage* pageMaker::createPage_apps(QWidget *parent, device dev)
     apps->isBasePage = true;
     //activatorPage *activator = new activatorPage(parent);
     apps->whoYouAre("apps");
-    int val[20] = {1,2,3,4,5,6};
+    int val[20] = {1,2,3,4,5,6,7};
     apps->setEnableValue(val);
     apps->setDev(dev);
 
@@ -368,9 +417,15 @@ basePage* pageMaker::createPage_apps(QWidget *parent, device dev)
 
     pageListItem *libraries = new pageListItem(apps);
     libraries->setText("库","adb shell pm list libraries");
-    libraries->setPic(":/ico/image/ico/btnEmulator/menu-line.svg");
+    libraries->setPic(":/ico/image/ico/stack-line.svg");
     libraries->setSelectable();
     apps->addItemsToList(libraries);
+
+    pageListItem *users = new pageListItem(apps);
+    users->setText("用户","adb shell pm list users");
+    users->setPic(":/ico/image/ico/user-line.svg");
+    users->setSelectable();
+    apps->addItemsToList(users);
 
     return apps;
 }
@@ -447,7 +502,7 @@ basePage* pageMaker::createPage_advanced(QWidget *parent, device dev)
     advanced->isBasePage = true;
     //activatorPage *activator = new activatorPage(parent);
     advanced->whoYouAre("advanced");
-    int val[20] = {1};
+    int val[20] = {1,2,3,4,5};
     advanced->setEnableValue(val);
     advanced->setDev(dev);
 
@@ -457,6 +512,31 @@ basePage* pageMaker::createPage_advanced(QWidget *parent, device dev)
     customize_command->setSelectable();
     advanced->addItemsToList(customize_command);
 
+    pageListItem *accounts = new pageListItem(advanced);
+    accounts->setText("账户","adb shell dumpsys account");
+    accounts->setPic(":/ico/image/ico/user-settings-line.svg");
+    accounts->setSelectable();
+    advanced->addItemsToList(accounts);
+
+    pageListItem *captive_portal = new pageListItem(advanced);
+    captive_portal->setText("去除叹号","adb shell settings put global captive_portal_http_url <server avilable>");
+    captive_portal->setPic(":/ico/image/ico/signal-wifi-error-line.svg");
+    captive_portal->setSelectable();
+    advanced->addItemsToList(captive_portal);
+
+    pageListItem *scales = new pageListItem(advanced);
+    scales->setText("过渡动画","adb shell settings put global <animation type>");
+    scales->setPic(":/ico/image/ico/donut-chart-line.svg");
+    scales->setSelectable();
+    advanced->addItemsToList(scales);
+
+    pageListItem *status_bar = new pageListItem(advanced);
+    status_bar->setText("状态栏与导航栏","adb shell settings put secure icon_blacklist <icon name>");
+    status_bar->setPic(":/ico/image/ico/layout-top-2-line.svg");
+    status_bar->setSelectable();
+    advanced->addItemsToList(status_bar);
+
+    //:/ico/image/ico/layout-top-2-line.svg
     /*
     pageListItem *btnEmulate = new pageListItem(recovery);
     btnEmulate->setText("按键模拟","adb shell input keyevent <key>");

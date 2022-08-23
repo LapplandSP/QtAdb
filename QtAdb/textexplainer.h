@@ -25,6 +25,7 @@ public:
     QList<device> getDevList(QString tmpStr);
     QList<device> getDevList_windows(QString tmpStr);
     QString get_words_after(QString str , QString key);
+    QString get_words_before(QString s, QString k);
     QString explain_cpu_output(QString str);
 
     void showMsgBox(QString title,QString msg);
@@ -36,6 +37,7 @@ public:
     bool thread = false;
 
     QStringList explainPermissionGroups(QString s);
+    QStringList explainAccounts(QString s);
 
 private:
     QString setState(QString state);

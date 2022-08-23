@@ -16,11 +16,11 @@ bool usb_listener::nativeEventFilter(const QByteArray &eventType, void *message,
 
         //qDebug() << "msgType = " << msgType;
         //qDebug() << "WM_DEVICECHANGE = " << WM_DEVICECHANGE;
-        qDebug() << "wParam = " << msg->wParam;
+        //qDebug() << "wParam = " << msg->wParam;
         //qDebug() << "lParam = " << msg->lParam;
         //qDebug() << "WM_DEVICECHANGE = " << WM_DEVICECHANGE;
-        qDebug() << "DBT_DEVICEARRIVAL = " << DBT_DEVICEARRIVAL;
-        qDebug() << "DBT_DEVICEREMOVECOMPLETE = " << DBT_DEVICEREMOVECOMPLETE;
+        //qDebug() << "DBT_DEVICEARRIVAL = " << DBT_DEVICEARRIVAL;
+        //qDebug() << "DBT_DEVICEREMOVECOMPLETE = " << DBT_DEVICEREMOVECOMPLETE;
 /*
         PDEV_BROADCAST_HDR lpdb = PDEV_BROADCAST_HDR(msg->lParam);
         qDebug() << "lpdb = " << msg->lParam;
