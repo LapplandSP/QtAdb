@@ -77,8 +77,16 @@ basePage* pageMaker::createPageWithKey(int key, QWidget *parent, device dev)
         return createPage_recovery(parent, dev);
         break;
     case 5:
-        return createPage_advanced(parent,dev);
+        if(dev.state == "[未响应]" || dev.state == "[REC]" || dev.state == "[侧载]" || dev.state == "[未知]")
+        {
+            return createPage_disabled(parent);
+        }
+        else
+        {
+            return createPage_advanced(parent,dev);
+        }
         break;
+
     case 6:
         return createPage_about(parent);
         break;

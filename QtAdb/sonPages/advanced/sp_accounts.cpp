@@ -40,7 +40,7 @@ sp_accounts::sp_accounts(QWidget *parent) :
     QFile file("://qss/scrollbar.qss");
     file.open(QFile::ReadOnly);
     ui->listView->verticalScrollBar()->setStyleSheet(file.readAll());
-    on_refreshBtn_clicked();
+    //on_refreshBtn_clicked();
 }
 
 sp_accounts::~sp_accounts()

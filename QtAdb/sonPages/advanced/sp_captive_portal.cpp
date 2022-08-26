@@ -37,7 +37,7 @@ sp_captive_portal::sp_captive_portal(QWidget *parent) :
     ui->comboBox->addItems(serverLists);
 
 
-    refresh();
+
     //process->run("adb shell settings get secure android_id", dev).simplified();
 }
 
@@ -49,6 +49,7 @@ sp_captive_portal::~sp_captive_portal()
 void sp_captive_portal::setDev(device device)
 {
     dev = device;
+    refresh();
 }
 
 void sp_captive_portal::setShadow(QWidget* wgt)

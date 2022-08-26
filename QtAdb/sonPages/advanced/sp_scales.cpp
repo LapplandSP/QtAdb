@@ -30,7 +30,8 @@ sp_scales::sp_scales(QWidget *parent) :
     ui->lineEdit_animator->setValidator(new QRegularExpressionValidator(QRegularExpression("^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$")));
     ui->lineEdit_window->setValidator(new QRegularExpressionValidator(QRegularExpression("^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$")));
 
-    refresh();
+
+
 }
 
 sp_scales::~sp_scales()
@@ -41,6 +42,8 @@ sp_scales::~sp_scales()
 void sp_scales::setDev(device device)
 {
     dev = device;
+    qDebug() << "//////////////////////////////////////////////" << dev.model;
+    refresh();
 }
 
 

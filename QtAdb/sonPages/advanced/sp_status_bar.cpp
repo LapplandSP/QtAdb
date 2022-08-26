@@ -130,8 +130,6 @@ void sp_status_bar::on_pushButton_2_clicked()
     QMessageBox::information(NULL, "同时隐藏","已将导航栏与状态栏同时全局隐藏");
 }
 
-
-
 void sp_status_bar::refreshBtns()
 {
     ui->airplane->setChecked(false);
