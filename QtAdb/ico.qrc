@@ -82,6 +82,7 @@
     <qresource prefix="/test">
         <file>image/test/back.png</file>
         <file>image/test/Lappland.png</file>
+        <file>image/test/logo.png</file>
     </qresource>
     <qresource prefix="/gif">
         <file>image/gif/final.gif</file>

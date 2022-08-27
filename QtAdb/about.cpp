@@ -75,7 +75,7 @@ about::~about()
 
 void about::on_btn_website_clicked()
 {
-    QDesktopServices::openUrl(QUrl("https://lapplandsp.github.io/QtAdb-pages/", QUrl::TolerantMode));
+    QDesktopServices::openUrl(QUrl("https://lapplandsp.github.io/QtAdb-Pages/", QUrl::TolerantMode));
 }
 
 void about::on_btn_coolapk_clicked()

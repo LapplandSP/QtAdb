@@ -1,6 +1,10 @@
+<div align=center><img src="https://blog-lappland.oss-cn-hangzhou.aliyuncs.com/logo-256.png"></div>
+
 # QtAdb
 
 QtAdb 是一个基于 [Qt](https://www.qt.io/) 的 Android 工具集合。
+
+[官方网站](https://lapplandsp.github.io/QtAdb-Pages/)
 
 > ~~QtAdb 仍处于开发中，暂未正式发布，但您仍可以下载体验版本。~~
 >
