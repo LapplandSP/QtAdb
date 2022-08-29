@@ -125,7 +125,7 @@ border:0px solid #BDBDBD;</string>
              <widget class="QLabel" name="label_animator">
               <property name="minimumSize">
                <size>
-                <width>0</width>
+                <width>100</width>
                 <height>40</height>
                </size>
               </property>
@@ -156,7 +156,7 @@ border:0px solid #BDBDBD;</string>
              <widget class="QLabel" name="label_transition">
               <property name="minimumSize">
                <size>
-                <width>0</width>
+                <width>100</width>
                 <height>40</height>
                </size>
               </property>
@@ -187,7 +187,7 @@ border:0px solid #BDBDBD;</string>
              <widget class="QLabel" name="label_window">
               <property name="minimumSize">
                <size>
-                <width>0</width>
+                <width>100</width>
                 <height>40</height>
                </size>
               </property>
@@ -222,7 +222,7 @@ border:0px solid #BDBDBD;</string>
              <widget class="QLabel" name="current_animator">
               <property name="minimumSize">
                <size>
-                <width>0</width>
+                <width>100</width>
                 <height>40</height>
                </size>
               </property>
@@ -242,7 +242,7 @@ border:0px solid #BDBDBD;</string>
                <string notr="true">background-color:rgba(255,255,255,0.6);border-radius:4px;border:0px;</string>
               </property>
               <property name="text">
-               <string>NULL</string>
+               <string>未知</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -253,7 +253,7 @@ border:0px solid #BDBDBD;</string>
              <widget class="QLabel" name="current_transition">
               <property name="minimumSize">
                <size>
-                <width>0</width>
+                <width>100</width>
                 <height>40</height>
                </size>
               </property>
@@ -273,7 +273,7 @@ border:0px solid #BDBDBD;</string>
                <string notr="true">background-color:rgba(255,255,255,0.6);border-radius:4px;border:0px;</string>
               </property>
               <property name="text">
-               <string>NULL</string>
+               <string>未知</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -284,7 +284,7 @@ border:0px solid #BDBDBD;</string>
              <widget class="QLabel" name="current_window">
               <property name="minimumSize">
                <size>
-                <width>0</width>
+                <width>100</width>
                 <height>40</height>
                </size>
               </property>
@@ -304,7 +304,7 @@ border:0px solid #BDBDBD;</string>
                <string notr="true">background-color:rgba(255,255,255,0.6);border-radius:4px;border:0px;</string>
               </property>
               <property name="text">
-               <string>NULL</string>
+               <string>未知</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -576,7 +576,7 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.6);border-radius:4px;border:0px;}
 QPushButton:hover{background-color:rgba(255,255,255,0.7);}
 QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
             </property>

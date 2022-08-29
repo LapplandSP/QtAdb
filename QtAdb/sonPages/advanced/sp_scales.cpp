@@ -58,9 +58,36 @@ void sp_scales::setShadow(QWidget* wgt)
 
 void sp_scales::refresh()
 {
-    ui->current_animator->setText("当前：" + process->run("adb shell settings get global animator_duration_scale",dev).simplified());
-    ui->current_transition->setText("当前：" + process->run("adb shell settings get global transition_animation_scale",dev).simplified());
-    ui->current_window->setText("当前：" + process->run("adb shell settings get global window_animation_scale",dev).simplified());
+    /*
+    pageListItemStruct *screen_resolution = initStruct(devInfo);
+    screen_resolution->item->setText_title("屏幕分辨率");
+    screen_resolution->item->setPic(":/ico/image/ico/fullscreen-line.svg");
+    screen_resolution->thread->initThread("adb shell wm size", dev, ": ");
+    QEventLoop::connect(screen_resolution->thread,SIGNAL(signal_output(QString)),screen_resolution->item,SLOT(slot_setText_profile(QString)));
+    screen_resolution->thread->start();
+    screen_resolution->item->setSelectable();
+    devInfo->addItemsToList(screen_resolution->item);
+    */
+
+
+    adbThread *thread_animator = new adbThread(this);
+    thread_animator->initThread("adb shell settings get global animator_duration_scale", dev);
+    QEventLoop::connect(thread_animator,SIGNAL(signal_output(QString)),this,SLOT(setText_animator(QString)));
+    thread_animator->start();
+
+    adbThread *thread_transition = new adbThread(this);
+    thread_transition->initThread("adb shell settings get global transition_animation_scale", dev);
+    QEventLoop::connect(thread_transition,SIGNAL(signal_output(QString)),this,SLOT(setText_transition(QString)));
+    thread_transition->start();
+
+    adbThread *thread_window = new adbThread(this);
+    thread_window->initThread("adb shell settings get global window_animation_scale", dev);
+    QEventLoop::connect(thread_window,SIGNAL(signal_output(QString)),this,SLOT(setText_window(QString)));
+    thread_window->start();
+
+    //ui->current_animator->setText("当前：" + process->run("adb shell settings get global animator_duration_scale",dev).simplified());
+    //ui->current_transition->setText("当前：" + process->run("adb shell settings get global transition_animation_scale",dev).simplified());
+    //ui->current_window->setText("当前：" + process->run("adb shell settings get global window_animation_scale",dev).simplified());
     ui->lineEdit_transition->clear();
     ui->lineEdit_window->clear();
     ui->lineEdit_animator->clear();
@@ -83,4 +110,19 @@ void sp_scales::on_pushButton_window_clicked()
 {
     process->run("adb shell settings put global window_animation_scale " + ui->lineEdit_window->text().simplified(), dev);
     refresh();
+}
+
+void sp_scales::setText_animator(QString s)
+{
+    ui->current_animator->setText("当前：" + s.simplified());
+}
+
+void sp_scales::setText_transition(QString s)
+{
+    ui->current_transition->setText("当前：" + s.simplified());
+}
+
+void sp_scales::setText_window(QString s)
+{
+    ui->current_window->setText("当前：" + s.simplified());
 }

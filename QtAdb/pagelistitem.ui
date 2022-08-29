@@ -30,7 +30,7 @@
     <number>0</number>
    </property>
    <property name="rightMargin">
-    <number>0</number>
+    <number>11</number>
    </property>
    <property name="bottomMargin">
     <number>0</number>
@@ -42,6 +42,9 @@
        <width>16777215</width>
        <height>70</height>
       </size>
+     </property>
+     <property name="cursor">
+      <cursorShape>ArrowCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">border-color: rgb(0, 255, 0);
@@ -66,7 +69,7 @@ border-width:1px;</string>
       <item>
        <widget class="QPushButton" name="pic">
         <property name="enabled">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
         <property name="minimumSize">
          <size>
@@ -81,10 +84,12 @@ border-width:1px;</string>
          </size>
         </property>
         <property name="cursor">
-         <cursorShape>OpenHandCursor</cursorShape>
+         <cursorShape>ForbiddenCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}/*
+         <string notr="true">QPushButton{background-color:rgba(255,255,255,1);border-radius:4px;border:1px solid #BDBDBD;}
+/*QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}*/
+/*
 QPushButton:hover{background-color:rgba(255,255,255,0.7);}
 QPushButton:pressed{background-color:rgba(255,255,255,0.6);}*/</string>
         </property>
@@ -119,13 +124,16 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}*/</string>
            </size>
           </property>
           <property name="font">
-           <font/>
+           <font>
+            <family>MiSans Normal</family>
+            <pointsize>11</pointsize>
+           </font>
           </property>
           <property name="styleSheet">
            <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
           </property>
           <property name="text">
-           <string>TextLabel</string>
+           <string/>
           </property>
           <property name="alignment">
            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -144,6 +152,9 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}*/</string>
               <width>20</width>
               <height>20</height>
              </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;复制到剪贴板&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>

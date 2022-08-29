@@ -30,6 +30,7 @@ public:
     void setSelectable();
 
     void setStyles();
+    bool isSelectable = false;
 
     //void emitSignal();
 

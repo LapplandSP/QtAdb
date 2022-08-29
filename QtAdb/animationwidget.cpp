@@ -56,7 +56,26 @@ void animationWidget::playLoadAnimation(int h)
 
 void animationWidget::playExitAnimation()
 {
+    animation->setDuration(750);
+    //animation->setEndValue(QPoint(301,117));
+    qDebug() << "wgtHeight = " << wgtHeight;
+    if(parent->width() <= 600)
+    {
+        animation->setEndValue(QRect(301 - 30, 117 - 6 - 11 + 50, parent->width(),wgtHeight));
+    }
+    else
+    {
+        animation->setEndValue(QRect(301 - 30, 117 - 6 - 11 + 50, parent->width(),wgtHeight));
+    }
+    //animation->setStartValue(QPoint(301 + 50,117));
+    //animation->setStartValue(QRect(301 + 50 - 30, 117 - 6 - 11, parent->width()-50,wgtHeight));
+    animation->setStartValue(QRect(301 - 30, 117 - 6 - 11, parent->width(),wgtHeight));
 
+    animation->setEasingCurve(QEasingCurve::OutQuart);
+
+    this->show();
+    animation->start();
+    emit animationEnd();
 }
 
 animationWidget::~animationWidget()

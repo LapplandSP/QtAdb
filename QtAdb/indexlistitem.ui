@@ -22,6 +22,9 @@
     <height>35</height>
    </size>
   </property>
+  <property name="cursor">
+   <cursorShape>PointingHandCursor</cursorShape>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -50,14 +53,14 @@ border-color: rgb(152, 152, 152);</string>
     <widget class="QLabel" name="stick">
      <property name="minimumSize">
       <size>
-       <width>5</width>
-       <height>20</height>
+       <width>4</width>
+       <height>16</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>5</width>
-       <height>25</height>
+       <width>4</width>
+       <height>16</height>
       </size>
      </property>
      <property name="autoFillBackground">
@@ -118,13 +121,14 @@ border-radius:4px;*/</string>
      <property name="font">
       <font>
        <family>MiSans Normal</family>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
      </property>
      <property name="text">
-      <string>TextLabel</string>
+      <string/>
      </property>
     </widget>
    </item>

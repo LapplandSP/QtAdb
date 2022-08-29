@@ -44,6 +44,11 @@ sp_permissions::sp_permissions(QWidget *parent) :
     ui->back_to_basePage_2->setGraphicsEffect(shadowEffect_settingsBtn);
     ui->open_another_window->setGraphicsEffect(shadowEffect_openBtn);
 
+    QFile file("://qss/scrollbar.qss");
+    file.open(QFile::ReadOnly);
+    ui->tableView->verticalScrollBar()->setStyleSheet(file.readAll());
+    ui->tableView->horizontalScrollBar()->setStyleSheet(file.readAll());
+
 }
 
 sp_permissions::~sp_permissions()

@@ -26,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     /*devList 中的当前设备索引*/
     current_device = 0;
-    ui->comboBox->setPlaceholderText("请先选择设备");
+    ui->comboBox->setPlaceholderText("点击此处选择设备");
 
     /*连接信号与槽*/
     connect(this->ui->comboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(setCurrentDevice(int)));  //更改当前设备
@@ -352,6 +352,11 @@ void MainWindow::initBasePage(int key)              //槽：生成basePages
             currentPage = NULL;
         }
 
+        /*动画*/
+        //ui->indexList[key]
+
+        /**/
+
         currentPage = new basePage(this);
         //qDebug() << "height in initBasePage()" << ui->widget_height->height();
         currentPage->wgtHeight = ui->widget_height->height();
@@ -372,6 +377,7 @@ void MainWindow::initBasePage(int key)              //槽：生成basePages
         ui->verticalLayout_2->addWidget(currentPage);
 
         currentPage->playLoadAnimation(ui->widget_height->height());
+        //currentPage->playExitAnimation();
         //currentPage->setVisible(true);
         taiChiTimer = new QTimer(this);
         connect(taiChiTimer, SIGNAL(timeout()), this, SLOT(slot_taiChi()));
@@ -470,7 +476,7 @@ void MainWindow::setStyles()                        //方法：设置样式
                                  "QListView::item{height:35px;}"
                                  );
 
-    ui->comboBox->setStyleSheet("QComboBox{color:black;border-bottom:1px solid #BDBDBD;border-radius:0px;background-color:transparent;}"
+    ui->comboBox->setStyleSheet("QComboBox{color:black; border:0px; border-bottom:1px solid #BDBDBD; border-radius:0px; background-color:transparent;}"
                                 "QComboBox::drop-down{border: 0px solid rgba(255,255,255,0);background-color:rgba(255,255,255,0);border-bottom-right-radius: 0px;}"
                                 "QComboBox QAbstractItemView{border:1px solid #BDBDBD;border-radius:0px 0px 0px 0px;outline: 0px;}"
                                 "QComboBox QAbstractItemView::item{height:30px;border:0px solid #BDBDBD;border-radius:0px 0px 0px 0px;}"
@@ -478,9 +484,10 @@ void MainWindow::setStyles()                        //方法：设置样式
                                 "QComboBox QAbstractItemView::item:selected{height:30px;border:1px solid #BDBDBD;border-radius:0px 0px 0px 0px;color:black}"
                                 );
 
+    /*
     ui->refreshButton->setStyleSheet("QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;}"
                                      "QPushButton:hover{background-color:rgba(255,255,255,0.7);}"
-                                     "QPushButton:pressed{background-color:rgba(255,255,255,0.6);}");
+                                     "QPushButton:pressed{background-color:rgba(255,255,255,0.6);}");*/
     //ui->iconLabel->setStyleSheet("background-color:transparent;");
     ui->fakeSpacer->setStyleSheet("background-color:transparent;");
 
@@ -509,17 +516,18 @@ void MainWindow::setStyles()                        //方法：设置样式
     shadowEffect_cmdBtn->setColor(Qt::gray);
     shadowEffect_cmdBtn->setBlurRadius(5);
 
+    /*
     QGraphicsDropShadowEffect *shadowEffect_monitor = new QGraphicsDropShadowEffect(this);
     shadowEffect_monitor->setOffset(0,0);
     shadowEffect_monitor->setColor(Qt::gray);
-    shadowEffect_monitor->setBlurRadius(5);
+    shadowEffect_monitor->setBlurRadius(5);*/
 
     ui->refreshButton->setGraphicsEffect(shadowEffect_refreshButton);
     ui->adbKillerBtn->setGraphicsEffect(shadowEffect_killAdbBtn);
     ui->WIFIBtn->setGraphicsEffect(shadowEffect_testBtn);
     ui->WSABtn->setGraphicsEffect(shadowEffect_WSABtn);
     ui->cmdBtn->setGraphicsEffect(shadowEffect_cmdBtn);
-    ui->widget_monitor->setGraphicsEffect(shadowEffect_monitor);
+    //ui->widget_monitor->setGraphicsEffect(shadowEffect_monitor);
 }
 
 void MainWindow::initSonPage(int key)               //槽：生成子页面

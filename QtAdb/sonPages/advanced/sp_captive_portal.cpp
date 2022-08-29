@@ -35,6 +35,13 @@ sp_captive_portal::sp_captive_portal(QWidget *parent) :
     serverLists.append("dl.google.com/generate_204");
     serverLists.append("google.com");
     ui->comboBox->addItems(serverLists);
+    ui->comboBox->setStyleSheet("QComboBox{color:black; border:0px; border-bottom:1px solid #BDBDBD; border-radius:0px; background-color:rgba(255,255,255,255);}"
+                                "QComboBox::drop-down{border: 0px solid rgba(255,255,255,0);background-color:rgba(255,255,255,0);border-bottom-right-radius: 0px;}"
+                                "QComboBox QAbstractItemView{border:1px solid #BDBDBD;border-radius:0px 0px 0px 0px;outline: 0px;}"
+                                "QComboBox QAbstractItemView::item{height:30px;border:0px solid #BDBDBD;border-radius:0px 0px 0px 0px;}"
+                                "QComboBox QAbstractItemView::item:hover{height:30px;border:0px solid #BDBDBD;border-radius:0px 0px 0px 0px;color:black}"
+                                "QComboBox QAbstractItemView::item:selected{height:30px;border:1px solid #BDBDBD;border-radius:0px 0px 0px 0px;color:black}"
+                                );
 
 
 

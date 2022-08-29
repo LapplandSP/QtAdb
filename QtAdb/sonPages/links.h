@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QFile>
+#include <QGraphicsDropShadowEffect>
 
 namespace Ui {
 class links;
@@ -18,6 +19,8 @@ public:
 
 private:
     Ui::links *ui;
+
+    void setShadow(QWidget* wgt);
 };
 
 #endif // LINKS_H

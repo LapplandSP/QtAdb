@@ -64,8 +64,8 @@ about::about(QWidget *parent) :
     ui->btn_money_3->hide();
     ui->btn_money_4->hide();
 
-    this->setStyleSheet("QToolTip{border:1px solid #BDBDBD; background-color: #ffffff; color:rgba(117, 117, 117, 0.9);font-family: MiSans Medium; font-size:12px;border-radius:4px;}");
-
+    //this->setStyleSheet("QToolTip{border:1px solid #BDBDBD; background-color: #ffffff; color:rgba(117, 117, 117, 0.9);font-family: MiSans Medium; font-size:12px;border-radius:4px;}");
+    //this->setStyleSheet("QToolTip{border:1px solid #BDBDBD; background-color: #ffffff; color:rgba(117, 117, 117, 0.9);font-family: MiSans Medium; font-size:12px;border-radius:4px;}");
 }
 
 about::~about()
@@ -103,5 +103,11 @@ void about::on_btn_links_clicked()
 {
     links *linksPage = new links();
     linksPage->show();
+}
+
+
+void about::on_btn_version_clicked()
+{
+    QDesktopServices::openUrl(QUrl("https://lapplandsp.github.io/QtAdb-Pages/qa/", QUrl::TolerantMode));
 }
 

@@ -67,6 +67,7 @@ private slots:
     void slot_createSonPage(int key);
     void slot_destroySonPage();
     void unlock();
+    void slot_spgAnimationEnd();
 };
 
 #endif // BASEPAGE_H

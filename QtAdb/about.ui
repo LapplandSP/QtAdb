@@ -14,6 +14,12 @@
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
    <item>
     <widget class="QWidget" name="widget" native="true">
      <property name="sizePolicy">
@@ -72,13 +78,17 @@ background-color: rgba(255, 255, 255, 0);</string>
             <property name="font">
              <font/>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="toolTip">
              <string>版本号</string>
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
 QPushButton:hover{background-color:rgba(255,255,255,0.7);}
-QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}
+QToolTip{border:1px solid #BDBDBD; background-color: #ffffff; color:rgba(117, 117, 117, 0.9);font-family: MiSans Medium; font-size:12px;border-radius:4px;}</string>
             </property>
             <property name="text">
              <string/>
@@ -134,6 +144,9 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
             </property>
             <property name="font">
              <font/>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
              <string>网址</string>
@@ -198,6 +211,9 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
             <property name="font">
              <font/>
             </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="toolTip">
              <string>酷安</string>
             </property>
@@ -260,6 +276,9 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
             </property>
             <property name="font">
              <font/>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
              <string>Github</string>
@@ -326,6 +345,9 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
               <width>50</width>
               <height>50</height>
              </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
@@ -411,6 +433,9 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
             </property>
             <property name="font">
              <font/>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
             </property>
             <property name="toolTip">
              <string>请我吃可乐（3元）</string>

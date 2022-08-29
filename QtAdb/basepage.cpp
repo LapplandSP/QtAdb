@@ -117,23 +117,53 @@ void basePage::setFather(QWidget *parent)
 
 void basePage::slot_createSonPage(int key)
 {
-    this->setDisabled(true);
-
-    listTimer = new QTimer(this);
-    connect(listTimer, SIGNAL(timeout()), this, SLOT(unlock()));
-    listTimer->setSingleShot(true);
-    listTimer->start(500);
-
-    emit creatingSonPage();
     if(isEnable(key) && key >= 0)
     {
+        this->setDisabled(true);
+
+        listTimer = new QTimer(this);
+        connect(listTimer, SIGNAL(timeout()), this, SLOT(slot_spgAnimationEnd()));
+        listTimer->setSingleShot(true);
+        listTimer->start(500);
+        emit creatingSonPage();
+
         ui->listWidget->setCurrentRow(-1);
         //qDebug() << "dev of basePage = " << dev.addr;
         sonPage = SPManager->selector(this,whoAmI(),key,dev);
         if(sonPage != NULL)
         {
-            ui->listWidget->setVisible(false);
-            ui->mainLayout->addWidget(sonPage);
+            //ui->listWidget->setVisible(false);
+
+            /**/
+            //sonPage->setVisible(false);
+            QPropertyAnimation *animation = new QPropertyAnimation(ui->listWidget,"geometry");
+
+            animation->setDuration(750);
+            animation->setEndValue(QRect(ui->listWidget->geometry().x(),ui->listWidget->geometry().y() + 50, parent->width(),wgtHeight));
+            animation->setStartValue(ui->listWidget->geometry());
+            animation->setEasingCurve(QEasingCurve::OutQuart);
+            animation->start();
+            //animation->deleteLater();
+
+            /*
+    qDebug() << "wgtHeight = " << wgtHeight;
+    if(parent->width() <= 600)
+    {
+        animation->setEndValue(QRect(301 - 30, 117 - 6 - 11, 600,wgtHeight));
+    }
+    else
+    {
+        animation->setEndValue(QRect(301 - 30, 117 - 6 - 11, parent->width(),wgtHeight));
+    }
+    //animation->setStartValue(QPoint(301 + 50,117));
+    animation->setStartValue(QRect(301 + 50 - 30, 117 - 6 - 11, parent->width()-50,wgtHeight));
+
+    animation->setEasingCurve(QEasingCurve::OutQuart);
+
+    this->show();
+    animation->start();
+            */
+            /**/
         }
     }
     ui->listWidget->setCurrentRow(-1);
@@ -141,13 +171,13 @@ void basePage::slot_createSonPage(int key)
 
 void basePage::slot_destroySonPage()
 {
-
     if(sonPage == NULL)
         throw "trying to destroy sonPage, but sonPage == NULL;";
 
     delete sonPage;
     sonPage = NULL;
     ui->listWidget->setVisible(true);
+    playLoadAnimation();
 }
 
 QString basePage::whoAmI()
@@ -194,4 +224,12 @@ void basePage::self_castrate()
 void basePage::unlock()
 {
     this->setDisabled(false);
+}
+
+void basePage::slot_spgAnimationEnd()
+{
+    ui->listWidget->setVisible(false);
+    unlock();
+    ui->mainLayout->addWidget(sonPage);
+    //sonPage->setVisible(true);
 }

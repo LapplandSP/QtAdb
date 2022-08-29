@@ -6,6 +6,7 @@
 #include <QRegularExpressionValidator>
 //#include <QRegularExpressionValidator>
 #include "../../adbprocess.h"
+#include "../../threads/adbthread.h"
 
 namespace Ui {
 class sp_scales;
@@ -37,6 +38,12 @@ private:
 
     void setShadow(QWidget* wgt);
     void refresh();
+
+private slots:
+    void setText_animator(QString);
+    void setText_transition(QString);
+    void setText_window(QString);
+
 };
 
 #endif // SP_SCALES_H

@@ -9,7 +9,8 @@ pageListItem::pageListItem(QWidget *parent) :
     ui->enableLight->setVisible(false);
 
     ui->widget->setStyleSheet("QWidget{background-color:transparent; border-radius:4px; border-color:gray;border:0px;}");
-    ui->pic->setStyleSheet("QPushButton{background-color:rgba(255,255,255,0.6);border-radius:4px;border:0px;}");
+    ui->pic->setStyleSheet("QPushButton{background-color:rgba(255,255,255,255);border-radius:4px;border:1px solid #BDBDBD;}");
+
 
     setStyles();
 }
@@ -56,9 +57,10 @@ void pageListItem::on_copyButton_clicked()
 
 void pageListItem::setSelectable()
 {
-    //ui->enableLight->setVisible(true);
+    ui->enableLight->setVisible(true);
+    isSelectable = true;
     //shadowEffect_icon->setColor(Qt::green);
-    ui->pic->setStyleSheet("QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}");
+    //ui->pic->setStyleSheet("QPushButton{background-color:rgba(255,255,255,255);border-radius:4px;border:1px solid #BDBDBD;}");
 }
 
 void pageListItem::slot_setText(QString t, QString p)
@@ -84,7 +86,7 @@ void pageListItem::setStyles()
     shadowEffect->setColor(Qt::gray);
     shadowEffect->setBlurRadius(5);
     ui->enableLight->setGraphicsEffect(shadowEffect);
-
+/*
     QGraphicsOpacityEffect *graphicsOpacityEffect = new QGraphicsOpacityEffect(this);
     graphicsOpacityEffect->setOpacity(1.0);
     ui->pic->setGraphicsEffect(graphicsOpacityEffect);
@@ -93,7 +95,7 @@ void pageListItem::setStyles()
     shadowEffect_icon->setOffset(0,0);
     shadowEffect_icon->setColor(Qt::gray);
     shadowEffect_icon->setBlurRadius(5);
-    ui->pic->setGraphicsEffect(shadowEffect_icon);
+    ui->pic->setGraphicsEffect(shadowEffect_icon);*/
 }
 
 void pageListItem::slot_setStyles()

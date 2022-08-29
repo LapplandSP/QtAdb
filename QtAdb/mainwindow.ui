@@ -51,17 +51,17 @@
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}\nQPushButton:hover{background-color:rgba(255,255,255,0.7);</string>
+            <string notr="true">background-color:rgba(255,255,255,0.9);border-radius:4px;border:1px solid #BDBDBD;</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_7">
             <property name="leftMargin">
-             <number>5</number>
+             <number>14</number>
             </property>
             <property name="topMargin">
              <number>5</number>
             </property>
             <property name="rightMargin">
-             <number>5</number>
+             <number>14</number>
             </property>
             <property name="bottomMargin">
              <number>5</number>
@@ -78,13 +78,13 @@
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
-                    <height>30</height>
+                    <height>20</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
-                    <height>30</height>
+                    <height>20</height>
                    </size>
                   </property>
                   <property name="font">
@@ -93,7 +93,7 @@
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+                   <string notr="true">background-color: rgba(255, 255, 255, 0);border:0px;</string>
                   </property>
                   <property name="text">
                    <string>CPU</string>
@@ -102,10 +102,16 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="label_RAM">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>20</height>
+                   </size>
+                  </property>
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
-                    <height>30</height>
+                    <height>20</height>
                    </size>
                   </property>
                   <property name="font">
@@ -114,7 +120,7 @@
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+                   <string notr="true">background-color: rgba(255, 255, 255, 0);border:0px;</string>
                   </property>
                   <property name="text">
                    <string>RAM</string>
@@ -153,15 +159,15 @@
                   <property name="styleSheet">
                    <string notr="true">QProgressBar{
 	font:9pt;
-	border-radius:10px;
+	border-radius:4px;
 	text-align:center;
 	/*border:1px solid #E8EDF2;*/
     border:0px solid #E8EDF2;
-	background-color: rgba(255,255,255,0);
+	background-color: #E0E0E0;
 }
 QProgressBar:chunk{
-	border-radius:10px;
-	background-color:qlineargradient(x1:0,y1:1,x1:1,y1:0,stop:0 #11998e, stop:1 #38ef7d);
+	border-radius:4px;
+	background-color:qlineargradient(x1:0,y1:1,x1:1,y1:0,stop:0 #38ef7d, stop:1 #11998e);
 }
 </string>
                   </property>
@@ -198,15 +204,15 @@ QProgressBar:chunk{
                   <property name="styleSheet">
                    <string notr="true">QProgressBar{
 	font:9pt;
-	border-radius:10px;
+	border-radius:4px;
 	text-align:center;
 	/*border:1px solid #E8EDF2;*/
     border:0px solid #E8EDF2;
-	background-color: rgba(255,255,255,0);
+	background-color: #E0E0E0;
 }
 QProgressBar:chunk{
-	border-radius:10px;
-	background-color:qlineargradient(x1:0,y1:1,x1:1,y1:0,stop:0 #11998e, stop:1 #38ef7d);
+	border-radius:4px;
+	background-color:qlineargradient(x1:0,y1:1,x1:1,y1:0,stop:0 #38ef7d, stop:1 #11998e);
 }
 </string>
                   </property>
@@ -228,7 +234,7 @@ QProgressBar:chunk{
                <widget class="QComboBox" name="comboBox">
                 <property name="minimumSize">
                  <size>
-                  <width>210</width>
+                  <width>0</width>
                   <height>30</height>
                  </size>
                 </property>
@@ -237,6 +243,9 @@ QProgressBar:chunk{
                   <width>210</width>
                   <height>30</height>
                  </size>
+                </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
                 </property>
                </widget>
               </item>
@@ -254,11 +263,16 @@ QProgressBar:chunk{
                   <height>30</height>
                  </size>
                 </property>
+                <property name="cursor">
+                 <cursorShape>PointingHandCursor</cursorShape>
+                </property>
                 <property name="toolTip">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;刷新设备列表&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true"/>
+                 <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -353,6 +367,9 @@ QProgressBar:chunk{
                <height>64</height>
               </size>
              </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
              <property name="toolTip">
               <string>无线调试</string>
              </property>
@@ -392,6 +409,9 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
              </property>
              <property name="font">
               <font/>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="toolTip">
               <string>杀死ADB进程</string>
@@ -437,7 +457,13 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
               </size>
              </property>
              <property name="font">
-              <font/>
+              <font>
+               <family>MiSans Medium</family>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
@@ -478,6 +504,9 @@ WSA</string>
              </property>
              <property name="font">
               <font/>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}

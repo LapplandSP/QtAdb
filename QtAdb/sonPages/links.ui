@@ -18,6 +18,18 @@
 /*background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(238, 154, 229, 255), stop:1 rgba(89, 97, 249, 255));*/</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="leftMargin">
+    <number>30</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>30</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
    <item>
     <widget class="QScrollArea" name="scrollArea">
      <property name="styleSheet">
@@ -30,12 +42,18 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-1495</y>
-        <width>797</width>
-        <height>1981</height>
+        <y>0</y>
+        <width>759</width>
+        <height>1969</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="topMargin">
+        <number>5</number>
+       </property>
+       <property name="bottomMargin">
+        <number>5</number>
+       </property>
        <item>
         <widget class="QWidget" name="widget_11" native="true">
          <property name="styleSheet">
@@ -51,7 +69,7 @@
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:0px;border:0px;border-bottom:1px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:0px;border:0px;border-bottom:1px solid #BDBDBD;</string>
             </property>
             <property name="text">
              <string>ADB</string>
@@ -67,7 +85,7 @@
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_15">
              <item>
@@ -85,7 +103,8 @@
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">border:0px;image:url(:/linkIcons/image/webicons/android.png);</string>
+                <string notr="true">border:0px;image:url(:/linkIcons/image/webicons/android.png);border-radius:4px;
+background-color: rgba(255, 255, 255, 0);</string>
                </property>
                <property name="text">
                 <string/>
@@ -138,7 +157,7 @@
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
@@ -209,7 +228,7 @@
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_4">
              <item>
@@ -283,7 +302,7 @@
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_5">
              <item>
@@ -301,7 +320,8 @@
                 </size>
                </property>
                <property name="styleSheet">
-                <string notr="true">border:0px;image:url(:/linkIcons/image/webicons/jamcz.png);</string>
+                <string notr="true">border:0px;image:url(:/linkIcons/image/webicons/jamcz.png);border-radius:4px;
+background-color: rgba(255, 255, 255, 0);</string>
                </property>
                <property name="text">
                 <string/>
@@ -366,7 +386,7 @@
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:0px;border:0px;border-bottom:1px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:0px;border:0px;border-bottom:1px solid #BDBDBD;</string>
             </property>
             <property name="text">
              <string>Recovery</string>
@@ -382,7 +402,7 @@
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_10">
              <item>
@@ -453,7 +473,7 @@
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_11">
              <item>
@@ -533,7 +553,7 @@
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:0px;border:0px;border-bottom:1px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:0px;border:0px;border-bottom:1px solid #BDBDBD;</string>
             </property>
             <property name="text">
              <string>模块</string>
@@ -549,7 +569,7 @@
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout">
              <item>
@@ -620,7 +640,7 @@
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_3">
              <item>
@@ -701,7 +721,7 @@ border-radius:4px;</string>
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:0px;border:0px;border-bottom:1px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:0px;border:0px;border-bottom:1px solid #BDBDBD;</string>
             </property>
             <property name="text">
              <string>ROMs</string>
@@ -717,7 +737,7 @@ border-radius:4px;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_16">
              <item>
@@ -788,7 +808,7 @@ border-radius:4px;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_23">
              <item>
@@ -859,7 +879,7 @@ border-radius:4px;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_19">
              <item>
@@ -930,7 +950,7 @@ border-radius:4px;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_7">
              <item>
@@ -1001,7 +1021,7 @@ border-radius:4px;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_8">
              <item>
@@ -1072,7 +1092,7 @@ border-radius:4px;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_20">
              <item>
@@ -1143,7 +1163,7 @@ border-radius:4px;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_21">
              <item>
@@ -1214,7 +1234,7 @@ border-radius:4px;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_9">
              <item>
@@ -1285,7 +1305,7 @@ border-radius:4px;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_12">
              <item>
@@ -1356,7 +1376,7 @@ border-radius:4px;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_13">
              <item>
@@ -1427,7 +1447,7 @@ border-radius:4px;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_14">
              <item>
@@ -1498,7 +1518,7 @@ border-radius:4px;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_22">
              <item>
@@ -1569,7 +1589,7 @@ border-radius:4px;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_18">
              <item>
@@ -1640,7 +1660,7 @@ border-radius:4px;</string>
              </sizepolicy>
             </property>
             <property name="styleSheet">
-             <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:0px solid #BDBDBD;</string>
+             <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px solid #BDBDBD;</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_6">
              <item>
