@@ -2,7 +2,7 @@
 #include "ui_tp_packageprofile.h"
 
 tp_packageProfile::tp_packageProfile(QWidget *parent ,QString packageName) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::tp_packageProfile)
 {
     ui->setupUi(this);

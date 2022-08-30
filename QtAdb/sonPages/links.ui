@@ -44,10 +44,13 @@
         <x>0</x>
         <y>0</y>
         <width>759</width>
-        <height>1969</height>
+        <height>1990</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>14</number>
+       </property>
        <property name="topMargin">
         <number>5</number>
        </property>
@@ -57,7 +60,7 @@
        <item>
         <widget class="QWidget" name="widget_11" native="true">
          <property name="styleSheet">
-          <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:1px solid #BDBDBD;</string>
+          <string notr="true">background-color:rgba(255,255,255,0.9);border-radius:4px;border:1px solid #BDBDBD;</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
@@ -374,7 +377,7 @@ background-color: rgba(255, 255, 255, 0);</string>
        <item>
         <widget class="QWidget" name="widget_12" native="true">
          <property name="styleSheet">
-          <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:1px solid #BDBDBD;</string>
+          <string notr="true">background-color:rgba(255,255,255,0.9);border-radius:4px;border:1px solid #BDBDBD;</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
@@ -541,7 +544,7 @@ background-color: rgba(255, 255, 255, 0);</string>
        <item>
         <widget class="QWidget" name="widget_14" native="true">
          <property name="styleSheet">
-          <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:1px solid #BDBDBD;</string>
+          <string notr="true">background-color:rgba(255,255,255,0.9);border-radius:4px;border:1px solid #BDBDBD;</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_6">
           <item>
@@ -709,7 +712,7 @@ border-radius:4px;</string>
        <item>
         <widget class="QWidget" name="widget_15" native="true">
          <property name="styleSheet">
-          <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:1px solid #BDBDBD;</string>
+          <string notr="true">background-color:rgba(255,255,255,0.9);border-radius:4px;border:1px solid #BDBDBD;</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <item>

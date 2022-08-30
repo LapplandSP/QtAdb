@@ -4,12 +4,13 @@
 #include <QWidget>
 #include <QGraphicsDropShadowEffect>
 #include "../../adbprocess.h"
+#include "../../animationwidget.h"
 
 namespace Ui {
 class sp_status_bar;
 }
 
-class sp_status_bar : public QWidget
+class sp_status_bar : public animationWidget
 {
     Q_OBJECT
 

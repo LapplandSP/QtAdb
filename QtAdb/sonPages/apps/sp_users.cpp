@@ -2,7 +2,7 @@
 #include "ui_sp_users.h"
 
 sp_users::sp_users(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::sp_users)
 {
     ui->setupUi(this);

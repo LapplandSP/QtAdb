@@ -7,12 +7,13 @@
 #include "../standardoutputpage.h"
 #include "../../threads/adbthread.h"
 #include <QFileDialog>
+#include "../../animationwidget.h"
 
 namespace Ui {
 class sp_recovery;
 }
 
-class sp_recovery : public QWidget
+class sp_recovery : public animationWidget
 {
     Q_OBJECT
 

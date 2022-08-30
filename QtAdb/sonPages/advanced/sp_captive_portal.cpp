@@ -2,7 +2,7 @@
 #include "ui_sp_captive_portal.h"
 
 sp_captive_portal::sp_captive_portal(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::sp_captive_portal)
 {
     ui->setupUi(this);

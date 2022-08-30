@@ -369,7 +369,7 @@ background-color: rgba(255, 255, 255, 0);</string>
              <font/>
             </property>
             <property name="toolTip">
-             <string>返回</string>
+             <string/>
             </property>
             <property name="styleSheet">
              <string notr="true"/>
@@ -455,41 +455,6 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
             <property name="icon">
              <iconset resource="../../ico.qrc">
               <normaloff>:/ico/image/ico/refresh-line.svg</normaloff>:/ico/image/ico/refresh-line.svg</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>18</width>
-              <height>18</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="showOutputBtn">
-            <property name="minimumSize">
-             <size>
-              <width>30</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>30</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="font">
-             <font/>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="../../ico.qrc">
-              <normaloff>:/ico/image/ico/terminal-box-line.svg</normaloff>:/ico/image/ico/terminal-box-line.svg</iconset>
             </property>
             <property name="iconSize">
              <size>

@@ -6,12 +6,13 @@
 
 #include "adbprocess.h"
 #include "textexplainer.h"
+#include "../../animationwidget.h"
 
 namespace Ui {
 class sp_dpiChanger;
 }
 
-class sp_dpiChanger : public QWidget
+class sp_dpiChanger : public animationWidget
 {
     Q_OBJECT
 

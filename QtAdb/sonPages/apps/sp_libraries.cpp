@@ -2,7 +2,7 @@
 #include "ui_sp_libraries.h"
 
 sp_libraries::sp_libraries(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::sp_libraries)
 {
     ui->setupUi(this);

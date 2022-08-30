@@ -8,12 +8,13 @@
 #include "../../threads/adbthread.h"
 #include <QScrollBar>
 #include <QFile>
+#include "../../animationwidget.h"
 
 namespace Ui {
 class sp_accounts;
 }
 
-class sp_accounts : public QWidget
+class sp_accounts : public animationWidget
 {
     Q_OBJECT
 

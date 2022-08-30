@@ -2,7 +2,7 @@
 #include "ui_sp_devcontrol_power.h"
 
 sp_devControl_power::sp_devControl_power(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::sp_devControl_power)
 {
     ui->setupUi(this);

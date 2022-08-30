@@ -12,7 +12,7 @@ sonPageManager::~sonPageManager()
     //delete explainer;
 }
 
-QWidget* sonPageManager::selector(QWidget *parent , QString parentName, int key, device dev)
+animationWidget* sonPageManager::selector(QWidget *parent , QString parentName, int key, device dev)
 {
     if(parentName == "devInfo")
     {
@@ -45,7 +45,7 @@ QWidget* sonPageManager::selector(QWidget *parent , QString parentName, int key,
     return NULL;
 }
 
-QWidget* sonPageManager::createSonPageFor_devInfo(QWidget *parent, int key, device dev)
+animationWidget* sonPageManager::createSonPageFor_devInfo(QWidget *parent, int key, device dev)
 {
     switch(key +1)
     {
@@ -67,7 +67,7 @@ QWidget* sonPageManager::createSonPageFor_devInfo(QWidget *parent, int key, devi
     return NULL;
 }
 
-sp_activator* sonPageManager::createSonPageFor_activator(QWidget *parent, int key, device dev)
+animationWidget* sonPageManager::createSonPageFor_activator(QWidget *parent, int key, device dev)
 {
     //sp_activator *page = new sp_activator(parent);
     //return page;
@@ -319,7 +319,7 @@ sp_activator* sonPageManager::createSonPageFor_activator(QWidget *parent, int ke
     return NULL;
 }
 
-QWidget* sonPageManager::createSonPageFor_apps(QWidget *parent, int key, device dev)
+animationWidget* sonPageManager::createSonPageFor_apps(QWidget *parent, int key, device dev)
 {
     switch(key +1)
     {
@@ -371,7 +371,7 @@ QWidget* sonPageManager::createSonPageFor_apps(QWidget *parent, int key, device 
     return NULL;
 }
 
-QWidget* sonPageManager::createSonPageFor_devControl(QWidget *parent, int key, device dev)
+animationWidget* sonPageManager::createSonPageFor_devControl(QWidget *parent, int key, device dev)
 {
     switch(key +1)
     {
@@ -392,7 +392,7 @@ QWidget* sonPageManager::createSonPageFor_devControl(QWidget *parent, int key, d
     return NULL;
 }
 
-QWidget* sonPageManager::createSonPageFor_recovery(QWidget *parent, int key, device dev)
+animationWidget* sonPageManager::createSonPageFor_recovery(QWidget *parent, int key, device dev)
 {
     switch(key +1)
     {
@@ -407,7 +407,7 @@ QWidget* sonPageManager::createSonPageFor_recovery(QWidget *parent, int key, dev
     return NULL;
 }
 
-QWidget* sonPageManager::createSonPageFor_advanced(QWidget *parent, int key, device dev)
+animationWidget* sonPageManager::createSonPageFor_advanced(QWidget *parent, int key, device dev)
 {
     switch(key +1)
     {

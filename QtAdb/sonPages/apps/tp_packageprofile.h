@@ -8,12 +8,13 @@
 #include "../../textexplainer.h"
 #include "../../adbprocess.h"
 #include "../../threads/adbthread.h"
+#include "../../animationwidget.h"
 
 namespace Ui {
 class tp_packageProfile;
 }
 
-class tp_packageProfile : public QWidget
+class tp_packageProfile : public animationWidget
 {
     Q_OBJECT
 

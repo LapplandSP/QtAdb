@@ -24,7 +24,10 @@ public:
 
     void playLoadAnimation();
     void playLoadAnimation(int h);
+    void playLoadAnimation_sp(int h);
+    void playLoadAnimation_bp(int h);
     void playExitAnimation();
+    void playExitAnimation_sp();
 
     bool isBasePage;
     QWidget *parent;

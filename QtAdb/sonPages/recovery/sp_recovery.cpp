@@ -2,7 +2,7 @@
 #include "ui_sp_recovery.h"
 
 sp_recovery::sp_recovery(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::sp_recovery)
 {
     ui->setupUi(this);
@@ -14,7 +14,7 @@ sp_recovery::sp_recovery(QWidget *parent) :
     shadowEffect_runBtn = new QGraphicsDropShadowEffect(this);
     shadowEffect_showOutputBtn = new QGraphicsDropShadowEffect(this);
     shadowEffect_back_to_basePage = new QGraphicsDropShadowEffect(this);
-    shadowEffect_refreshBtn = new QGraphicsDropShadowEffect(this);
+    //shadowEffect_refreshBtn = new QGraphicsDropShadowEffect(this);
     shadowEffect_selectBtn = new QGraphicsDropShadowEffect(this);
     shadowEffect_output = new QGraphicsDropShadowEffect(this);
     shadowEffect_tips = new QGraphicsDropShadowEffect(this);
@@ -31,9 +31,10 @@ sp_recovery::sp_recovery(QWidget *parent) :
     shadowEffect_back_to_basePage->setColor(Qt::gray);
     shadowEffect_back_to_basePage->setBlurRadius(5);
 
+    /*
     shadowEffect_refreshBtn->setOffset(0,0);
     shadowEffect_refreshBtn->setColor(Qt::gray);
-    shadowEffect_refreshBtn->setBlurRadius(5);
+    shadowEffect_refreshBtn->setBlurRadius(5);*/
 
     shadowEffect_selectBtn->setOffset(0,0);
     shadowEffect_selectBtn->setColor(Qt::gray);
@@ -50,7 +51,7 @@ sp_recovery::sp_recovery(QWidget *parent) :
     ui->back_to_basePage->setGraphicsEffect(shadowEffect_back_to_basePage);
     ui->runBtn->setGraphicsEffect(shadowEffect_runBtn);
     ui->showOutputBtn->setGraphicsEffect(shadowEffect_showOutputBtn);
-    ui->refreshBtn->setGraphicsEffect(shadowEffect_refreshBtn);
+    //ui->refreshBtn->setGraphicsEffect(shadowEffect_refreshBtn);
     ui->selectBtn->setGraphicsEffect(shadowEffect_selectBtn);
     ui->output->setGraphicsEffect(shadowEffect_output);
     ui->tips->setGraphicsEffect(shadowEffect_tips);
@@ -132,6 +133,7 @@ void sp_recovery::on_showOutputBtn_clicked(bool checked)
     if(checked)
     {
         page = new standardOutputPage(NULL,process);
+        page->setWindowTitle("命令行输出");
         qDebug() << "1";
         connect(process,SIGNAL(outputGet(QString)),page,SLOT(update(QString)));
         /*

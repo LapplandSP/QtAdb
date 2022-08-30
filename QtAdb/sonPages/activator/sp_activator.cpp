@@ -2,14 +2,16 @@
 #include "ui_sp_activator.h"
 
 sp_activator::sp_activator(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::sp_activator)
 {
     ui->setupUi(this);
     process = new adbProcess;
     parents = parent;
 
-    connect(this->ui->back_to_basePage,SIGNAL(clicked()),parent,SLOT(slot_destroySonPage()));
+    //spg_return_pushed()
+    //connect(this->ui->back_to_basePage,SIGNAL(clicked()),parent,SLOT(slot_destroySonPage()));
+    connect(this->ui->back_to_basePage,SIGNAL(clicked()),parent,SLOT(spg_return_pushed()));
 
     QGraphicsDropShadowEffect *shadowEffect_runBtn = new QGraphicsDropShadowEffect(this);
     QGraphicsDropShadowEffect *shadowEffect_showOutputBtn = new QGraphicsDropShadowEffect(this);
@@ -83,6 +85,7 @@ void sp_activator::on_showOutputBtn_clicked(bool checked)
     if(checked)
     {
         page = new standardOutputPage(NULL,process);
+        page->setWindowTitle("命令行输出");
         connect(process,SIGNAL(outputGet(QString)),page,SLOT(update(QString)));
         /*
         parents->mapToGlobal(parents->pos());

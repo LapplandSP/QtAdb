@@ -8,12 +8,13 @@
 #include <QFile>
 //#include <QAbstractItemView>
 #include "../../threads/adbthread.h"
+#include "../../animationwidget.h"
 
 namespace Ui {
 class sp_features;
 }
 
-class sp_features : public QWidget
+class sp_features : public animationWidget
 {
     Q_OBJECT
 

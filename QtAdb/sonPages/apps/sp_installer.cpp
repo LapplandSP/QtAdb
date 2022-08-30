@@ -2,7 +2,7 @@
 #include "ui_sp_installer.h"
 
 sp_installer::sp_installer(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::sp_installer)
 {
     ui->setupUi(this);
@@ -17,9 +17,9 @@ sp_installer::sp_installer(QWidget *parent) :
     connect(this->ui->back_to_basePage,SIGNAL(clicked()),parent,SLOT(slot_destroySonPage()));
 
     QGraphicsDropShadowEffect *shadowEffect_runBtn = new QGraphicsDropShadowEffect(this);
-    QGraphicsDropShadowEffect *shadowEffect_showOutputBtn = new QGraphicsDropShadowEffect(this);
+    //QGraphicsDropShadowEffect *shadowEffect_showOutputBtn = new QGraphicsDropShadowEffect(this);
     QGraphicsDropShadowEffect *shadowEffect_back_to_basePage = new QGraphicsDropShadowEffect(this);
-    QGraphicsDropShadowEffect *shadowEffect_refreshBtn = new QGraphicsDropShadowEffect(this);
+    //QGraphicsDropShadowEffect *shadowEffect_refreshBtn = new QGraphicsDropShadowEffect(this);
     QGraphicsDropShadowEffect *shadowEffect_selectBtn = new QGraphicsDropShadowEffect(this);
     QGraphicsDropShadowEffect *shadowEffect_tips = new QGraphicsDropShadowEffect(this);
 
@@ -27,17 +27,19 @@ sp_installer::sp_installer(QWidget *parent) :
     shadowEffect_runBtn->setColor(Qt::gray);
     shadowEffect_runBtn->setBlurRadius(5);
 
+    /*
     shadowEffect_showOutputBtn->setOffset(0,0);
     shadowEffect_showOutputBtn->setColor(Qt::gray);
-    shadowEffect_showOutputBtn->setBlurRadius(5);
+    shadowEffect_showOutputBtn->setBlurRadius(5);*/
 
     shadowEffect_back_to_basePage->setOffset(0,0);
     shadowEffect_back_to_basePage->setColor(Qt::gray);
     shadowEffect_back_to_basePage->setBlurRadius(5);
 
+    /*
     shadowEffect_refreshBtn->setOffset(0,0);
     shadowEffect_refreshBtn->setColor(Qt::gray);
-    shadowEffect_refreshBtn->setBlurRadius(5);
+    shadowEffect_refreshBtn->setBlurRadius(5);*/
 
     shadowEffect_selectBtn->setOffset(0,0);
     shadowEffect_selectBtn->setColor(Qt::gray);
@@ -49,8 +51,8 @@ sp_installer::sp_installer(QWidget *parent) :
 
     ui->back_to_basePage->setGraphicsEffect(shadowEffect_back_to_basePage);
     ui->runBtn->setGraphicsEffect(shadowEffect_runBtn);
-    ui->showOutputBtn->setGraphicsEffect(shadowEffect_showOutputBtn);
-    ui->refreshBtn->setGraphicsEffect(shadowEffect_refreshBtn);
+    //ui->showOutputBtn->setGraphicsEffect(shadowEffect_showOutputBtn);
+    //ui->refreshBtn->setGraphicsEffect(shadowEffect_refreshBtn);
     ui->selectBtn->setGraphicsEffect(shadowEffect_selectBtn);
     ui->tips->setGraphicsEffect(shadowEffect_tips);
 

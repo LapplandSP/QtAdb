@@ -358,6 +358,7 @@ void MainWindow::initBasePage(int key)              //槽：生成basePages
         /**/
 
         currentPage = new basePage(this);
+
         //qDebug() << "height in initBasePage()" << ui->widget_height->height();
         currentPage->wgtHeight = ui->widget_height->height();
         //qDebug() << "height2 in initBasePage()" << currentPage->wgtHeight;
@@ -382,7 +383,7 @@ void MainWindow::initBasePage(int key)              //槽：生成basePages
         taiChiTimer = new QTimer(this);
         connect(taiChiTimer, SIGNAL(timeout()), this, SLOT(slot_taiChi()));
         taiChiTimer->setSingleShot(true);
-        taiChiTimer->start(750);
+        taiChiTimer->start(700);
 
         break;
     }
@@ -683,8 +684,8 @@ void MainWindow::on_WSABtn_clicked()                //槽：连接WSA
     QMessageBox * msgBox = new QMessageBox;
     msgBox->setWindowIcon(QIcon(":/ico/image/ico/link.svg"));
     msgBox->setStyleSheet("background-color:rgba(255,255,255,1);border:0px; border-radius:0px;");
-    msgBox->setWindowTitle("无线调试");
-    msgBox->setText("· 已尝试连接，请刷新设备列表并选择WSA");
+    msgBox->setWindowTitle("WSA");
+    msgBox->setText("· 已尝试连接，请刷新设备列表并选择WSA\n· 请谨慎对WSA使用某些功能");
     msgBox->addButton(" ✓ ", QMessageBox::AcceptRole);
     msgBox->show();
 }
@@ -709,6 +710,7 @@ void MainWindow::slot_taiChi()
     if(ui->comboBox->currentIndex() != -1)
     {
         this->unlock();
+        //currentPage->setDisabled(false);
     }
     //this->setEnabled(true);
 }

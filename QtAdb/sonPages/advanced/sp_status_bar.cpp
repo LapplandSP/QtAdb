@@ -2,7 +2,7 @@
 #include "ui_sp_status_bar.h"
 
 sp_status_bar::sp_status_bar(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::sp_status_bar)
 {
     ui->setupUi(this);

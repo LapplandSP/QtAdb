@@ -34,16 +34,16 @@ public:
     textExplainer *explainer;
 
 
-    QWidget *selector(QWidget *parent, QString parentName, int key , device dev);
+    animationWidget *selector(QWidget *parent, QString parentName, int key , device dev);
 
 private:
 
-    QWidget* createSonPageFor_devInfo(QWidget *parent, int key, device dev);
-    sp_activator* createSonPageFor_activator(QWidget *parent, int key, device dev);
-    QWidget* createSonPageFor_apps(QWidget *parent, int key, device dev);
-    QWidget* createSonPageFor_devControl(QWidget *parent, int key, device dev);
-    QWidget* createSonPageFor_recovery(QWidget *parent, int key, device dev);
-    QWidget* createSonPageFor_advanced(QWidget *parent, int key, device dev);
+    animationWidget* createSonPageFor_devInfo(QWidget *parent, int key, device dev);
+    animationWidget* createSonPageFor_activator(QWidget *parent, int key, device dev);
+    animationWidget* createSonPageFor_apps(QWidget *parent, int key, device dev);
+    animationWidget* createSonPageFor_devControl(QWidget *parent, int key, device dev);
+    animationWidget* createSonPageFor_recovery(QWidget *parent, int key, device dev);
+    animationWidget* createSonPageFor_advanced(QWidget *parent, int key, device dev);
 };
 
 #endif // SONPAGEMANAGER_H

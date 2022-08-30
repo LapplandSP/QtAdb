@@ -11,12 +11,13 @@
 #include "../../threads/adbthread.h"
 #include <QScrollBar>
 #include <QFile>
+#include "../../animationwidget.h"
 
 namespace Ui {
 class sp_permissions;
 }
 
-class sp_permissions : public QWidget
+class sp_permissions : public animationWidget
 {
     Q_OBJECT
 

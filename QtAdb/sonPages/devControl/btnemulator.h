@@ -5,12 +5,13 @@
 #include <QGraphicsDropShadowEffect>
 #include "textexplainer.h"
 #include "adbprocess.h"
+#include "../../animationwidget.h"
 
 namespace Ui {
 class btnEmulator;
 }
 
-class btnEmulator : public QWidget
+class btnEmulator : public animationWidget
 {
     Q_OBJECT
 

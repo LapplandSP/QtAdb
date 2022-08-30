@@ -2,7 +2,7 @@
 #include "ui_btnemulator.h"
 
 btnEmulator::btnEmulator(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::btnEmulator)
 {
     ui->setupUi(this);

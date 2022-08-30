@@ -33,7 +33,7 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}
 QToolTip{border:1px solid #BDBDBD; background-color: #ffffff; color:rgba(117, 117, 117, 0.9);font-family: MiSans Medium; font-size:12px;border-radius:4px;}</string>
             </property>
             <property name="text">
-             <string>refresh</string>
+             <string>刷新</string>
             </property>
            </widget>
           </item>
@@ -46,7 +46,7 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}
 QToolTip{border:1px solid #BDBDBD; background-color: #ffffff; color:rgba(117, 117, 117, 0.9);font-family: MiSans Medium; font-size:12px;border-radius:4px;}</string>
             </property>
             <property name="text">
-             <string>clear</string>
+             <string>清除</string>
             </property>
            </widget>
           </item>
@@ -59,7 +59,7 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}
 QToolTip{border:1px solid #BDBDBD; background-color: #ffffff; color:rgba(117, 117, 117, 0.9);font-family: MiSans Medium; font-size:12px;border-radius:4px;}</string>
             </property>
             <property name="text">
-             <string>copy</string>
+             <string>复制</string>
             </property>
            </widget>
           </item>

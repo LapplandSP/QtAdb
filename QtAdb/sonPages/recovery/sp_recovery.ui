@@ -343,40 +343,6 @@ QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="refreshBtn">
-            <property name="minimumSize">
-             <size>
-              <width>30</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>30</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
-QPushButton:hover{background-color:rgba(255,255,255,0.7);}
-QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="../../ico.qrc">
-              <normaloff>:/ico/image/ico/refresh-line.svg</normaloff>:/ico/image/ico/refresh-line.svg</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>18</width>
-              <height>18</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QPushButton" name="showOutputBtn">
             <property name="minimumSize">
              <size>

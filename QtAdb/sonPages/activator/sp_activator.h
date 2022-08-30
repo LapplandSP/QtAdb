@@ -8,12 +8,13 @@
 #include "adbprocess.h"
 #include "../sonpagebase.h"
 #include "../standardoutputpage.h"
+#include "../../animationwidget.h"
 
 namespace Ui {
 class sp_activator;
 }
 
-class sp_activator : public QWidget
+class sp_activator : public animationWidget
 {
     Q_OBJECT
 

@@ -29,7 +29,7 @@ public:
     QWidget *parents;
 
     basePage *lastPage;
-    QWidget *sonPage;
+    animationWidget *sonPage;
     QWidget *father;
     QString myName;
     sonPageManager *SPManager;
@@ -55,6 +55,7 @@ private:
     bool isEnable(int k);
 
     QTimer *listTimer;
+    QPropertyAnimation *animation_listHide;
 
     //QGraphicsOpacityEffect* exitOpacity;
 
@@ -68,6 +69,7 @@ private slots:
     void slot_destroySonPage();
     void unlock();
     void slot_spgAnimationEnd();
+    void spg_return_pushed();
 };
 
 #endif // BASEPAGE_H

@@ -8,12 +8,13 @@
 #include "../../threads/adbthread.h"
 #include <QScrollBar>
 #include <QFile>
+#include "../../animationwidget.h"
 
 namespace Ui {
 class sp_permissionGroups;
 }
 
-class sp_permissionGroups : public QWidget
+class sp_permissionGroups : public animationWidget
 {
     Q_OBJECT
 

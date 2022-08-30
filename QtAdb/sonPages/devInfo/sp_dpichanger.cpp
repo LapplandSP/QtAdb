@@ -2,7 +2,7 @@
 #include "ui_sp_dpichanger.h"
 
 sp_dpiChanger::sp_dpiChanger(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::sp_dpiChanger)
 {
     ui->setupUi(this);
@@ -20,12 +20,13 @@ sp_dpiChanger::sp_dpiChanger(QWidget *parent) :
     ui->runBtn->setStyleSheet("QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}"
                               "QPushButton:hover{background-color:rgba(255,255,255,0.7);}"
                               "QPushButton:pressed{background-color:rgba(255,255,255,0.6);}");
+    /*
     ui->showOutputBtn->setStyleSheet("QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}"
                                      "QPushButton:hover{background-color:rgba(255,255,255,0.7);}"
-                                     "QPushButton:pressed{background-color:rgba(255,255,255,0.6);}");
+                                     "QPushButton:pressed{background-color:rgba(255,255,255,0.6);}");*/
 
     QGraphicsDropShadowEffect *shadowEffect_runBtn = new QGraphicsDropShadowEffect(this);
-    QGraphicsDropShadowEffect *shadowEffect_showOutputBtn = new QGraphicsDropShadowEffect(this);
+    //QGraphicsDropShadowEffect *shadowEffect_showOutputBtn = new QGraphicsDropShadowEffect(this);
     QGraphicsDropShadowEffect *shadowEffect_back_to_basePage = new QGraphicsDropShadowEffect(this);
     QGraphicsDropShadowEffect *shadowEffect_refreshBtn = new QGraphicsDropShadowEffect(this);
 
@@ -37,9 +38,10 @@ sp_dpiChanger::sp_dpiChanger(QWidget *parent) :
     shadowEffect_runBtn->setColor(Qt::gray);
     shadowEffect_runBtn->setBlurRadius(5);
 
+    /*
     shadowEffect_showOutputBtn->setOffset(0,0);
     shadowEffect_showOutputBtn->setColor(Qt::gray);
-    shadowEffect_showOutputBtn->setBlurRadius(5);
+    shadowEffect_showOutputBtn->setBlurRadius(5);*/
 
     shadowEffect_back_to_basePage->setOffset(0,0);
     shadowEffect_back_to_basePage->setColor(Qt::gray);
@@ -63,7 +65,7 @@ sp_dpiChanger::sp_dpiChanger(QWidget *parent) :
 
     ui->back_to_basePage->setGraphicsEffect(shadowEffect_back_to_basePage);
     ui->runBtn->setGraphicsEffect(shadowEffect_runBtn);
-    ui->showOutputBtn->setGraphicsEffect(shadowEffect_showOutputBtn);
+    //ui->showOutputBtn->setGraphicsEffect(shadowEffect_showOutputBtn);
     ui->refreshBtn->setGraphicsEffect(shadowEffect_refreshBtn);
     ui->dpiInfo->setGraphicsEffect(shadowEffect_dpiInfo);
     ui->currentDpi->setGraphicsEffect(shadowEffect_currentDpi);

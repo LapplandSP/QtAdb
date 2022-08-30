@@ -2,7 +2,7 @@
 #include "ui_sp_features.h"
 
 sp_features::sp_features(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::sp_features)
 {
     ui->setupUi(this);

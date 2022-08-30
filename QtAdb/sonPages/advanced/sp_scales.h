@@ -7,12 +7,13 @@
 //#include <QRegularExpressionValidator>
 #include "../../adbprocess.h"
 #include "../../threads/adbthread.h"
+#include "../../animationwidget.h"
 
 namespace Ui {
 class sp_scales;
 }
 
-class sp_scales : public QWidget
+class sp_scales : public animationWidget
 {
     Q_OBJECT
 

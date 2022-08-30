@@ -11,6 +11,8 @@
 #include "tp_packageprofile.h"
 #include <QScrollBar>
 #include <QFile>
+#include "../../animationwidget.h"
+
 /*
 struct package
 {
@@ -21,7 +23,7 @@ namespace Ui {
 class sp_packages;
 }
 
-class sp_packages : public QWidget
+class sp_packages : public animationWidget
 {
     Q_OBJECT
 

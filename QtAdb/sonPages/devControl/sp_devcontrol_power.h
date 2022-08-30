@@ -5,12 +5,13 @@
 #include <QGraphicsDropShadowEffect>
 #include "textexplainer.h"
 #include "adbprocess.h"
+#include "../../animationwidget.h"
 
 namespace Ui {
 class sp_devControl_power;
 }
 
-class sp_devControl_power : public QWidget
+class sp_devControl_power : public animationWidget
 {
     Q_OBJECT
 

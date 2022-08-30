@@ -6,12 +6,13 @@
 
 #include "adbprocess.h"
 #include "textexplainer.h"
+#include "../../animationwidget.h"
 
 namespace Ui {
 class sp_wmsize;
 }
 
-class sp_wmsize : public QWidget
+class sp_wmsize : public animationWidget
 {
     Q_OBJECT
 

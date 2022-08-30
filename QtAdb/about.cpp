@@ -33,7 +33,7 @@ about::about(QWidget *parent) :
     ui->btn_money->setGraphicsEffect(shadowEffect_btn_money);
     QGraphicsDropShadowEffect *shadowEffect_btn_money2 = new QGraphicsDropShadowEffect(this);
     shadowEffect_btn_money2->setOffset(0,0);
-    shadowEffect_btn_money2->setColor(Qt::gray);
+    shadowEffect_btn_money2->setColor(Qt::green);
     shadowEffect_btn_money2->setBlurRadius(5);
     ui->btn_money_2->setGraphicsEffect(shadowEffect_btn_money2);
     QGraphicsDropShadowEffect *shadowEffect_btn_money3 = new QGraphicsDropShadowEffect(this);

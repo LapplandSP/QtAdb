@@ -2,7 +2,7 @@
 #include "ui_sp_permissions.h"
 
 sp_permissions::sp_permissions(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::sp_permissions)
 {
     ui->setupUi(this);

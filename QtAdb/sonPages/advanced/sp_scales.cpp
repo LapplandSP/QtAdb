@@ -2,7 +2,7 @@
 #include "ui_sp_scales.h"
 
 sp_scales::sp_scales(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::sp_scales)
 {
     ui->setupUi(this);

@@ -2,7 +2,7 @@
 #include "ui_sp_accounts.h"
 
 sp_accounts::sp_accounts(QWidget *parent) :
-    QWidget(parent),
+    animationWidget(parent),
     ui(new Ui::sp_accounts)
 {
     ui->setupUi(this);

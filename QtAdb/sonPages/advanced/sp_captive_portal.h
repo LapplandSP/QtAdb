@@ -8,12 +8,13 @@
 #include "../../threads/adbthread.h"
 #include <QScrollBar>
 #include <QFile>
+#include "../../animationwidget.h"
 
 namespace Ui {
 class sp_captive_portal;
 }
 
-class sp_captive_portal : public QWidget
+class sp_captive_portal : public animationWidget
 {
     Q_OBJECT
 

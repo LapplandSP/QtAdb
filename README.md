@@ -131,7 +131,7 @@ Android 系统的可玩性在 adb 的加成下变得更加丰富，由此涌现�
 
 - ~~完整的软件包管理器~~
 - 跨平台
-- 完善网站
+- ~~完善网站~~
 - 文件管理（~~都连上电脑了，为什么不直接用电脑的文件管理~~）
 - ~~设备插拔检测~~
 - 集成scrcpy
@@ -229,8 +229,8 @@ Android 系统的可玩性在 adb 的加成下变得更加丰富，由此涌现�
 
 ### 字体
 
-- [Misans](https://web.vip.miui.com/page/info/mio/mio/detail?postId=33935854)
-- *没有应用上 Misans 的地方一定是 bug，请进行反馈。*
+- [Misans](https://web.vip.miui.com/page/info/mio/mio/detail?postId=33935854)（好像哪里都没有应用上，应该是bug）
+- ~~*没有应用上 Misans 的地方一定是 bug，请进行反馈。*~~
 
 
 

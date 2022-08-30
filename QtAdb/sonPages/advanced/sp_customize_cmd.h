@@ -4,12 +4,13 @@
 #include <QWidget>
 #include <QGraphicsDropShadowEffect>
 #include "../../adbprocess.h"
+#include "../../animationwidget.h"
 
 namespace Ui {
 class sp_customize_cmd;
 }
 
-class sp_customize_cmd : public QWidget
+class sp_customize_cmd : public animationWidget
 {
     Q_OBJECT
 
