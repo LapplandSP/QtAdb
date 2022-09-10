@@ -78,6 +78,9 @@
         <file>image/ico/donut-chart-line.svg</file>
         <file>image/ico/layout-top-2-line.svg</file>
         <file>image/ico/stack-line.svg</file>
+        <file>image/ico/edit-line.svg</file>
+        <file>image/ico/devices.svg</file>
+        <file>image/ico/QQ_tencent-qq.svg</file>
     </qresource>
     <qresource prefix="/test">
         <file>image/test/back.png</file>

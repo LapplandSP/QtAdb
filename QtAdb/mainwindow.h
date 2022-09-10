@@ -1,9 +1,5 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-/*
-#define 布尔 bool
-#define 为 =
-#define 真 true*/
 
 #include <QMainWindow>
 #include <QDir>
@@ -13,6 +9,8 @@
 #include <QScroller>
 #include <QLineEdit>
 #include <QMouseEvent>
+#include <QTextCodec>
+#include <QRegExp>
 #include "adbprocess.h"
 #include "textexplainer.h"
 #include "indexlistitem.h"
@@ -21,6 +19,8 @@
 #include "about.h"
 #include "usb_listener.h"
 #include "threads/thread_monitor.h"
+#include "devitem.h"
+#include "abstract/comboboxlistwidget.h"
 
 #include <QCoreApplication>
 #include <QStringList>
@@ -87,11 +87,10 @@ private:
     void setStyles();
 
     bool taiChi = true;     //界面锁定定时器
-    bool liangYi = false;   //判断刷新按钮槽函数是被谁调用：false：click（）调用 ； true： 自行connect（）
+    bool liangYi = false;   //判断刷新按钮槽函数是被谁调用：false：刷新按钮 click（）调用 ； true： 热插拔相关
     bool bagua = true;      //忘了是干啥的了
 
     //布尔 太极 为 真;
-
 
     bool firstBoot = true;
     QTimer *taiChiTimer;
@@ -105,13 +104,14 @@ private:
 
     thread_monitor *thread_mon = NULL;
 
+    comboboxListWidget *view;
 
 public slots:
     void DevicePlugIn();
     void DevicePlugOut();
     void DeviceChanged();
-    void slot_refreshDevList();
-    void refreshDevListLater();
+    void slot_refreshDevList();     //如下
+    void refreshDevListLater();     //与信号 usb_listener 连接的槽，在设备热插拔后启动定时器，超时1s后调用slot_refreshDevList();
     void slot_update_monitor(float,float);
     void reset_monitorBars();
 };

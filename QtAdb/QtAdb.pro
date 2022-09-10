@@ -1,5 +1,8 @@
 QT       += core gui
 QT += serialport
+QT += core5compat
+# QMAKE_LFLAGS += /MANIFESTUAC:\"level=\'requireAdministrator\' uiAccess=\'false\'\"
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -10,9 +13,11 @@ CONFIG += c++11
 
 SOURCES += \
     about.cpp \
+    abstract/comboboxlistwidget.cpp \
     adbprocess.cpp \
     animationwidget.cpp \
     basepage.cpp \
+    devitem.cpp \
     indexlistitem.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -52,9 +57,11 @@ SOURCES += \
 
 HEADERS += \
     about.h \
+    abstract/comboboxlistwidget.h \
     adbprocess.h \
     animationwidget.h \
     basepage.h \
+    devitem.h \
     indexlistitem.h \
     mainwindow.h \
     monitor.h \
@@ -94,6 +101,7 @@ HEADERS += \
 FORMS += \
     about.ui \
     basepage.ui \
+    devitem.ui \
     indexlistitem.ui \
     mainwindow.ui \
     monitor.ui \
@@ -134,6 +142,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    cfgs.qrc \
     ico.qrc \
     styles.qrc
 

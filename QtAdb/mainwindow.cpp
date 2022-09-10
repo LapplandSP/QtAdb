@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     initEnvironmentPATH();
 
     /*加载动画GIF*/
@@ -26,7 +27,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     /*devList 中的当前设备索引*/
     current_device = 0;
-    ui->comboBox->setPlaceholderText("点击此处选择设备");
+    ui->dynamic_island->setText("请先选择设备");
+    //ui->comboBox->setPlaceholderText("点击此处选择设备");
 
     /*连接信号与槽*/
     connect(this->ui->comboBox,SIGNAL(currentIndexChanged(int)),this,SLOT(setCurrentDevice(int)));  //更改当前设备
@@ -36,6 +38,9 @@ MainWindow::MainWindow(QWidget *parent)
     /*设置界面*/
     addIndexItems();    //设置左侧目录
     setStyles();        //设置样式
+    view = new comboboxListWidget(ui->comboBox);
+    ui->comboBox->setModel(view->model());
+    ui->comboBox->setView(view);
 
     /*初始化对象*/
     process = new adbProcess();
@@ -43,8 +48,6 @@ MainWindow::MainWindow(QWidget *parent)
     maker = new pageMaker();
     listener = new usb_listener();
 
-    //connect(listener, SIGNAL(DevicePlugIn()),this,SLOT(DevicePlugIn()));
-    //connect(listener, SIGNAL(DevicePlugOut()),this,SLOT(DevicePlugOut()));
     connect(listener, SIGNAL(DeviceChanged()),this,SLOT(refreshDevListLater()));
     connect(this, SIGNAL(adbDeviceChanged()),this,SLOT(DeviceChanged()));
 
@@ -80,33 +83,76 @@ MainWindow::~MainWindow()
 
 void MainWindow::initEnvironmentPATH()              //方法：设置环境变量
 {
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF_8"));
+
+    /*
     QString envPath = qgetenv("PATH");      //获取当前环境变量
     QString appDirPath = QApplication::applicationDirPath();    //获取程序所在位置
     QString userPath = appDirPath + "\\platform-tools";     //向字符串中添加ADB环境
     envPath += QDir::toNativeSeparators(userPath).prepend(';');
-    qputenv("PATH",envPath.toStdString().c_str());          //更改环境变量
+    qputenv("PATH",envPath.toStdString().c_str());*/          //更改环境变量
     //qDebug() << envPath.toStdString().c_str();
+
+    //QTextCodec *code = QTextCodec::codecForName("UTF_8");
+
+    QString envPath = qgetenv("PATH");      //获取当前环境变量
+    //qDebug() << "envpath" << envPath;
+
+    //QMessageBox::warning(NULL, "nvpath",envPath);
+
+    QString appDirPath = QApplication::applicationDirPath();    //获取程序所在位置
+    //qDebug() << "appDirPath" << appDirPath;
+    if(appDirPath.contains(QRegularExpression("[\u4e00-\u9fa5]")))
+    {
+        //qDebug() << "-------------------" << appDirPath.contains(QRegularExpression("[\\x4e00-\\x9fa5]+"));
+        //qDebug() << "\\x4e00" ;
+        //qDebug() << "\\x9fa5" ;
+        QMessageBox::warning(NULL, "路径问题","请将程序置于纯英文路径下，否则将无法正确设置ADB环境\n"
+                                             "您当前的路径为：\n"
+                                             + appDirPath);
+    }
+
+#ifdef Q_OS_WIN32
+    QString userPath = appDirPath + "\\platform-tools";     //向字符串中添加ADB环境
+#endif
+
+#ifdef Q_OS_OSX
+    QString userPath = appDirPath + "\\platform-tools-OSX";     //向字符串中添加ADB环境
+#endif
+
+#ifdef Q_OS_LINUX
+    QString userPath = appDirPath + "\\platform-tools-linux";     //向字符串中添加ADB环境
+#endif
+    //QString userPath = appDirPath + "\\platform-tools";     //向字符串中添加ADB环境
+    //qDebug() << "userPath" << userPath;
+    //QMessageBox::warning(NULL, "userPath",userPath);
+
+    envPath += QDir::toNativeSeparators(userPath).prepend(';');
+    //qDebug() << "envPath" << envPath;
+    //QMessageBox::warning(NULL, "envPath",envPath);
+
+    qputenv("PATH",envPath.toStdString().c_str());         //更改环境变量
 }
 
 void MainWindow::refreshDevList()                   //方法：刷新设备列表
 {
     //ui->comboBox->clear();
     /*DEBUG*/
-    bool changed = false;
+    bool changed = false;       //这个是判断列表有没有变化用的
     //qDebug() << "******************一次调用*********************";
     //qDebug() << "refreshDevList devList is empty? " << devList.isEmpty() << QTime::currentTime();
     //qDebug() << "devList.size()" << devList.size();
-
+/*
     for(int i = 0; i < devList.size();i++)
     {
         //qDebug() << "devList[" << i << "] is :" << devList[i].addr;
     }
-
+*/
     /*DEBUG_END*/
     //qDebug() << "shit 0";
     bool devList_is_empty = devList.isEmpty();
 
-    QList<device> tmpList;
+    QList<device> tmpList;  //暂时的list，存储刷新前的devlist，用来与之后的devlist对比以确认设备是否有改变
 
     /*给tmpList赋值*/
     if(!devList_is_empty)
@@ -188,8 +234,10 @@ void MainWindow::refreshDevList()                   //方法：刷新设备列�
     QStringList l;
     l.clear();
 
+    /*一条一条添加*/
     for (int i = 0 ; i < devList.size() ; i++ )
     {
+        /*原来的*/
         QString devItem = devList[i].state + " " + explainer->get_words_after(devList[i].model, ":") + " " + devList[i].addr;
         l.append(devItem);
         //qDebug() << "l[" << i << "] = " << l[i];
@@ -201,40 +249,58 @@ void MainWindow::refreshDevList()                   //方法：刷新设备列�
             ui->comboBox->setItemData(i, v, Qt::UserRole - 1);
             */
         }
+        /*原来的END*/
+
+        /*新的*/
+
+        if(changed)     //changed为true则设备列表有所变化，此时才更新
+        {
+            //qDebug() <<"changed so clear";
+
+            ui->comboBox->clear();
+            view->setUpList(devList, off);
+            qDebug() << "1";
+        }
+
+        /*新的END*/
     }
 
-    if(changed)
+    /*出意外弄回来
+    if(changed)     //changed为true则设备列表有所变化，此时才更新
     {
         //qDebug() <<"changed so clear";
         ui->comboBox->clear();
         ui->comboBox->addItems(l);
-    }
+    }*/
 
-    if(!liangYi)
+    if(!liangYi)    //
     {
-        //qDebug() <<"liangYi so clear";
         ui->comboBox->clear();
-        ui->comboBox->addItems(l);
+        view->setUpList(devList, off);
     }
 
     liangYi = false;
 
+    /*将离线设备设为不可选*/
     for(int i = 0; i < off.count();i++)
     {
         QVariant v(0);
         ui->comboBox->setItemData(off[i], v, Qt::UserRole - 1);
     }
 
+    /*若没有设备，重置*/
     if(devList.isEmpty())
     {
         current_device = -1;         //重设当前设备
+        ui->dynamic_island->setText("请先选择设备");
     }
     else
     {
         current_device = 0;
+        ui->dynamic_island->setText(devList[current_device].addr);
     }
 
-    liangYi = false;
+    liangYi = false;        //重置两仪
 
     //qDebug() << "******************一次调用结束*********************";
 }
@@ -271,36 +337,38 @@ void MainWindow::on_refreshButton_clicked()         //槽：按下刷新按钮
 
 void MainWindow::setCurrentDevice(int index)        //槽：改变所选设备
 {
-    qDebug() <<"MainWindow:if";
+    //qDebug() <<"MainWindow:if" << "index = " << index;
 
     if(thread_mon != NULL && siXiangTimer != NULL)
     {
-        qDebug() <<"stop";
+        //qDebug() <<"stop";
         //siXiangTimer->stop();
-        qDebug() <<"delete";
+        //qDebug() <<"delete";
         siXiangTimer->deleteLater();
-        qDebug() <<"=NULL";
+        //qDebug() <<"=NULL";
         siXiangTimer = NULL;
-        qDebug() <<"thread_mon != NULL";
-        qDebug() <<"disconnect";
+        //qDebug() <<"thread_mon != NULL";
+        //qDebug() <<"disconnect";
         thread_mon->disconnect();
-        qDebug() <<"exit()";
+        //qDebug() <<"exit()";
         thread_mon->quit();
-        qDebug() <<"deleteLater()";
+        //qDebug() <<"deleteLater()";
         thread_mon->deleteLater();
     }
 
+    //ui->widget_height->layout()->addWidget(ui->comboBox.it)
 
 
     if(index >= 0)
     {
-        qDebug() <<"NEW";
+        //qDebug() <<"NEW";
         siXiangTimer = new QTimer();
         thread_mon = new thread_monitor(devList[current_device]);
-        qDebug() <<"CONNECT";
+        //qDebug() <<"devList[current_device]:" << "current_device=" << current_device << "dev:" << devList[current_device].addr;
+        //qDebug() <<"CONNECT";
         connect(siXiangTimer,SIGNAL(timeout()),thread_mon,SLOT(getInfo()));
         connect(thread_mon,SIGNAL(signal_monitor(float,float)),this,SLOT(slot_update_monitor(float,float)));
-        qDebug() <<"START";
+        //qDebug() <<"START";
         thread_mon->start();
         siXiangTimer->start(2000);
         ui->progressBar_CPU->setRange(0,100);
@@ -333,6 +401,8 @@ void MainWindow::setCurrentDevice(int index)        //槽：改变所选设备
             //qDebug() << "setCurrentRow";
             ui->indexList->setCurrentRow(0);
         }
+
+        ui->dynamic_island->setText(explainer->get_words_after(devList[current_device].model,":"));
     }
     unlock();
 }
@@ -477,12 +547,12 @@ void MainWindow::setStyles()                        //方法：设置样式
                                  "QListView::item{height:35px;}"
                                  );
 
-    ui->comboBox->setStyleSheet("QComboBox{color:black; border:0px; border-bottom:1px solid #BDBDBD; border-radius:0px; background-color:transparent;}"
-                                "QComboBox::drop-down{border: 0px solid rgba(255,255,255,0);background-color:rgba(255,255,255,0);border-bottom-right-radius: 0px;}"
-                                "QComboBox QAbstractItemView{border:1px solid #BDBDBD;border-radius:0px 0px 0px 0px;outline: 0px;}"
-                                "QComboBox QAbstractItemView::item{height:30px;border:0px solid #BDBDBD;border-radius:0px 0px 0px 0px;}"
-                                "QComboBox QAbstractItemView::item:hover{height:30px;border:0px solid #BDBDBD;border-radius:0px 0px 0px 0px;color:black}"
-                                "QComboBox QAbstractItemView::item:selected{height:30px;border:1px solid #BDBDBD;border-radius:0px 0px 0px 0px;color:black}"
+    ui->comboBox->setStyleSheet("QComboBox{color:black; border:0px solid #BDBDBD; border-radius:4px; background-color:rgba(255,255,255,0.9);image:url(:/ico/image/ico/devices.svg);background-color:rgba(255,255,255,0.9);}"
+                                "QComboBox::drop-down{border: 0px solid rgba(255,255,255,0);background-color:rgba(255,255,255,0);border-radius: 8px;}"
+                                "QComboBox QAbstractItemView{border:1px solid #BDBDBD;border-radius:0px 0px 0px 0px;outline: 0px;background-color:rgba(255,255,255,0);}"
+                                "QComboBox QAbstractItemView::item{height:300px;border:0px solid #BDBDBD;border-radius:0px 0px 0px 0px;background-color:rgba(255,255,255,255);}"//height:30px;
+                                "QComboBox QAbstractItemView::item:hover{height:300px;border:0px solid #BDBDBD;border-radius:0px 0px 0px 0px;color:black;background-color:rgba(255,255,255,255);}"
+                                "QComboBox QAbstractItemView::item:selected{height:300px;border:0px solid #BDBDBD;border-radius:0px 0px 0px 0px;color:black;background-color:rgba(255,255,255,255);}"
                                 );
 
     /*
@@ -517,18 +587,40 @@ void MainWindow::setStyles()                        //方法：设置样式
     shadowEffect_cmdBtn->setColor(Qt::gray);
     shadowEffect_cmdBtn->setBlurRadius(5);
 
-    /*
-    QGraphicsDropShadowEffect *shadowEffect_monitor = new QGraphicsDropShadowEffect(this);
-    shadowEffect_monitor->setOffset(0,0);
-    shadowEffect_monitor->setColor(Qt::gray);
-    shadowEffect_monitor->setBlurRadius(5);*/
+    QGraphicsDropShadowEffect *shadowEffect_island = new QGraphicsDropShadowEffect(this);
+    shadowEffect_island->setOffset(0,0);
+    shadowEffect_island->setColor(Qt::gray);
+    shadowEffect_island->setBlurRadius(5);
+
+
+    QGraphicsDropShadowEffect *shadowEffect_combo = new QGraphicsDropShadowEffect(this);
+    shadowEffect_combo->setOffset(0,0);
+    shadowEffect_combo->setColor(Qt::gray);
+    shadowEffect_combo->setBlurRadius(5);
+    QGraphicsDropShadowEffect *shadowEffect_CPU = new QGraphicsDropShadowEffect(this);
+    shadowEffect_CPU->setOffset(0,0);
+    shadowEffect_CPU->setColor(Qt::gray);
+    shadowEffect_CPU->setBlurRadius(5);
+    QGraphicsDropShadowEffect *shadowEffect_RAM = new QGraphicsDropShadowEffect(this);
+    shadowEffect_RAM->setOffset(0,0);
+    shadowEffect_RAM->setColor(Qt::gray);
+    shadowEffect_RAM->setBlurRadius(5);
 
     ui->refreshButton->setGraphicsEffect(shadowEffect_refreshButton);
     ui->adbKillerBtn->setGraphicsEffect(shadowEffect_killAdbBtn);
     ui->WIFIBtn->setGraphicsEffect(shadowEffect_testBtn);
     ui->WSABtn->setGraphicsEffect(shadowEffect_WSABtn);
     ui->cmdBtn->setGraphicsEffect(shadowEffect_cmdBtn);
-    //ui->widget_monitor->setGraphicsEffect(shadowEffect_monitor);
+    ui->dynamic_island->setGraphicsEffect(shadowEffect_island);
+    ui->comboBox->setGraphicsEffect(shadowEffect_combo);
+    ui->widget_mon_CPU->setGraphicsEffect(shadowEffect_CPU);
+    ui->widget_mon_RAM->setGraphicsEffect(shadowEffect_RAM);
+
+    ui->comboBox->setMaxVisibleItems(1);
+    ui->comboBox->view()->window()->setWindowFlags(Qt::Popup | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint);
+    ui->comboBox->view()->window()->setAttribute(Qt::WA_TranslucentBackground);
+    QApplication::setEffectEnabled(Qt::UI_AnimateCombo, false);
+
 }
 
 void MainWindow::initSonPage(int key)               //槽：生成子页面
@@ -774,7 +866,7 @@ void MainWindow::slot_refreshDevList()
 void MainWindow::refreshDevListLater()
 {
 
-    //qDebug() << ">>>>>>>>>>>>>>>>>>>>>>refreshDevListLater";
+    qDebug() << ">>>>>>>>>>>>>>>>>>>>>>refreshDevListLater";
     QTimer *timer = new QTimer();
     connect(timer, SIGNAL(timeout()), this, SLOT(slot_refreshDevList()));
     timer->setSingleShot(true);

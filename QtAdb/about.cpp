@@ -30,12 +30,13 @@ about::about(QWidget *parent) :
     shadowEffect_btn_money->setOffset(0,0);
     shadowEffect_btn_money->setColor(Qt::gray);
     shadowEffect_btn_money->setBlurRadius(5);
-    ui->btn_money->setGraphicsEffect(shadowEffect_btn_money);
+    //ui->btn_money->setGraphicsEffect(shadowEffect_btn_money);
+
     QGraphicsDropShadowEffect *shadowEffect_btn_money2 = new QGraphicsDropShadowEffect(this);
     shadowEffect_btn_money2->setOffset(0,0);
-    shadowEffect_btn_money2->setColor(Qt::green);
+    shadowEffect_btn_money2->setColor(QColorConstants::Svg::orange);
     shadowEffect_btn_money2->setBlurRadius(5);
-    ui->btn_money_2->setGraphicsEffect(shadowEffect_btn_money2);
+    ui->btn_money_2->setGraphicsEffect(shadowEffect_btn_money2);/*
     QGraphicsDropShadowEffect *shadowEffect_btn_money3 = new QGraphicsDropShadowEffect(this);
     shadowEffect_btn_money3->setOffset(0,0);
     shadowEffect_btn_money3->setColor(Qt::gray);
@@ -45,7 +46,13 @@ about::about(QWidget *parent) :
     shadowEffect_btn_money4->setOffset(0,0);
     shadowEffect_btn_money4->setColor(Qt::gray);
     shadowEffect_btn_money4->setBlurRadius(5);
-    ui->btn_money_4->setGraphicsEffect(shadowEffect_btn_money4);
+    ui->btn_money_4->setGraphicsEffect(shadowEffect_btn_money4);*/
+
+    QGraphicsDropShadowEffect *shadowEffect_btn_qq = new QGraphicsDropShadowEffect(this);
+    shadowEffect_btn_qq->setOffset(0,0);
+    shadowEffect_btn_qq->setColor(Qt::gray);
+    shadowEffect_btn_qq->setBlurRadius(5);
+    ui->btn_qq_dis->setGraphicsEffect(shadowEffect_btn_qq);
 
     QGraphicsDropShadowEffect *shadowEffect_btn_version = new QGraphicsDropShadowEffect(this);
     shadowEffect_btn_version->setOffset(0,0);
@@ -55,15 +62,15 @@ about::about(QWidget *parent) :
 
     QGraphicsDropShadowEffect *shadowEffect_btn_links = new QGraphicsDropShadowEffect(this);
     shadowEffect_btn_links->setOffset(0,0);
-    shadowEffect_btn_links->setColor(Qt::gray);
+    shadowEffect_btn_links->setColor(QColorConstants::Svg::skyblue);
     shadowEffect_btn_links->setBlurRadius(5);
     ui->btn_links->setGraphicsEffect(shadowEffect_btn_links);
 
 
+    /*
     ui->btn_money->hide();
     ui->btn_money_3->hide();
-    ui->btn_money_4->hide();
-
+    ui->btn_money_4->hide();*/
     //this->setStyleSheet("QToolTip{border:1px solid #BDBDBD; background-color: #ffffff; color:rgba(117, 117, 117, 0.9);font-family: MiSans Medium; font-size:12px;border-radius:4px;}");
     //this->setStyleSheet("QToolTip{border:1px solid #BDBDBD; background-color: #ffffff; color:rgba(117, 117, 117, 0.9);font-family: MiSans Medium; font-size:12px;border-radius:4px;}");
 }
@@ -98,7 +105,6 @@ void about::on_btn_money_2_clicked()
     payPage->show();
 }
 
-
 void about::on_btn_links_clicked()
 {
     links *linksPage = new links();
@@ -109,5 +115,11 @@ void about::on_btn_links_clicked()
 void about::on_btn_version_clicked()
 {
     QDesktopServices::openUrl(QUrl("https://lapplandsp.github.io/QtAdb-Pages/qa/", QUrl::TolerantMode));
+}
+
+
+void about::on_btn_qq_dis_clicked()
+{
+    QDesktopServices::openUrl(QUrl("https://pd.qq.com/s/k96ej1", QUrl::TolerantMode));
 }
 

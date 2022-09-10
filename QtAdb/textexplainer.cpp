@@ -18,7 +18,7 @@ QList<device> textExplainer::getDevList(QString tmpStr)
 
     for(int i = 1; i < tmpList.size() ; i++)
     {
-        qDebug() << "fuckQt1";
+
         //qDebug() << "tmplist[" <<  i << "]\n";
         tmpList[i] = tmpList[i].simplified();
 
@@ -89,6 +89,11 @@ QList<device> textExplainer::getDevList_windows(QString tmpStr)
         if(dev.state == "[未响应]")
         {
             dev.transport_id = tmp[2];
+
+            dev.device_product = "unknown";
+            dev.model = "unknown";
+            dev.device_debug = "unknown";
+
             devList.append(dev);
             continue;
         }
@@ -98,6 +103,7 @@ QList<device> textExplainer::getDevList_windows(QString tmpStr)
             dev.model = tmp[3];
             dev.device_debug = tmp[4];
             dev.transport_id = tmp[5];
+
             devList.append(dev);
         }
         //qDebug() << "**tmplist[" << i << "] =" <<  tmpList[i];

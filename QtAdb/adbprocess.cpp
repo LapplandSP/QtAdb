@@ -80,6 +80,7 @@ QString adbProcess::run(QString command)                   //Adb 命令解析 - 
 
 QString adbProcess::run(QString command, device dev)                   //Adb 命令解析 - 对指定设备发送单条命令
 {
+    //qDebug() << "adbprocess dev = " << dev.addr;
     if(thread)
     {
         explainer->thread = true;

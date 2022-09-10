@@ -242,3 +242,5 @@ Android 系统的可玩性在 adb 的加成下变得更加丰富，由此涌现�
 
 - Telegram：@[LapplandSP](https://t.me/LapplandSP)
 
+- QQ频道： [点击加入](https://pd.qq.com/s/k96ej1)
+

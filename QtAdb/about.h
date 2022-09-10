@@ -34,6 +34,8 @@ private slots:
 
     void on_btn_version_clicked();
 
+    void on_btn_qq_dis_clicked();
+
 private:
     Ui::about *ui;
 };

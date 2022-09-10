@@ -1,9 +1,11 @@
 #include "thread_monitor.h"
 
-thread_monitor::thread_monitor(device dev)
+thread_monitor::thread_monitor(device d)
 {
+    qDebug() << "******************************************" << dev.addr;
     process = new adbProcess();
     explainer = new textExplainer();
+    dev = d;
     //timer = new QTimer(this);
     //connect(timer,SIGNAL(timeout()),this,SLOT(getInfo()));
     //adb shell cat /proc/meminfo
@@ -58,13 +60,13 @@ void thread_monitor::getInfo()
         int MemTotal = explainer->get_words_before(explainer->get_words_after(mem.split("\n")[0] , "MemTotal:") , "kB").simplified().simplified().toInt();
         //int MemFree = explainer->get_words_before(explainer->get_words_after(mem.split("\n")[1] , "MemFree:") , "kB").simplified().simplified().toInt();
         int MemAvailable = explainer->get_words_before(explainer->get_words_after(mem.split("\n")[2] , "MemAvailable:") , "kB").simplified().simplified().toInt();
-        qDebug() << "Mem = " << mem;
-        qDebug() << "MemTotal = " << MemTotal;
+        //qDebug() << "Mem = " << mem;
+        //qDebug() << "MemTotal = " << MemTotal;
         //qDebug() << "MemFree = " << MemFree;
         //float mem_use = (float)(MemTotal - MemFree) / (float)MemTotal;
         float mem_use = (float)(MemTotal - MemAvailable) / (float)MemTotal;
 
-        qDebug() << "mem_use = " << mem_use;
+        //qDebug() << "mem_use = " << mem_use;
 
         mem = "";
         emit signal_monitor(cpu_use, mem_use);

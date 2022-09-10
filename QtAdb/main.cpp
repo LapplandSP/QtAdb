@@ -13,6 +13,8 @@
 
 int main(int argc, char *argv[])
 {
+    //QTextCodec::setCodecForLocale(QTextCodec::codecForName("GB2312"));
+
     QApplication a(argc, argv);
 
     QFont font;
