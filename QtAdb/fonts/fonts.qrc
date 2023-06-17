@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/LXGW">
+        <file>LXGWWenKaiLite-Bold.ttf</file>
+        <file>LXGWWenKaiLite-Light.ttf</file>
+        <file>LXGWWenKaiLite-Regular.ttf</file>
+    </qresource>
+</RCC>

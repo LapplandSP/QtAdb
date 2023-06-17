@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>sp_status_bar</class>
+ <widget class="QWidget" name="sp_status_bar">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>544</width>
+    <height>437</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_5">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <property name="font">
+      <font>
+       <family>LXGW WenKai Lite</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius: 4px;
+background-color: rgba(255, 255, 255, 0);
+border:0px solid #BDBDBD;</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <property name="leftMargin">
+       <number>11</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>11</number>
+      </property>
+      <property name="bottomMargin">
+       <number>11</number>
+      </property>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="spacing">
+         <number>14</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="icon">
+            <property name="minimumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MiSans Medium</family>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-radius: 4px;
+border:0px solid #BDBDBD;
+image: url(:/ico/image/ico/layout-top-2-line.svg);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="title">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>LXGW WenKai Lite</family>
+              <pointsize>18</pointsize>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-radius: 4px;
+border:0px solid #BDBDBD;</string>
+            </property>
+            <property name="text">
+             <string>状态栏与导航栏</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QWidget" name="widget_2" native="true">
+          <property name="font">
+           <font>
+            <family>MiSans Medium</family>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:1px solid #BDBDBD;</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="font">
+              <font>
+               <family>LXGW WenKai Lite</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:0px;border:0px;border-bottom:1px solid #BDBDBD;</string>
+             </property>
+             <property name="text">
+              <string>隐藏状态栏图标</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QGridLayout" name="gridLayout">
+             <item row="0" column="0">
+              <widget class="QCheckBox" name="volume">
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px;</string>
+               </property>
+               <property name="text">
+                <string>静音 /震动</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QCheckBox" name="airplane">
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px;</string>
+               </property>
+               <property name="text">
+                <string>飞行模式</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QCheckBox" name="speakerphone">
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px;</string>
+               </property>
+               <property name="text">
+                <string>麦克风</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QCheckBox" name="bluetooth">
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px;</string>
+               </property>
+               <property name="text">
+                <string>蓝牙</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QCheckBox" name="hotspot">
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px;</string>
+               </property>
+               <property name="text">
+                <string>热点</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QCheckBox" name="nfc">
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px;</string>
+               </property>
+               <property name="text">
+                <string>NFC</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QCheckBox" name="wifi">
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px;</string>
+               </property>
+               <property name="text">
+                <string>WIFI</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="0">
+              <widget class="QPushButton" name="pushButton_hide">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+               </property>
+               <property name="text">
+                <string>隐藏</string>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QPushButton" name="pushButton_restore">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+               </property>
+               <property name="text">
+                <string>重置</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QCheckBox" name="location">
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px;</string>
+               </property>
+               <property name="text">
+                <string>定位</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QCheckBox" name="alarm_clock">
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px;</string>
+               </property>
+               <property name="text">
+                <string>闹钟</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3">
+              <widget class="QCheckBox" name="cast">
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px;</string>
+               </property>
+               <property name="text">
+                <string>录屏状态</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="3">
+              <widget class="QCheckBox" name="headphone">
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color:rgba(255,255,255,0);border-radius:4px;border:0px;</string>
+               </property>
+               <property name="text">
+                <string>耳机</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QWidget" name="widget_3" native="true">
+          <property name="styleSheet">
+           <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:4px;border:1px solid #BDBDBD;</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="font">
+              <font>
+               <family>LXGW WenKai Lite</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color:rgba(255,255,255,0.8);border-radius:0px;border:0px;border-bottom:1px solid #BDBDBD;</string>
+             </property>
+             <property name="text">
+              <string>全局隐藏</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QPushButton" name="hide_status">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+               </property>
+               <property name="text">
+                <string>全局隐藏状态栏</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="hide_navigation">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+               </property>
+               <property name="text">
+                <string>全局隐藏导航栏</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_2">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+               </property>
+               <property name="text">
+                <string>同时隐藏</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="hide_restore">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>LXGW WenKai Lite</family>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+               </property>
+               <property name="text">
+                <string>重置</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QPushButton" name="back_to_basePage">
+            <property name="minimumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../ico.qrc">
+              <normaloff>:/ico/image/ico/arrow-left-line.svg</normaloff>:/ico/image/ico/arrow-left-line.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>18</width>
+              <height>18</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>MiSans Medium</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton{background-color:rgba(255,255,255,0.9);border-radius:4px;border:0px;}
+QPushButton:hover{background-color:rgba(255,255,255,0.7);}
+QPushButton:pressed{background-color:rgba(255,255,255,0.6);}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../ico.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/cfgs">
+        <file>cfg/name.cfg</file>
+    </qresource>
+</RCC>
